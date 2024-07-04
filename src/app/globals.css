@@ -121,24 +121,10 @@ nav {
   width: 100%;
 }
 .mobile-video video {
-  height: 450px;
+  height: 400px;
   width: 100%;
   overflow: hidden;
   object-fit: cover;
-}
-.mobile-title {
-  font-size: 120px;
-  font-weight: 700;
-  line-height: 123%;
-  margin-bottom: 20px;
-}
-@media (max-width: 480px) {
-  .mobile-video video {
-    height: 250px;
-  }
-  .mobile-title {
-    font-size: 70px;
-  }
 }
 
 /* Heading font style */

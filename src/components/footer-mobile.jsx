@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React from "react";
 
 const FooterMobile = () => {
@@ -93,7 +94,13 @@ const FooterMobile = () => {
             </p>
           </div>
           <div className="footer-mobile__logo">
-            <img src="/images/logos/Logo(White).png" alt="Logo Footer" />
+            <Image
+              src="/images/logos/Logo(White).png"
+              alt="Logo Footer"
+              width={1024}
+              height={1024}
+              style={{ width: "auto", height: "auto" }}
+            />
           </div>
         </div>
       </section>

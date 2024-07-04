@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import Brand from "@/components/brand.jsx";
+import Image from "next/image";
 
 const About = () => {
   useEffect(() => {
@@ -18,10 +19,12 @@ const About = () => {
         </div>
 
         <div className="sm:col-start-2 sm:row-start-1">
-          <img
+          <Image
             alt="About Flaeup"
             src="https://placehold.co/1024x600/2a357a/fff"
             className="about-image object-cover"
+            width={1024}
+            height={600}
           />
         </div>
       </section>
@@ -44,18 +47,22 @@ const About = () => {
           </div>
           <div className="w-full flex py-10 px-4 md:px-28 justify-center items-center md:gap-6">
             <div className="w-3/10 flex justify-center">
-              <img
+              <Image
                 src="https://placehold.co/430x490/2a357a/fff"
                 alt=""
                 className="w-full max-h-full"
+                width={430}
+                height={490}
                 style={{ maxWidth: "100%", height: "auto" }}
               />
             </div>
             <div className="w-7/10 flex justify-center">
-              <img
+              <Image
                 src="https://placehold.co/900x490/2a357a/fff"
                 alt=""
                 className="w-full max-h-full"
+                width={900}
+                height={490}
                 style={{ maxWidth: "100%", height: "auto" }}
               />
             </div>

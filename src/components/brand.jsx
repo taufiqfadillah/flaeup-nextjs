@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 
 const Brand = () => {
@@ -45,52 +46,73 @@ const Brand = () => {
           <div className="brand-style overflow-hidden relative w-full">
             <div className="container-brand-slider flex" ref={sliderRef}>
               <div className="flex justify-center items-center main-brand-slider">
-                <img
+                <Image
                   src="/images/client/Client Logo-01.svg"
                   alt="Logo 1"
                   className="brand-image"
+                  height={250}
+                  width={250}
+                  style={{ width: "100%", height: "auto" }}
                 />
               </div>
               <div className="flex justify-center items-center main-brand-slider">
-                <img
+                <Image
                   src="/images/client/Client Logo-02.svg"
                   alt="Logo 2"
                   className="brand-image"
+                  height={250}
+                  width={250}
+                  style={{ width: "100%", height: "auto" }}
                 />
               </div>
               <div className="flex justify-center items-center main-brand-slider">
-                <img
+                <Image
                   src="/images/client/Client Logo-03.svg"
                   alt="Logo 3"
                   className="brand-image"
+                  height={250}
+                  width={250}
+                  style={{ width: "100%", height: "auto" }}
                 />
               </div>
               <div className="flex justify-center items-center main-brand-slider">
-                <img
+                <Image
                   src="/images/client/Client Logo-04.svg"
                   alt="Logo 4"
                   className="brand-image"
+                  height={250}
+                  width={250}
+                  style={{ width: "100%", height: "auto" }}
                 />
               </div>
               <div className="flex justify-center items-center main-brand-slider">
-                <img
+                <Image
                   src="/images/client/Client Logo-05.svg"
                   alt="Logo 5"
                   className="brand-image"
+                  height={250}
+                  width={250}
+                  style={{ width: "100%", height: "auto" }}
                 />
               </div>
               <div className="flex justify-center items-center main-brand-slider">
-                <img
+                <Image
                   src="/images/client/Client Logo-06.svg"
                   alt="Logo 6"
                   className="brand-image"
+                  height={250}
+                  width={250}
+                  style={{ width: "100%", height: "auto" }}
                 />
               </div>
               <div className="flex justify-center items-center main-brand-slider">
-                <img
+                <Image
                   src="/images/client/Client Logo-07.svg"
                   alt="Logo 7"
                   className="brand-image"
+                  height={250}
+                  width={250}
+                  style={{ width: "100%", height: "auto" }}
                 />
               </div>
             </div>

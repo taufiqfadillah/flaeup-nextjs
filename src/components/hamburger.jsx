@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Image from "next/image";
 
 const Hamburger = () => {
   useEffect(() => {
@@ -48,13 +49,16 @@ const Hamburger = () => {
       <section>
         <div className="hidden navbar-menu fixed top-0 left-0 bottom-0 w-5/6 max-w-md z-50">
           <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-50"></div>
-          <nav className="relative flex flex-col py-6 px-10 w-full h-full bg-white overflow-y-auto">
+          <nav className="relative flex flex-col py-6 px-4 w-full h-full bg-white overflow-y-auto">
             <div className="flex mb-auto items-center">
               <a className="inline-block mr-auto" href="/">
-                <img
-                  className="h-4"
+                <Image
+                  className="relative h-4"
                   src="/images/logos/Logo(Blue).png"
                   alt="Logo"
+                  height={42}
+                  width={72}
+                  style={{ width: "100%", height: "auto" }}
                 />
               </a>
               <a className="navbar-close" href="/">

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Navbar = () => {
@@ -9,10 +10,13 @@ const Navbar = () => {
           <div className="container mx-auto py-4">
             <div className="flex h-16 items-center justify-between">
               <a className="inline-block" href="/">
-                <img
+                <Image
                   className="h-8 md:h-12 ml-4"
                   src="/images/logos/logo.png"
                   alt="Logo"
+                  width={52}
+                  height={52}
+                  style={{ width: "auto", height: "auto" }}
                 />
               </a>
               <button

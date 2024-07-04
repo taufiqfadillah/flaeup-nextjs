@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 const Capabilities = () => {
   useEffect(() => {
@@ -62,8 +63,8 @@ const Capabilities = () => {
       <section className="capabilities">
         <div className="container mx-auto px-8">
           <div className="relative mx-auto pt-12">
-            <div className="relative mt-3 pb-10">
-              <div className="md:flex md:justify-between px-10 items-start">
+            <div className="relative mt-3 pb-4 md:pb-10">
+              <div className="md:flex md:justify-between px-2 md:px-10 items-start">
                 <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl xl:text-6xl tracking-tightest font-bold mb-4 md:mb-0">
                   Our
                   <br />
@@ -175,10 +176,13 @@ const Capabilities = () => {
                   </div>
                   <div className="carousel-item">
                     <div className="carousel-inner">
-                      <img
-                        className="block carousel-size"
+                      <Image
+                        className="relative block carousel-size"
                         src="/images/video/Muhammad Ali Packaging-01.jpg"
                         alt=""
+                        height={580}
+                        width={1024}
+                        style={{ width: "100%", minHeight: "300px" }}
                       />
                       <div className="carousel-backdrop">
                         <div className="carousel-title inline-block flex leading-none hover:underline">

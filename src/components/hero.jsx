@@ -6,89 +6,89 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Hero = () => {
-    useEffect(() => {
-        document.title = "Flaeup | Creativity is centar to our design";
-    
-        gsap.registerPlugin(ScrollTrigger);
-    
-        // Hero Animation
-        const video = document.getElementById("heroVideo");
-        let animation;
-    
-        function initializeLottieAnimation() {
-          animation = lottie.loadAnimation({
-            container: document.querySelector(".hero__container"),
-            renderer: "svg",
-            loop: false,
-            autoplay: false,
-            path: "/images/lottie/Creativity_Text_Animation.json",
-            rendererSettings: {
-              preserveAspectRatio: "xMidYMid slice",
-            },
-          });
-    
-          let playhead = { frame: 0 };
-    
-          animation.addEventListener("DOMLoaded", () => {
-            gsap.to(playhead, {
-              frame: animation.totalFrames - 1,
-              ease: "none",
-              onUpdate: () => animation.goToAndStop(playhead.frame, true),
-              scrollTrigger: {
-                trigger: ".hero__container",
-                start: "bottom 99%",
-                end: "bottom 20%",
-                scrub: 1,
-              },
-            });
-    
-            ScrollTrigger.sort();
-            ScrollTrigger.refresh();
-          });
-        }
-    
-        initializeLottieAnimation();
-    
-        gsap.set(video, { y: 0 });
-    
-        const tl = gsap.timeline({
+  useEffect(() => {
+    document.title = "Flaeup | Creativity is centar to our design";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero Animation
+    const video = document.getElementById("heroVideo");
+    let animation;
+
+    function initializeLottieAnimation() {
+      animation = lottie.loadAnimation({
+        container: document.querySelector(".hero__container"),
+        renderer: "svg",
+        loop: false,
+        autoplay: false,
+        path: "/images/lottie/Creativity_Text_Animation.json",
+        rendererSettings: {
+          preserveAspectRatio: "xMidYMid slice",
+        },
+      });
+
+      let playhead = { frame: 0 };
+
+      animation.addEventListener("DOMLoaded", () => {
+        gsap.to(playhead, {
+          frame: animation.totalFrames - 1,
+          ease: "none",
+          onUpdate: () => animation.goToAndStop(playhead.frame, true),
           scrollTrigger: {
-            trigger: video,
-            start: "top 90%",
-            end: "bottom 80%",
+            trigger: ".hero__container",
+            start: "bottom 99%",
+            end: "bottom 20%",
             scrub: 1,
           },
         });
-    
-        tl.to(video, {
-          duration: 1,
-          y: "-65vh",
-        });
-    
-        // Video mute/unmute logic
-        const handleVideoPlayback = (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              video.muted = false;
-              video.play();
-            } else {
-              video.muted = true;
-            }
-          });
-        };
-    
-        const observer = new IntersectionObserver(handleVideoPlayback, {
-          threshold: 0.5,
-        });
-    
-        observer.observe(video);
-    
-        // Clean up function
-        return () => {
-          animation?.destroy();
-          observer.disconnect();
-        };
-      }, []);
+
+        ScrollTrigger.sort();
+        ScrollTrigger.refresh();
+      });
+    }
+
+    initializeLottieAnimation();
+
+    gsap.set(video, { y: 0 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: video,
+        start: "top 90%",
+        end: "bottom 80%",
+        scrub: 1,
+      },
+    });
+
+    tl.to(video, {
+      duration: 1,
+      y: "-65vh",
+    });
+
+    // Video mute/unmute logic
+    const handleVideoPlayback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          video.muted = false;
+          video.play();
+        } else {
+          video.muted = true;
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleVideoPlayback, {
+      threshold: 0.5,
+    });
+
+    observer.observe(video);
+
+    // Clean up function
+    return () => {
+      animation?.destroy();
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <>
@@ -119,7 +119,7 @@ const Hero = () => {
         <div className="mobile container mx-auto lg:hidden">
           <div className="main-mobile">
             <div className="flex border-b">
-              <h1 className="mobile-title tracking-tightest">
+              <h1 className="text-6xl font-bold px-2 pb-4">
                 Creativity is centar to our design.
               </h1>
             </div>

@@ -77,7 +77,7 @@ const Footer = () => {
           <div className="flex flex-wrap pt-12">
             <div className="flex w-full mb-44">
               <div className="w-full w-3/4">
-                <span className="footer-letstalk">Let's Talk</span>
+                <span className="footer-letstalk">Let&apos;s Talk</span>
               </div>
               <div className="footer-term w-full w-1/4 text-right">
                 <a className="hover:underline" href="#">
