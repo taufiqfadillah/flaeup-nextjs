@@ -1,0 +1,40 @@
+{
+  "name": "out",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev-watch": "concurrently \"next dev\" \"npm run watch\"",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "watch": "npx tailwindcss -i ./src/app/globals.css -o ./public/css/tailwind-min.css --watch",
+    "minified": "npx tailwindcss -i ./src/app/globals.css -o ./public/css/tailwind-min.css --minify"
+  },
+  "dependencies": {
+    "@radix-ui/react-hover-card": "^1.1.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.2.12",
+    "gsap": "^3.12.5",
+    "jquery": "^3.7.1",
+    "lottie-web": "^5.12.2",
+    "minify": "^11.3.0",
+    "next": "14.2.4",
+    "qss": "^3.0.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-router-dom": "^6.24.1",
+    "tailwind-merge": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "concurrently": "^8.2.2",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
