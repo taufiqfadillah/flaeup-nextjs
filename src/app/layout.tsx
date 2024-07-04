@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "/public/css/tailwind-min.css";
+import SmoothScrolling from "@/libs/SmoothScrolling.jsx";
+import Loader from "@/components/loader.jsx";
 
 export const metadata: Metadata = {
   title: "Flaeup | Loading...",
@@ -73,8 +75,9 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {children}
-        </body>
+        <SmoothScrolling>{children}</SmoothScrolling>
+        <Loader />
+      </body>
     </html>
   );
 }

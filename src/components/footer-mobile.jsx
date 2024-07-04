@@ -12,7 +12,7 @@ const FooterMobile = () => {
             <div className="footer-mobile__menu">
               <ul>
                 <li>
-                  <span className="footer-mobile__letstalk">Let's Talk</span>
+                  <span className="footer-mobile__letstalk">Let&apos;s Talk</span>
                 </li>
                 <li>
                   <span className="footer-mobile__hello underline">

@@ -4,7 +4,6 @@ import Hamburger from "@/components/hamburger.jsx";
 import Contact from "@/components/contact.jsx";
 import Brand from "@/components/brand.jsx";
 import Footer from "@/components/footer.jsx";
-import Loader from "@/components/loader.jsx";
 
 export default function ContactPage() {
   return (
@@ -17,7 +16,6 @@ export default function ContactPage() {
       <div className="pt-1000"></div>
       <Brand />
       <Footer />
-      <Loader />
     </>
   );
 }

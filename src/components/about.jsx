@@ -21,7 +21,7 @@ const About = () => {
         <div className="sm:col-start-2 sm:row-start-1">
           <Image
             alt="About Flaeup"
-            src="https://placehold.co/1024x600/2a357a/fff"
+            src="https://dummyimage.com/1024x600/2a357a/fff.png"
             className="about-image object-cover"
             width={1024}
             height={600}
@@ -31,11 +31,11 @@ const About = () => {
 
       <section className="overflow-hidden">
         <div className="pt-24">
-          <p className="text-center text-1xl md:text-[22px] leading-[100.098%] tracking-[0.22px]">
+          <p className="text-center text-1xl md:text-lg leading-normal tracking-wide">
             OUR STORY
           </p>
-          <div className="w-full h-px mt-10 bg-black"></div>
-          <div className="w-full px-5 md:px-28 py-10 text-xl text-left md:text-3xl leading-[150%] tracking-[0.32px]">
+          <div className="w-full h-px mt-20 bg-black"></div>
+          <div className="w-full px-5 md:px-28 py-10 text-xl text-left md:text-[28px] leading-normal tracking-normal">
             <p className="px-2">
               The studio is centered on the power of simplicity, focusing on
               breaking down complex ideas into easy to compose story components.
@@ -48,7 +48,7 @@ const About = () => {
           <div className="w-full flex py-10 px-4 md:px-28 justify-center items-center md:gap-6">
             <div className="w-3/10 flex justify-center">
               <Image
-                src="https://placehold.co/430x490/2a357a/fff"
+                src="https://dummyimage.com/430x490/2a357a/fff.png"
                 alt=""
                 className="w-full max-h-full"
                 width={430}
@@ -58,7 +58,7 @@ const About = () => {
             </div>
             <div className="w-7/10 flex justify-center">
               <Image
-                src="https://placehold.co/900x490/2a357a/fff"
+                src="https://dummyimage.com/900x490/2a357a/fff.png"
                 alt=""
                 className="w-full max-h-full"
                 width={900}
@@ -70,12 +70,12 @@ const About = () => {
 
           <div className="w-full flex py-10 px-2 md:px-28 justify-center align-items-center">
             <div className="w-[340px] px-2">
-              <p className="text-[18px] text-left font-normal md:text-[22px]">
+              <p className="text-[18px] text-left font-normal md:text-base">
                 OUR STORY
               </p>
             </div>
             <div className="w-[900px] px-2 md:pl-20 pb-24">
-              <p className="text-lg text-left font-normal md:text-3xl md:leading-[150%] md:tracking-[0.32px]">
+              <p className="text-lg text-left font-normal md:text-[28px] md:leading-normal md:tracking-normal">
                 Flaeup is a creative collective of design artists dedicated to
                 bringing your vision to life. We utilize visual storytelling and
                 graphics as primary tools, with our shared goal being to harness

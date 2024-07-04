@@ -694,8 +694,8 @@ video {
   margin-right: auto;
 }
 
-.mt-10 {
-  margin-top: 2.5rem;
+.mt-20 {
+  margin-top: 5rem;
 }
 
 .mt-24 {
@@ -1159,16 +1159,20 @@ video {
   line-height: 1.375;
 }
 
-.tracking-\[0\.22px\] {
-  letter-spacing: 0.22px;
-}
-
 .tracking-\[0\.32px\] {
   letter-spacing: 0.32px;
 }
 
 .tracking-\[0\.48px\] {
   letter-spacing: 0.48px;
+}
+
+.tracking-normal {
+  letter-spacing: 0em;
+}
+
+.tracking-wide {
+  letter-spacing: 0.025em;
 }
 
 .tracking-widest {
@@ -2065,11 +2069,6 @@ input:focus {
     text-align: left;
   }
 
-  .md\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
-
   .md\:text-5xl {
     font-size: 3rem;
     line-height: 1;
@@ -2080,12 +2079,17 @@ input:focus {
     line-height: 1;
   }
 
-  .md\:text-\[22px\] {
-    font-size: 22px;
+  .md\:text-\[28px\] {
+    font-size: 28px;
   }
 
   .md\:text-\[32px\] {
     font-size: 32px;
+  }
+
+  .md\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .md\:text-lg {
@@ -2093,12 +2097,12 @@ input:focus {
     line-height: 1.75rem;
   }
 
-  .md\:leading-\[150\%\] {
-    line-height: 150%;
+  .md\:leading-normal {
+    line-height: 1.5;
   }
 
-  .md\:tracking-\[0\.32px\] {
-    letter-spacing: 0.32px;
+  .md\:tracking-normal {
+    letter-spacing: 0em;
   }
 }
 

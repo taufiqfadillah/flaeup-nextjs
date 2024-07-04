@@ -16,6 +16,7 @@ const Navbar = () => {
                   alt="Logo"
                   width={52}
                   height={52}
+                  priority={true}
                   style={{ width: "auto", height: "auto" }}
                 />
               </a>

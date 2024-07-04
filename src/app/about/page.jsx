@@ -4,9 +4,8 @@ import Hamburger from "@/components/hamburger.jsx";
 import About from "@/components/about.jsx";
 import Footer from "@/components/footer.jsx";
 import FooterMobile from "@/components/footer-mobile.jsx";
-import Loader from "@/components/loader.jsx";
 
-export default function AboutPage () {
+export default function AboutPage() {
   return (
     <>
       <Navbar />
@@ -16,7 +15,6 @@ export default function AboutPage () {
 
       <Footer />
       <FooterMobile />
-      <Loader />
     </>
   );
 }

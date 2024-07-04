@@ -1,12 +1,27 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import lottie from "lottie-web";
 
 const Loader = () => {
   const animationContainerRef = useRef(null);
+  const [hasVisited, setHasVisited] = useState(false);
 
   useEffect(() => {
+    const clearLocalStorage = () => {
+      localStorage.removeItem("hasVisited");
+      setHasVisited(false);
+    };
+
+    const visitedBefore = localStorage.getItem("hasVisited");
+
+    if (visitedBefore) {
+      setHasVisited(true);
+
+      setTimeout(clearLocalStorage, 30 * 60 * 1000);
+      return;
+    }
+
     // Loader Animation
     const animationContainer = animationContainerRef.current;
 
@@ -35,19 +50,27 @@ const Loader = () => {
             if (preloader) {
               preloader.style.display = "none";
               document.body.style.overflow = "auto";
+
+              localStorage.setItem("hasVisited", true);
+              setHasVisited(true);
+
+              setTimeout(clearLocalStorage, 30 * 60 * 1000);
             }
           }, 300);
         });
       });
     }
 
-    // Clean up on unmount
     return () => {
       if (animation) {
         animation.destroy();
       }
     };
   }, []);
+
+  if (hasVisited) {
+    return null;
+  }
 
   return (
     <>
