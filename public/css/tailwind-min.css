@@ -770,6 +770,10 @@ video {
   width: 75%;
 }
 
+.w-36 {
+  width: 9rem;
+}
+
 .w-5\/6 {
   width: 83.333333%;
 }
@@ -812,10 +816,6 @@ video {
 
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
-}
-
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .grid-cols-6 {
@@ -1061,6 +1061,10 @@ video {
 
 .pt-24 {
   padding-top: 6rem;
+}
+
+.pt-6 {
+  padding-top: 1.5rem;
 }
 
 .text-left {
@@ -2015,6 +2019,10 @@ input:focus {
 
   .md\:grid-cols-12 {
     grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .md\:justify-between {
