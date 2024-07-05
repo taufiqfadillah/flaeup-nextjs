@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useEffect } from "react";
 import Image from "next/image";
+import React, { useEffect } from "react";
 import Slider from "react-infinite-logo-slider";
 import AnimatedTextWord from "@/libs/AnimatedTextWord.jsx";
 import AnimatedTextCharacter from "@/libs/AnimatedTextCharacter.jsx";
 import AnimatedTextParagraph from "@/libs/AnimatedTextParagraph.jsx";
+import AnimatedImage from "@/libs/AnimatedImage.jsx";
 
 const Client_1 = "/images/client/Client Logo-01.svg";
 const Client_2 = "/images/client/Client Logo-02.svg";
@@ -42,10 +43,10 @@ const About = () => {
         </div>
 
         <div className="sm:col-start-2 sm:row-start-1">
-          <Image
+          <AnimatedImage
             alt="About Flaeup"
             src="https://dummyimage.com/1024x600/2a357a/fff.png"
-            className="about-image object-cover"
+            className="object-cover h-full"
             width={1024}
             height={600}
           />
@@ -74,7 +75,7 @@ const About = () => {
           </div>
           <div className="w-full flex py-10 px-4 md:px-28 justify-center items-center md:gap-6">
             <div className="w-3/10 flex justify-center">
-              <Image
+              <AnimatedImage
                 src="https://dummyimage.com/430x490/2a357a/fff.png"
                 alt=""
                 className="w-full max-h-full"
@@ -84,7 +85,7 @@ const About = () => {
               />
             </div>
             <div className="w-7/10 flex justify-center">
-              <Image
+              <AnimatedImage
                 src="https://dummyimage.com/900x490/2a357a/fff.png"
                 alt=""
                 className="w-full max-h-full"
@@ -156,9 +157,9 @@ const About = () => {
                     loop
                     style={{
                       height: "260px",
-                      width: "calc(100% - 20px)", // Adjust width to account for gap
+                      width: "calc(100% - 20px)",
                       objectFit: "cover",
-                      marginRight: "20px", // Gap between videos
+                      marginRight: "20px",
                     }}
                   />
                 </div>
@@ -171,9 +172,9 @@ const About = () => {
                     loop
                     style={{
                       height: "260px",
-                      width: "calc(100% - 20px)", // Adjust width to account for gap
+                      width: "calc(100% - 20px)",
                       objectFit: "cover",
-                      marginRight: "20px", // Gap between videos
+                      marginRight: "20px",
                     }}
                   />
                 </div>
@@ -186,8 +187,9 @@ const About = () => {
                     loop
                     style={{
                       height: "260px",
-                      width: "calc(100% - 20px)", // Adjust width to account for gap
+                      width: "calc(100% - 20px)",
                       objectFit: "cover",
+                      marginRight: "20px",
                     }}
                   />
                 </div>
@@ -407,16 +409,16 @@ const About = () => {
           </div>
         </section>
 
-        <section className="pb-28" style={{ height: "100vh" }}>
+        <section className="pb-0 md:pb-32 h-[55vh] md:h-[100vh]">
           <div className="px-4 md:px-28">
             <div className="text-2xl md:text-5xl sm:text-left leading-[100.098%] tracking-[0.48px]">
               <AnimatedTextWord text="Clients" />
             </div>
           </div>
 
-          <div className="pt-20">
+          <div className="pt-10 md:pt-20">
             <Slider
-              width="250px"
+              width="200px"
               duration={35}
               pauseOnHover={false}
               blurBorders={true}
@@ -424,18 +426,20 @@ const About = () => {
             >
               {clients.map((client, index) => (
                 <Slider.Slide key={index}>
-                  <img
+                  <Image
                     src={client.src}
                     alt={`Client Logo ${index + 1}`}
-                    className="w-36"
+                    className="md:w-40 w-28"
+                    width={300}
+                    height={300}
                   />
                 </Slider.Slide>
               ))}
             </Slider>
           </div>
-          <div className="pt-6">
+          <div className="pt-2 md:pt-6">
             <Slider
-              width="250px"
+              width="200px"
               duration={20}
               pauseOnHover={false}
               blurBorders={true}
@@ -443,18 +447,20 @@ const About = () => {
             >
               {clients.map((client, index) => (
                 <Slider.Slide key={index}>
-                  <img
+                  <Image
                     src={client.src}
                     alt={`Client Logo ${index + 1}`}
-                    className="w-36"
+                    className="md:w-40 w-28"
+                    width={300}
+                    height={300}
                   />
                 </Slider.Slide>
               ))}
             </Slider>
           </div>
-          <div className="pt-6">
+          <div className="pt-2 md:pt-6">
             <Slider
-              width="250px"
+              width="200px"
               duration={40}
               pauseOnHover={false}
               blurBorders={true}
@@ -462,10 +468,12 @@ const About = () => {
             >
               {clients.map((client, index) => (
                 <Slider.Slide key={index}>
-                  <img
+                  <Image
                     src={client.src}
                     alt={`Client Logo ${index + 1}`}
-                    className="w-36"
+                    className="md:w-40 w-28"
+                    width={300}
+                    height={300}
                   />
                 </Slider.Slide>
               ))}

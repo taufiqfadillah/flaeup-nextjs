@@ -22,10 +22,10 @@ const AnimatedTextWord = ({ text, className }) => {
     visible: {
       opacity: 1,
       x: 0,
+      y: 0,
       transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
+        ease: "easeInOut",
+        duration: 1,
       },
     },
     hidden: {
@@ -39,22 +39,22 @@ const AnimatedTextWord = ({ text, className }) => {
     },
   };
 
-  const startAnimation = async () => {
-    await controls.start("visible");
-  };
-
-  const resetAnimation = async () => {
-    await controls.start("hidden");
-  };
-
   // Start animation when component enters viewport
   React.useEffect(() => {
+    const startAnimation = async () => {
+      await controls.start("visible");
+    };
+
+    const resetAnimation = async () => {
+      await controls.start("hidden");
+    };
+
     if (inView) {
       startAnimation();
     } else {
       resetAnimation();
     }
-  }, [inView]);
+  }, [inView, controls]);
 
   return (
     <motion.div

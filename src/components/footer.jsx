@@ -71,7 +71,7 @@ const Footer = () => {
 
   return (
     <>
-      <section id="trigger-footer" style={{ height: "2vh" }}></section>
+      <section id="trigger-footer" className="hidden sm:block bg-[#82caaa]" style={{ height: "2vh" }}></section>
       <section className="footer py-4 md:py-6 px-10" ref={footerRef}>
         <footer>
           <div className="flex flex-wrap pt-12">

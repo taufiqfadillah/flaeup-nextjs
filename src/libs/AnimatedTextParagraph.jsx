@@ -42,22 +42,22 @@ const AnimatedTextParagraph = ({ text, className }) => {
     },
   };
 
-  const startAnimation = async () => {
-    await controls.start("visible");
-  };
-
-  const resetAnimation = async () => {
-    await controls.start("hidden");
-  };
-
   // Start animation when component enters viewport
   React.useEffect(() => {
+    const startAnimation = async () => {
+      await controls.start("visible");
+    };
+
+    const resetAnimation = async () => {
+      await controls.start("hidden");
+    };
+
     if (inView) {
       startAnimation();
     } else {
       resetAnimation();
     }
-  }, [inView]);
+  }, [inView, controls]);
 
   return (
     <motion.div
