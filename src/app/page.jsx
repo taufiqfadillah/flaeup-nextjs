@@ -14,7 +14,7 @@ export default function Home () {
       <Hamburger />
       <Hero />
       <Capabilities />
-      <div className="pt-1000"></div>
+      <div className="pt-[60px] md:pt-[800px] lg:pt-[1000px]"></div>
       <Brand />
       <Footer />
       <FooterMobile />

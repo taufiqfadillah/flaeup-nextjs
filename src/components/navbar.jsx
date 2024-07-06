@@ -1,5 +1,8 @@
-import Image from "next/image";
+"use client";
+
 import React from "react";
+import AnimatedTextCharacter from "@/libs/AnimatedTextCharacter";
+import AnimatedImage from "@/libs/AnimatedImage";
 
 const Navbar = () => {
   return (
@@ -10,20 +13,17 @@ const Navbar = () => {
           <div className="container mx-auto py-4">
             <div className="flex h-16 items-center justify-between">
               <a className="inline-block" href="/">
-                <Image
+                <AnimatedImage
                   className="h-8 md:h-12 ml-4"
                   src="/images/logos/logo.png"
                   alt="Logo"
-                  width={52}
-                  height={52}
+                  width={64}
+                  height={64}
                   priority={true}
                   style={{ width: "auto", height: "auto" }}
                 />
               </a>
-              <button
-                className="lg:hidden navbar-burger"
-                style={{ paddingRight: "15px" }}
-              >
+              <button className="lg:hidden navbar-burger pr-[15px]">
                 <svg
                   width="32"
                   height="16"
@@ -42,16 +42,17 @@ const Navbar = () => {
                 </svg>
               </button>
               <div className="hidden lg:flex items-center space-x-60 font-medium">
-                <span className="leading-snug">
-                  Design
-                  <br />
-                  <span className="leading-none">That Speaks</span>
+                <span className="leading-snug block">
+                  <AnimatedTextCharacter text="Design" />
+                  <span className="leading-none block">
+                    <AnimatedTextCharacter text="That Speaks" />
+                  </span>
                 </span>
                 <a
                   className=" inline-block hover:underline flex items-center leading-none"
                   href="/about"
                 >
-                  About
+                  <AnimatedTextCharacter text="About" />
                   <svg
                     id="SvgjsSvg1011"
                     width="8"
@@ -88,7 +89,7 @@ const Navbar = () => {
                   className="inline-block hover:underline flex items-center leading-none"
                   href="/work"
                 >
-                  Work
+                  <AnimatedTextCharacter text="Work" />
                   <svg
                     id="SvgjsSvg1011"
                     width="8"
@@ -125,7 +126,7 @@ const Navbar = () => {
                   className="link-container inline-block hover:underline flex items-center leading-none"
                   href="/contact"
                 >
-                  Contact
+                  <AnimatedTextCharacter text="Contact" />
                   <svg
                     width="16px"
                     height="16px"

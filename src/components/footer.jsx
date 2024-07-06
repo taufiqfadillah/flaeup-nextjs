@@ -71,10 +71,14 @@ const Footer = () => {
 
   return (
     <>
-      <section id="trigger-footer" className="hidden sm:block bg-[#82caaa]" style={{ height: "2vh" }}></section>
-      <section className="footer py-4 md:py-6 px-10" ref={footerRef}>
+      <section
+        id="trigger-footer"
+        className="hidden md:block"
+        style={{ height: "2vh" }}
+      ></section>
+      <section className="footer py-4 md:py-10 px-8 h-screen" ref={footerRef}>
         <footer>
-          <div className="flex flex-wrap pt-12">
+          <div className="flex flex-wrap">
             <div className="flex w-full mb-44">
               <div className="w-full w-3/4">
                 <span className="footer-letstalk">Let&apos;s Talk</span>
@@ -171,15 +175,15 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="flex w-full relative">
-              <div className="w-full w-3/4 mb-6">
+            <div className="fixed bottom-0 left-0 w-full flex justify-between items-end p-4">
+              <div className="flex-1 max-[600px]">
                 <div
                   id="lottie-logo"
-                  className="footer-logo"
+                  className="footer-logo max-w-[700px] w-[220px] md:w-[420px] lg:w-full h-[auto]"
                   ref={lottieLogoRef}
                 ></div>
               </div>
-              <div className="w-full w-1/4 xl:text-right">
+              <div className="text-right pr-4">
                 <span className="footer-copyright font-medium">
                   &copy; Flaeup 2024
                   <br />

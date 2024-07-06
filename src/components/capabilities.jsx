@@ -4,6 +4,9 @@ import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import AnimatedTextWord from "@/libs/AnimatedTextWord.jsx";
+import AnimatedTextParagraph from "@/libs/AnimatedTextParagraph";
+import AnimatedImage from "@/libs/AnimatedImage.jsx";
 
 const Capabilities = () => {
   useEffect(() => {
@@ -60,18 +63,17 @@ const Capabilities = () => {
   return (
     <>
       {/* <!-- Our Capabilities --> */}
-      <section className="capabilities">
+      <section className="capabilities lg:pt-14 md:pt-20">
         <div className="container mx-auto px-8">
           <div className="relative mx-auto pt-12">
             <div className="relative mt-3 pb-4 md:pb-10">
-              <div className="md:flex md:justify-between px-2 md:px-10 items-start">
-                <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl xl:text-6xl tracking-tightest font-bold mb-4 md:mb-0">
-                  Our
-                  <br />
-                  Capabilities
+              <div className="md:flex md:justify-between px-2 md:px-6 lg:px-10 items-start">
+                <h1 className="text-3xl sm:text-4xl md:text-4xl xl:text-6xl tracking-tightest font-bold mb-4 md:mb-0">
+                  <AnimatedTextWord text="Our" className="block" />
+                  <AnimatedTextWord text="Capabilities" className="block" />
                 </h1>
                 <div className="text-base md:text-lg md:pl-4">
-                  <p className="leading-normal">
+                  <p className="leading-loose">
                     <span className="block md:inline">
                       Explore our dynamic design hub, where you can delve
                       <br className="hidden sm:inline" />
@@ -83,13 +85,13 @@ const Capabilities = () => {
                 </div>
               </div>
             </div>
-            <div className="max-w-xl lg:max-w-none mx-auto bg-white">
+            <div className="max-w-xl lg:max-w-none mx-auto">
               <div className="flex flex-wrap items-center pt-20">
-                <div className="w-full slider-carousel">
-                  <div className="carousel-item">
+                <div className="w-full flex flex-col md:flex-row lg:gap-[200px] md:gap-[70px] gap-[40px] overflow-hidden justify-start slider-carousel">
+                  <div className="carousel-item flex-[0_0_auto] relative w-full transform-origin-center">
                     <div className="carousel-inner">
                       <video
-                        className="block carousel-size"
+                        className="block w-full lg:h-[580px] md:h-[600px] h-[300px] object-cover carousel-size"
                         preload="auto"
                         src="/images/video/Branding Video.mp4"
                         alt=""
@@ -98,8 +100,8 @@ const Capabilities = () => {
                         loop
                         muted
                       ></video>
-                      <div className="carousel-backdrop">
-                        <div className="carousel-title inline-block flex leading-none hover:underline">
+                      <div className="carousel-backdrop absolute top-[50%] left-[50%] rounded-3xl bg-[#00000080] backdrop-blur-md text-white lg:px-10 lg:py-12 md:px-7 md:py-10 px-8 py-8 text-left z-[1] transform translate-x-[-50%] translate-y-[-50%]">
+                        <div className="carousel-title inline-block flex leading-none hover:underline md:w-[253px] w-[30px] lg:text-4xl md:text-3xl text-2xl font-bold leading-[123%] lg:mb-[55px] md:mb-[40px] mb-[30px]">
                           <h1>Branding</h1>
                           <svg
                             id="SvgjsSvg1011"
@@ -138,14 +140,14 @@ const Capabilities = () => {
                             </g>
                           </svg>
                         </div>
-                        <div className="carousel-disc">
+                        <div className="carousel-disc lg:text-xs md:text-[10px] text-[8px] font-normal leading-normal w-[250px] lg:mb-[55px] md:mb-[40px] mb-[30px]">
                           <p>
                             From designing internal decks to developing 360
                             rebranding campaigns, we focus on creating solution
                             - driven pieces with a visual impact.
                           </p>
                         </div>
-                        <div className="link-container carousel-icon">
+                        <div className="link-container carousel-icon flex justify-center">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="25"
@@ -174,18 +176,18 @@ const Capabilities = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="carousel-item">
+                  <div className="carousel-item flex-[0_0_auto] relative w-full transform-origin-center">
                     <div className="carousel-inner">
                       <Image
-                        className="relative block carousel-size"
+                        className="block w-full lg:h-[580px] md:h-[600px] h-[300px] object-cover carousel-size"
                         src="/images/video/Muhammad Ali Packaging-01.jpg"
                         alt=""
                         height={580}
                         width={1024}
                         style={{ width: "100%", minHeight: "300px" }}
                       />
-                      <div className="carousel-backdrop">
-                        <div className="carousel-title inline-block flex leading-none hover:underline">
+                      <div className="carousel-backdrop absolute top-[50%] left-[50%] rounded-3xl bg-[#00000080] backdrop-blur-md text-white lg:px-10 lg:py-12 md:px-7 md:py-10 px-8 py-8 text-left z-[1] transform translate-x-[-50%] translate-y-[-50%]">
+                        <div className="carousel-title inline-block flex leading-none hover:underline md:w-[253px] w-[30px] lg:text-4xl md:text-3xl text-2xl font-bold leading-[123%] lg:mb-[55px] md:mb-[40px] mb-[30px]">
                           <h1>Packaging Design</h1>
                           <svg
                             id="SvgjsSvg1011"
@@ -224,14 +226,14 @@ const Capabilities = () => {
                             </g>
                           </svg>
                         </div>
-                        <div className="carousel-disc">
+                        <div className="carousel-disc lg:text-xs md:text-[10px] text-[8px] font-normal leading-normal w-[250px] lg:mb-[55px] md:mb-[40px] mb-[30px]">
                           <p>
                             Our packaging breathes life, seemingly moving
                             autonomously to meet the needs of its intended
                             target.
                           </p>
                         </div>
-                        <div className="link-container carousel-icon">
+                        <div className="link-container carousel-icon flex justify-center">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="25"
@@ -260,10 +262,10 @@ const Capabilities = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="carousel-item">
+                  <div className="carousel-item flex-[0_0_auto] relative w-full transform-origin-center">
                     <div className="carousel-inner">
                       <video
-                        className="block carousel-size"
+                        className="block w-full lg:h-[580px] md:h-[600px] h-[300px] object-cover carousel-size"
                         preload="auto"
                         src="/images/video/UIUX Video.mp4"
                         alt=""
@@ -272,8 +274,8 @@ const Capabilities = () => {
                         loop
                         muted
                       ></video>
-                      <div className="carousel-backdrop">
-                        <div className="carousel-title inline-block flex leading-none hover:underline">
+                      <div className="carousel-backdrop absolute top-[50%] left-[50%] rounded-3xl bg-[#00000080] backdrop-blur-md text-white lg:px-10 lg:py-12 md:px-7 md:py-10 px-8 py-8 text-left z-[1] transform translate-x-[-50%] translate-y-[-50%]">
+                        <div className="carousel-title inline-block flex leading-none hover:underline md:w-[253px] w-[30px] lg:text-4xl md:text-3xl text-2xl font-bold leading-[123%] lg:mb-[55px] md:mb-[40px] mb-[30px]">
                           <h1>UI/UX Design</h1>
                           <svg
                             id="SvgjsSvg1011"
@@ -312,14 +314,14 @@ const Capabilities = () => {
                             </g>
                           </svg>
                         </div>
-                        <div className="carousel-disc">
+                        <div className="carousel-disc lg:text-xs md:text-[10px] text-[8px] font-normal leading-normal w-[250px] lg:mb-[55px] md:mb-[40px] mb-[30px]">
                           <p>
                             For tech-related ventures, we fully immerse
                             ourselves in UX/UI, web development, app
                             development, and more.
                           </p>
                         </div>
-                        <div className="link-container carousel-icon">
+                        <div className="link-container carousel-icon flex justify-center">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="25"
@@ -348,10 +350,10 @@ const Capabilities = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="carousel-item">
+                  <div className="carousel-item flex-[0_0_auto] relative w-full transform-origin-center">
                     <div className="carousel-inner">
                       <video
-                        className="block carousel-size"
+                        className="block w-full lg:h-[580px] md:h-[600px] h-[300px] object-cover carousel-size"
                         preload="auto"
                         src="/images/video/Retouching Video.mp4"
                         alt=""
@@ -360,8 +362,8 @@ const Capabilities = () => {
                         loop
                         muted
                       ></video>
-                      <div className="carousel-backdrop">
-                        <div className="carousel-title inline-block flex leading-none hover:underline">
+                      <div className="carousel-backdrop absolute top-[50%] left-[50%] rounded-3xl bg-[#00000080] backdrop-blur-md text-white lg:px-10 lg:py-12 md:px-7 md:py-10 px-8 py-8 text-left z-[1] transform translate-x-[-50%] translate-y-[-50%]">
+                        <div className="carousel-title inline-block flex leading-none hover:underline md:w-[253px] w-[30px] lg:text-4xl md:text-3xl text-2xl font-bold leading-[123%] lg:mb-[55px] md:mb-[40px] mb-[30px]">
                           <h1>Retouching</h1>
                           <svg
                             id="SvgjsSvg1011"
@@ -400,14 +402,14 @@ const Capabilities = () => {
                             </g>
                           </svg>
                         </div>
-                        <div className="carousel-disc">
+                        <div className="carousel-disc lg:text-xs md:text-[10px] text-[8px] font-normal leading-normal w-[250px] lg:mb-[55px] md:mb-[40px] mb-[30px]">
                           <p>
                             Through retouching, we breathe life and clarity into
                             products, propelling them beyond their sales targets
                             with passion and precision.
                           </p>
                         </div>
-                        <div className="link-container carousel-icon">
+                        <div className="link-container carousel-icon flex justify-center">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="25"

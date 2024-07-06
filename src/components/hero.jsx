@@ -93,16 +93,16 @@ const Hero = () => {
   return (
     <>
       {/* Hero Desktop*/}
-      <section className="relative pb-10 bg-white overflow-hidden">
-        <div className="container mx-auto">
+      <section className="relative pb-10 bg-white overflow-hidden hidden lg:block">
+        <div className="container px-4">
           <div className="flex">
-            <div className="hero__main">
-              <div className="hero__container"></div>
-              <div className="hero__videoWrapper">
+            <div className="w-full h-[140vh]">
+              <div className="hero__container flex items-end mx-auto w-full h-screen"></div>
+              <div className="flex justify-content-center w-screen h-auto">
                 <video
                   id="heroVideo"
                   preload="auto"
-                  className="hero__video"
+                  className="hero__video absolute w-full h-[650px] object-fill left-0"
                   src="/images/video/Homepage Videos.mp4"
                   autoPlay
                   playsInline
@@ -115,18 +115,18 @@ const Hero = () => {
       </section>
 
       {/* <!-- Hero Mobile --> */}
-      <section>
-        <div className="mobile container mx-auto lg:hidden">
-          <div className="main-mobile">
+      <section className="md:block lg:hidden">
+        <div className="h-85vh lg:h-auto w-auto">
+          <div className="mt-[120px]">
             <div className="flex border-b">
               <h1 className="text-6xl font-bold px-2 pb-4">
                 Creativity is centar to our design.
               </h1>
             </div>
             <div className="flex flex-wrap -mx-3 align-items-end">
-              <div className="mobile-video w-full">
+              <div className="w-full h-full">
                 <video
-                  className="flex"
+                  className="flex h-[70vh] w-full overflow-hidden object-cover"
                   src="/images/video/Homepage Videos.mp4"
                   autoPlay
                   loop

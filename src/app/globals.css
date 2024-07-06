@@ -21,122 +21,12 @@ body {
   background-color: white;
   cursor: none;
 }
-
-/* Navigation */
-nav {
-  transition: transform 0.3s ease;
-}
-
-/* Loading screen */
-.loading-screen {
-  position: fixed;
-  z-index: 9999999;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#lottie-animation {
-  width: 100%;
-  height: auto;
-  max-width: 600px;
-  max-height: 600px;
-}
-
-/* Logo animation size adjustments */
-#lottie-logo {
-  width: 620px;
-}
-@media (max-width: 991px) {
-  #lottie-logo {
-    width: 420px;
-  }
-}
-@media (max-width: 480px) {
-  #lottie-logo {
-    width: 220px;
-  }
-}
-
-/* Hero section main and container styles */
-.hero__main {
-  width: 100%;
-  height: 140vh;
-}
-.hero__container {
-  display: flex;
-  align-items: flex-end;
-  margin: 0 auto;
-  width: 100%;
-  height: 100vh;
-}
 .hero__container svg {
   width: 100%;
   height: auto !important;
 }
-
-/* Video wrapper and responsive adjustments */
-.hero__videoWrapper {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
-  height: auto;
-}
 .hero__video {
-  position: absolute;
-  width: 100%;
-  height: 650px;
-  object-fit: fill;
   transform: translateY(0);
-  left: 0;
-}
-@media only screen and (max-width: 991px) {
-  .hero__main {
-    display: none;
-  }
-}
-@media only screen and (min-width: 992px) {
-  .hero__main {
-    display: block;
-  }
-}
-
-/* Mobile-specific styles */
-.mobile {
-  position: relative;
-  height: 85vh;
-  width: auto;
-}
-.main-mobile {
-  position: absolute;
-  margin-top: 120px;
-}
-.mobile-video {
-  height: 100%;
-  width: 100%;
-}
-.mobile-video video {
-  height: 400px;
-  width: 100%;
-  overflow: hidden;
-  object-fit: cover;
-}
-
-/* Heading font style */
-.font-heading {
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 123%;
-}
-@media (max-width: 991px) {
-  .capabilities {
-    padding-top: 100px;
-  }
 }
 
 /* Custom cursor styles */
@@ -176,32 +66,32 @@ nav {
 }
 
 /* Slider carousel and item styles */
-.slider-carousel {
+/* .slider-carousel {
   display: flex;
   flex-direction: row;
   gap: 200px;
   overflow: hidden;
   justify-content: flex-start;
-}
-.carousel-item {
+} */
+/* .carousel-item {
   flex: 0 0 auto;
   position: relative;
   width: 100%;
   transform-origin: center center;
-}
+} */
 .carousel-inner {
   position: relative;
   width: 1024px;
   max-width: 100%;
-  margin: 0 auto;
   overflow: hidden;
+  margin: 0 auto;
 }
-.carousel-size {
+/* .carousel-size {
   width: 100%;
   height: 580px;
   object-fit: cover;
-}
-.carousel-backdrop {
+} */
+/* .carousel-backdrop {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -213,8 +103,8 @@ nav {
   padding: 40px 50px;
   text-align: left;
   z-index: 1;
-}
-.carousel-title,
+} */
+/* .carousel-title,
 .carousel-disc {
   width: 253px;
   font-size: 40px;
@@ -226,22 +116,22 @@ nav {
   font-size: 12px;
   font-weight: 400;
   line-height: 160%;
-}
-.carousel-icon {
+} */
+/* .carousel-icon {
   display: flex;
   justify-content: center;
-}
+} */
 .pt-600 {
   padding-top: 600px;
 }
-.pt-1000 {
+/* .pt-1000 {
   padding-top: 1000px;
-}
+} */
 .pl-100 {
   margin-left: 130px;
 }
 @media (max-width: 991px) {
-  .slider-carousel {
+  /* .slider-carousel {
     flex-direction: column;
     gap: 70px;
   }
@@ -258,16 +148,16 @@ nav {
   .carousel-disc {
     font-size: 10px;
     margin-bottom: 40px;
-  }
+  } */
   .pt-600 {
     padding-top: 10px;
   }
-  .pt-1000 {
-    padding-top: 20px;
-  }
+  /* .pt-1000 {
+    padding-top: 800px;
+  } */
 }
-@media (max-width: 480px) {
-  .slider-carousel {
+@media (max-width: 768px) {
+  /* .slider-carousel {
     flex-direction: column;
     gap: 40px;
   }
@@ -286,13 +176,13 @@ nav {
     width: 120px;
     font-size: 8px;
     margin-bottom: 30px;
-  }
+  } */
   .pt-600 {
     padding-top: 40px;
   }
-  .pt-1000 {
+  /* .pt-1000 {
     padding-top: 60px;
-  }
+  } */
 }
 
 /* Brand slider animation */
@@ -376,13 +266,12 @@ nav {
   color: #2a357a;
   border-color: #2a357a;
 }
-.footer-copyright {
+/* .footer-copyright {
   line-height: 150%;
   position: absolute;
   right: 0;
   bottom: 0;
-  margin-bottom: 20px;
-}
+} */
 /* Margin and padding adjustments */
 .mt-44 {
   margin-top: 54px;
@@ -545,13 +434,13 @@ input:focus {
 }
 .footer-mobile__term,
 .footer-mobile__privacy {
-  font-size: 24px;
+  font-size: 18px;
   color: #fff;
   text-decoration: none;
 }
 .footer-mobile__copyright {
   margin-top: 20px;
-  font-size: 24px;
+  font-size: 20px;
   color: #fff;
 }
 .footer-mobile__logo img {

@@ -7,12 +7,14 @@ const FooterMobile = () => {
   return (
     <>
       <section id="FooterMobile">
-        <div className="footer-mobile py-5 px-8">
+        <div className="footer-mobile h-screen py-10 px-4">
           <div className="footer-mobile__content">
             <div className="footer-mobile__menu">
               <ul>
                 <li>
-                  <span className="footer-mobile__letstalk">Let&apos;s Talk</span>
+                  <span className="footer-mobile__letstalk">
+                    Let&apos;s Talk
+                  </span>
                 </li>
                 <li>
                   <span className="footer-mobile__hello underline">
@@ -97,9 +99,8 @@ const FooterMobile = () => {
             <Image
               src="/images/logos/Logo(White).png"
               alt="Logo Footer"
-              width={1024}
-              height={1024}
-              style={{ width: "auto", height: "auto" }}
+              width={600}
+              height={600}
             />
           </div>
         </div>
