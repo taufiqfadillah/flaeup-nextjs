@@ -3,15 +3,14 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const AnimatedTextCharacter = ({ text, className }) => {
-  // splitting text into letters
+
   const letters = Array.from(text);
 
   const { ref, inView } = useInView({
-    triggerOnce: false, // Trigger animation once
-    threshold: 0.5, // Trigger when 50% of the component is in view
+    triggerOnce: false,
+    threshold: 0.5,
   });
 
-  // Variants for Container
   const container = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
@@ -20,7 +19,6 @@ const AnimatedTextCharacter = ({ text, className }) => {
     }),
   };
 
-  // Variants for each letter
   const child = {
     visible: {
       opacity: 1,

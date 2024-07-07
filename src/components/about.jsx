@@ -8,13 +8,13 @@ import AnimatedTextCharacter from "@/libs/AnimatedTextCharacter.jsx";
 import AnimatedTextParagraph from "@/libs/AnimatedTextParagraph.jsx";
 import AnimatedImage from "@/libs/AnimatedImage.jsx";
 
-const Client_1 = "/images/client/Client Logo-01.svg";
-const Client_2 = "/images/client/Client Logo-02.svg";
-const Client_3 = "/images/client/Client Logo-03.svg";
-const Client_4 = "/images/client/Client Logo-04.svg";
-const Client_5 = "/images/client/Client Logo-05.svg";
-const Client_6 = "/images/client/Client Logo-06.svg";
-const Client_7 = "/images/client/Client Logo-07.svg";
+const Client_1 = "/images/client/Client Logo black-01.svg";
+const Client_2 = "/images/client/Client Logo black-02.svg";
+const Client_3 = "/images/client/Client Logo black-03.svg";
+const Client_4 = "/images/client/Client Logo black-04.svg";
+const Client_5 = "/images/client/Client Logo black-05.svg";
+const Client_6 = "/images/client/Client Logo black-06.svg";
+const Client_7 = "/images/client/Client Logo black-07.svg";
 
 const clients = [
   { src: Client_1 },
@@ -45,7 +45,7 @@ const About = () => {
         <div className="sm:col-start-2 sm:row-start-1">
           <AnimatedImage
             alt="About Flaeup"
-            src="https://dummyimage.com/1024x600/2a357a/fff.png"
+            src="/images/about/About-01.jpg"
             className="object-cover h-full"
             width={1024}
             height={600}
@@ -76,7 +76,7 @@ const About = () => {
           <div className="w-full flex py-10 px-4 md:px-28 justify-center items-center md:gap-6">
             <div className="w-3/10 flex justify-center">
               <AnimatedImage
-                src="https://dummyimage.com/430x490/2a357a/fff.png"
+                src="/images/about/About-02.jpg"
                 alt=""
                 className="w-full max-h-full"
                 width={430}
@@ -86,7 +86,7 @@ const About = () => {
             </div>
             <div className="w-7/10 flex justify-center">
               <AnimatedImage
-                src="https://dummyimage.com/900x490/2a357a/fff.png"
+                src="/images/about/About-03.jpg"
                 alt=""
                 className="w-full max-h-full"
                 width={900}
@@ -112,7 +112,6 @@ const About = () => {
                 your brand."
                 />
                 <br />
-                <br />
                 <AnimatedTextParagraph
                   text="Design that speaks” has become our signature tagline, perfectly
                 encapsulating our ethos as a design studio. We continually
@@ -120,7 +119,6 @@ const About = () => {
                 pushing boundaries in every aspect of design and creativity we
                 engage in."
                 />
-                <br />
                 <br />
                 <AnimatedTextParagraph
                   text="We recognize that the pursuit of excellence is not a destination
@@ -132,10 +130,10 @@ const About = () => {
         </div>
       </section>
 
-      <section className="overflow-hidden bg-[#82CAAA] text-white">
+      <section className="overflow-hidden bg-[#82CAAA] text-white pb-0 md:pb-32">
         <section className="py-20">
           <div>
-            <div className="text-2xl px-4 md:text-5xl md:px-28">
+            <div className="text-2xl text-black px-4 md:text-5xl md:px-28">
               <AnimatedTextWord text="Our Capabilities" />
             </div>
             <div className="py-24 px-10">
@@ -202,7 +200,7 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
             <div className="md:col-span-4">{/* Kolom Kiri */}</div>
             <div className="md:col-span-8 pb-28">
-              <div className="text-xl md:text-[32px] md:text-left leading-[150%] tracking-[0.32px]">
+              <div className="text-xl text-black md:text-[32px] md:text-left leading-[150%] tracking-[0.32px]">
                 <AnimatedTextParagraph
                   text="Explore our dynamic design hub, where you can delve into our
                 extensive range of services, highlighting our versatility and
@@ -210,11 +208,11 @@ const About = () => {
                 />
               </div>
               <a
-                className="relative group block md:flex pb-8 mb-24 mt-24 items-center border-b border-white"
+                className="relative group block md:flex pb-4 mb-16 mt-16 items-center border-b border-black"
                 href="#"
               >
                 <div className="md:mb-8 xl:mb-0">
-                  <h3 className="text-4xl xs:text-6xl lg:text-7xl inline-block md:pb-2 hover:underline transition duration-150">
+                  <h3 className="text-3xl text-black md:text-5xl inline-block md:pb-2 hover:underline transition duration-150">
                     Branding
                   </h3>
                 </div>
@@ -222,15 +220,15 @@ const About = () => {
                 <div className="text-right md:ml-auto">
                   <span className="inline-block group-hover:rotate-45 transform transition duration-100">
                     <svg
-                      width="33"
-                      height="33"
+                      width="24"
+                      height="24"
                       viewBox="0 0 33 33"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M30 3L3 30"
-                        stroke="white"
+                        stroke="black"
                         strokeWidth="4.3875"
                         strokeMiterlimit="10"
                         strokeLinecap="round"
@@ -238,7 +236,7 @@ const About = () => {
                       ></path>
                       <path
                         d="M30 27.758V3H5.24196"
-                        stroke="white"
+                        stroke="black"
                         strokeWidth="4.3875"
                         strokeMiterlimit="10"
                         strokeLinecap="round"
@@ -250,11 +248,11 @@ const About = () => {
               </a>
 
               <a
-                className="relative group block md:flex pb-8 mb-24 mt-24 items-center border-b border-white"
+                className="relative group block md:flex pb-4 mb-16 mt-16 items-center border-b border-black"
                 href="#"
               >
                 <div className="md:mb-8 xl:mb-0">
-                  <h3 className="text-4xl xs:text-6xl lg:text-7xl inline-block md:pb-2 hover:underline transition duration-150">
+                  <h3 className="text-3xl text-black md:text-5xl inline-block md:pb-2 hover:underline transition duration-150">
                     Retouching
                   </h3>
                 </div>
@@ -262,15 +260,15 @@ const About = () => {
                 <div className="text-right md:ml-auto">
                   <span className="inline-block group-hover:rotate-45 transform transition duration-100">
                     <svg
-                      width="33"
-                      height="33"
+                      width="24"
+                      height="24"
                       viewBox="0 0 33 33"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M30 3L3 30"
-                        stroke="white"
+                        stroke="black"
                         strokeWidth="4.3875"
                         strokeMiterlimit="10"
                         strokeLinecap="round"
@@ -278,7 +276,7 @@ const About = () => {
                       ></path>
                       <path
                         d="M30 27.758V3H5.24196"
-                        stroke="white"
+                        stroke="black"
                         strokeWidth="4.3875"
                         strokeMiterlimit="10"
                         strokeLinecap="round"
@@ -289,11 +287,11 @@ const About = () => {
                 </div>
               </a>
               <a
-                className="relative group block md:flex pb-8 mb-24 mt-24 items-center border-b border-white"
+                className="relative group block md:flex pb-4 mb-16 mt-16 items-center border-b border-black"
                 href="#"
               >
                 <div className="md:mb-8 xl:mb-0">
-                  <h3 className="text-4xl xs:text-6xl lg:text-7xl inline-block md:pb-2 hover:underline transition duration-150">
+                  <h3 className="text-3xl text-black md:text-5xl inline-block md:pb-2 hover:underline transition duration-150">
                     UI/UX Design
                   </h3>
                 </div>
@@ -301,15 +299,15 @@ const About = () => {
                 <div className="text-right md:ml-auto">
                   <span className="inline-block group-hover:rotate-45 transform transition duration-100">
                     <svg
-                      width="33"
-                      height="33"
+                      width="24"
+                      height="24"
                       viewBox="0 0 33 33"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M30 3L3 30"
-                        stroke="white"
+                        stroke="black"
                         strokeWidth="4.3875"
                         strokeMiterlimit="10"
                         strokeLinecap="round"
@@ -317,7 +315,7 @@ const About = () => {
                       ></path>
                       <path
                         d="M30 27.758V3H5.24196"
-                        stroke="white"
+                        stroke="black"
                         strokeWidth="4.3875"
                         strokeMiterlimit="10"
                         strokeLinecap="round"
@@ -328,11 +326,11 @@ const About = () => {
                 </div>
               </a>
               <a
-                className="relative group block md:flex pb-8 mb-24 mt-24 items-center border-b border-white"
+                className="relative group block md:flex pb-4 mb-16 mt-16 items-center border-b border-black"
                 href="#"
               >
                 <div className="md:mb-8 xl:mb-0">
-                  <h3 className="text-4xl xs:text-6xl lg:text-7xl inline-block md:pb-2 hover:underline transition duration-150">
+                  <h3 className="text-3xl text-black md:text-5xl inline-block md:pb-2 hover:underline transition duration-150">
                     Packaging
                   </h3>
                 </div>
@@ -340,15 +338,15 @@ const About = () => {
                 <div className="text-right md:ml-auto">
                   <span className="inline-block group-hover:rotate-45 transform transition duration-100">
                     <svg
-                      width="33"
-                      height="33"
+                      width="24"
+                      height="24"
                       viewBox="0 0 33 33"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M30 3L3 30"
-                        stroke="white"
+                        stroke="black"
                         strokeWidth="4.3875"
                         strokeMiterlimit="10"
                         strokeLinecap="round"
@@ -356,7 +354,7 @@ const About = () => {
                       ></path>
                       <path
                         d="M30 27.758V3H5.24196"
-                        stroke="white"
+                        stroke="black"
                         strokeWidth="4.3875"
                         strokeMiterlimit="10"
                         strokeLinecap="round"
@@ -367,11 +365,11 @@ const About = () => {
                 </div>
               </a>
               <a
-                className="relative group block md:flex pb-8 mb-24 mt-24 items-center border-b border-white"
+                className="relative group block md:flex pb-4 mb-16 mt-16 items-center border-b border-black"
                 href="#"
               >
                 <div className="md:mb-8 xl:mb-0">
-                  <h3 className="text-4xl xs:text-6xl lg:text-7xl inline-block md:pb-2 hover:underline transition duration-150">
+                  <h3 className="text-3xl text-black md:text-5xl inline-block md:pb-2 hover:underline transition duration-150">
                     Illustration
                   </h3>
                 </div>
@@ -379,15 +377,15 @@ const About = () => {
                 <div className="text-right md:ml-auto">
                   <span className="inline-block group-hover:rotate-45 transform transition duration-100">
                     <svg
-                      width="33"
-                      height="33"
+                      width="24"
+                      height="24"
                       viewBox="0 0 33 33"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M30 3L3 30"
-                        stroke="white"
+                        stroke="black"
                         strokeWidth="4.3875"
                         strokeMiterlimit="10"
                         strokeLinecap="round"
@@ -395,7 +393,7 @@ const About = () => {
                       ></path>
                       <path
                         d="M30 27.758V3H5.24196"
-                        stroke="white"
+                        stroke="black"
                         strokeWidth="4.3875"
                         strokeMiterlimit="10"
                         strokeLinecap="round"
@@ -411,7 +409,7 @@ const About = () => {
 
         <section className="pb-0 md:pb-32 h-[55vh] md:h-[100vh]">
           <div className="px-4 md:px-28">
-            <div className="text-2xl md:text-5xl sm:text-left leading-[100.098%] tracking-[0.48px]">
+            <div className="text-black text-2xl md:text-5xl sm:text-left leading-[100.098%] tracking-[0.48px]">
               <AnimatedTextWord text="Clients" />
             </div>
           </div>
