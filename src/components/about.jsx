@@ -49,6 +49,7 @@ const About = () => {
             className="object-cover h-full"
             width={1024}
             height={600}
+            priority={true}
           />
         </div>
       </section>
@@ -65,7 +66,6 @@ const About = () => {
                 text="The studio is centered on the power of simplicity, focusing on
               breaking down complex ideas into easy to compose story components."
               />
-              <br />
               <br />
               <AnimatedTextParagraph
                 text="We have the privilege of working with well known brands but

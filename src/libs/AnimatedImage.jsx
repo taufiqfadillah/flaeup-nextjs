@@ -3,11 +3,19 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 
-const AnimatedImage = ({ src, alt, className, width, height }) => {
+const AnimatedImage = ({
+  src,
+  alt,
+  className,
+  width,
+  height,
+  style,
+  priority,
+}) => {
   const controls = useAnimation();
   const { ref, inView } = useInView({
-    triggerOnce: false, // Trigger animation every time the component enters viewport
-    threshold: 0.2, // Trigger when 20% of the component is in view
+    triggerOnce: false,
+    threshold: 0.2,
   });
 
   // Variants for Image
@@ -40,7 +48,14 @@ const AnimatedImage = ({ src, alt, className, width, height }) => {
       animate={controls}
       variants={imageVariants}
     >
-      <Image src={src} alt={alt} width={width} height={height} />
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        priority={priority || false}
+        style={style}
+      />
     </motion.div>
   );
 };

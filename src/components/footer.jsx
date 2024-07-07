@@ -38,23 +38,23 @@ const Footer = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     if (footerRef.current) {
-      gsap.set(footerRef.current, { y: "100%" });
+      gsap.set(footerRef.current, { y: "100vh" });
 
       ScrollTrigger.create({
         trigger: "#trigger-footer",
         start: "top bottom",
-        end: "bottom top",
+        end: "+=100vh",
         scrub: true,
-        onEnter: () =>
+        pin: true,
+        pinSpacing: true,
+        markers: false,
+        onUpdate: (self) => {
           gsap.to(footerRef.current, {
-            y: "0%",
+            y: `${100 - self.progress * 100}vh`,
             duration: 0,
-          }),
-        onLeaveBack: () =>
-          gsap.to(footerRef.current, {
-            y: "100%",
-            duration: 0,
-          }),
+            ease: "none",
+          });
+        },
       });
     }
 
@@ -73,17 +73,21 @@ const Footer = () => {
     <>
       <section
         id="trigger-footer"
-        className="hidden md:block"
-        style={{ height: "2vh" }}
+        className="hidden md:block max-h-screen"
       ></section>
-      <section className="footer py-4 md:py-10 px-8 h-screen" ref={footerRef}>
+      <section
+        className="hidden md:block footer bg-[#2a357a] text-white fixed bottom-0 left-0 w-full py-4 md:py-10 px-8 h-screen overflow-hidden z-50"
+        ref={footerRef}
+      >
         <footer>
           <div className="flex flex-wrap">
-            <div className="flex w-full mb-44">
-              <div className="w-full w-3/4">
-                <span className="footer-letstalk">Let&apos;s Talk</span>
+            <div className="flex w-full mb-[16px] md:mb-[24px] lg:mb-[54px]">
+              <div className="w-3/4">
+                <span className="text-[18px] lg:text-[16px] font-bold leading-[123%]">
+                  Let&apos;s Talk
+                </span>
               </div>
-              <div className="footer-term w-full w-1/4 text-right">
+              <div className="text-[18px] lg:text-[16px] font-normal leading-[200%] w-1/4 text-right">
                 <a className="hover:underline" href="#">
                   Terms of Use
                 </a>
@@ -93,24 +97,24 @@ const Footer = () => {
                 </a>
               </div>
             </div>
-            <div className="flex w-full mb-44">
-              <div className="relative w-full w-3/4">
+            <div className="flex w-full mb-[16px] md:mb-[24px] lg:mb-[54px]">
+              <div className="relative w-3/4">
                 <a
-                  className="footer-email hover:underline pb-10"
+                  className="text=[40px] lg:text-[60px] font-normal leading-[123%] hover:underline pb-10"
                   href="mailto:hello@flaeup.co"
                 >
                   Hello@flaeup.co
                 </a>
-                <div className="mt-44">
-                  <p className="footer-subemail">
+                <div className="mt-[16px] md:mt-[24px] lg:mt-[54px]">
+                  <p className="text-[16px] lg:text-[20px] text-[#82caaa] font-normal leading-[123%]">
                     Flaeup is a design agency. We help businesses at critical
                     touchpoints. define, and build new futures.
                   </p>
                 </div>
               </div>
-              <div className="w-full w-1/4 text-right">
+              <div className="w-1/4 text-right">
                 <LinkPreview
-                  className="group inline-flex mb-10 py-5 px-8 footer-sosmed items-center justify-center leading-none font-medium text-white border border-white rounded-full transition duration-200 hover:bg-white"
+                  className="group inline-flex mb-10 mt-[20px] lg:mt-0 py-5 px-8 text-[18px] lg:text-[20px] font-normal leading-[123%] items-center justify-center leading-none font-medium text-white border border-white rounded-full transition duration-200 hover:bg-white hover:text-[#2a357a]"
                   href="https://www.instagram.com/flaeup"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -120,19 +124,19 @@ const Footer = () => {
                 </LinkPreview>
               </div>
             </div>
-            <div className="flex w-full mb-44">
-              <div className="relative w-full w-3/4">
-                <span className="footer-titlesubmit">
+            <div className="flex w-full mb-[16px] md:mb-[24px] lg:mb-[54px]">
+              <div className="relative w-3/4">
+                <span className="text-[18px] lg:text-[20px] font-normal leading-[123%]">
                   Join us and Subscribe to our Newsletter
                 </span>
                 <div className="flex w-full py-8 footer-input">
                   <input
-                    className="h-15 py-4 text-white"
+                    className="h-15 py-4 text-white w-4/5 lg:w-full bg-transparent border-b-2"
                     type="email"
                     placeholder="Email Address"
                   />
                   <button
-                    className="inline-block w-auto py-4 -ml-28 leading-none"
+                    className="inline-block w-auto py-4 -ml-[16px] md:-ml-[28px] leading-none"
                     type="submit"
                   >
                     <svg
@@ -157,12 +161,14 @@ const Footer = () => {
                   </button>
                 </div>
               </div>
-              <div className="flex w-full w-1/4 text-right">
+              <div className="w-1/4 text-right">
                 <div className="relative w-full">
-                  <span className="footer-phone">Contact Phone</span>
+                  <span className="text-[18px] lg:text-[16px] font-normal leading-[200%]">
+                    Contact Phone
+                  </span>
                   <br />
                   <LinkPreview
-                    className="group inline-flex footer-contact font-medium text-white"
+                    className="group inline-flex text-[20px] font-normal leading-[123%] text-white"
                     href="https://wa.me/6285255323308"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -184,7 +190,7 @@ const Footer = () => {
                 ></div>
               </div>
               <div className="text-right pr-4">
-                <span className="footer-copyright font-medium">
+                <span className="text-[16px] lg:text-[20px] font-normal leading-[123%]">
                   &copy; Flaeup 2024
                   <br />
                   All Right Reserved

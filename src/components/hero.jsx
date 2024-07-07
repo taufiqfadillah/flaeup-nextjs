@@ -102,7 +102,7 @@ const Hero = () => {
                 <video
                   id="heroVideo"
                   preload="auto"
-                  className="hero__video absolute w-full h-[650px] object-fill left-0"
+                  className="hero__video absolute w-full h-[650px] translate-y-[0] object-fill left-0"
                   src="/images/video/Homepage Videos.mp4"
                   autoPlay
                   playsInline

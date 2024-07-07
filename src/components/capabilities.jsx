@@ -89,7 +89,7 @@ const Capabilities = () => {
               <div className="flex flex-wrap items-center pt-20">
                 <div className="w-full flex flex-col md:flex-row lg:gap-[200px] md:gap-[70px] gap-[40px] overflow-hidden justify-start slider-carousel">
                   <div className="carousel-item flex-[0_0_auto] relative w-full transform-origin-center">
-                    <div className="carousel-inner">
+                    <div className="relative w-[1024px] max-w-full overflow-hidden mx-[auto] my-[0]">
                       <video
                         className="block w-full lg:h-[580px] md:h-[600px] h-[300px] object-cover carousel-size"
                         preload="auto"
@@ -140,7 +140,7 @@ const Capabilities = () => {
                             </g>
                           </svg>
                         </div>
-                        <div className="carousel-disc lg:text-xs md:text-[10px] text-[8px] font-normal leading-normal w-[250px] lg:mb-[55px] md:mb-[40px] mb-[30px]">
+                        <div className="carousel-disc lg:text-xs md:text-[10px] text-[8px] font-normal leading-normal w-[180px] md:w-[250px] lg:mb-[55px] md:mb-[40px] mb-[30px]">
                           <p>
                             From designing internal decks to developing 360
                             rebranding campaigns, we focus on creating solution
@@ -154,7 +154,7 @@ const Capabilities = () => {
                             height="25"
                             viewBox="0 0 25 25"
                             fill="none"
-                            className="svg-move"
+                            className="svg-move [transition:transform_0.3s_ease-out] hover:translate-x-[3px] hover:translate-y-[-3px]"
                           >
                             <g clipPath="url(#clip0_221_114)">
                               <path
@@ -177,7 +177,7 @@ const Capabilities = () => {
                     </div>
                   </div>
                   <div className="carousel-item flex-[0_0_auto] relative w-full transform-origin-center">
-                    <div className="carousel-inner">
+                    <div className="relative w-[1024px] max-w-full overflow-hidden mx-[auto] my-[0]">
                       <Image
                         className="block w-full lg:h-[580px] md:h-[600px] h-[300px] object-cover carousel-size"
                         src="/images/video/Muhammad Ali Packaging-01.jpg"
@@ -226,7 +226,7 @@ const Capabilities = () => {
                             </g>
                           </svg>
                         </div>
-                        <div className="carousel-disc lg:text-xs md:text-[10px] text-[8px] font-normal leading-normal w-[250px] lg:mb-[55px] md:mb-[40px] mb-[30px]">
+                        <div className="carousel-disc lg:text-xs md:text-[10px] text-[8px] font-normal leading-normal leading-normal w-[180px] md:w-[250px] lg:mb-[55px] md:mb-[40px] mb-[30px]">
                           <p>
                             Our packaging breathes life, seemingly moving
                             autonomously to meet the needs of its intended
@@ -240,7 +240,7 @@ const Capabilities = () => {
                             height="25"
                             viewBox="0 0 25 25"
                             fill="none"
-                            className="svg-move"
+                            className="svg-move [transition:transform_0.3s_ease-out] hover:translate-x-[3px] hover:translate-y-[-3px]"
                           >
                             <g clipPath="url(#clip0_221_114)">
                               <path
@@ -263,7 +263,7 @@ const Capabilities = () => {
                     </div>
                   </div>
                   <div className="carousel-item flex-[0_0_auto] relative w-full transform-origin-center">
-                    <div className="carousel-inner">
+                    <div className="relative w-[1024px] max-w-full overflow-hidden mx-[auto] my-[0]">
                       <video
                         className="block w-full lg:h-[580px] md:h-[600px] h-[300px] object-cover carousel-size"
                         preload="auto"
@@ -314,7 +314,7 @@ const Capabilities = () => {
                             </g>
                           </svg>
                         </div>
-                        <div className="carousel-disc lg:text-xs md:text-[10px] text-[8px] font-normal leading-normal w-[250px] lg:mb-[55px] md:mb-[40px] mb-[30px]">
+                        <div className="carousel-disc lg:text-xs md:text-[10px] text-[8px] font-normal leading-normal leading-normal w-[180px] md:w-[250px] lg:mb-[55px] md:mb-[40px] mb-[30px]">
                           <p>
                             For tech-related ventures, we fully immerse
                             ourselves in UX/UI, web development, app
@@ -328,7 +328,7 @@ const Capabilities = () => {
                             height="25"
                             viewBox="0 0 25 25"
                             fill="none"
-                            className="svg-move"
+                            className="svg-move [transition:transform_0.3s_ease-out] hover:translate-x-[3px] hover:translate-y-[-3px]"
                           >
                             <g clipPath="url(#clip0_221_114)">
                               <path
@@ -351,7 +351,7 @@ const Capabilities = () => {
                     </div>
                   </div>
                   <div className="carousel-item flex-[0_0_auto] relative w-full transform-origin-center">
-                    <div className="carousel-inner">
+                    <div className="relative w-[1024px] max-w-full overflow-hidden mx-[auto] my-[0]">
                       <video
                         className="block w-full lg:h-[580px] md:h-[600px] h-[300px] object-cover carousel-size"
                         preload="auto"
@@ -402,21 +402,21 @@ const Capabilities = () => {
                             </g>
                           </svg>
                         </div>
-                        <div className="carousel-disc lg:text-xs md:text-[10px] text-[8px] font-normal leading-normal w-[250px] lg:mb-[55px] md:mb-[40px] mb-[30px]">
+                        <div className="carousel-disc lg:text-xs md:text-[10px] text-[8px] font-normal leading-normal leading-normal w-[180px] md:w-[250px] lg:mb-[55px] md:mb-[40px] mb-[30px]">
                           <p>
                             Through retouching, we breathe life and clarity into
                             products, propelling them beyond their sales targets
                             with passion and precision.
                           </p>
                         </div>
-                        <div className="link-container carousel-icon flex justify-center">
+                        <div className="carousel-icon flex justify-center">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="25"
                             height="25"
                             viewBox="0 0 25 25"
                             fill="none"
-                            className="svg-move"
+                            className="svg-move [transition:transform_0.3s_ease-out] hover:translate-x-[3px] hover:translate-y-[-3px]"
                           >
                             <g clipPath="url(#clip0_221_114)">
                               <path

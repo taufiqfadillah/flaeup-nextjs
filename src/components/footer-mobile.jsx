@@ -6,49 +6,45 @@ import React from "react";
 const FooterMobile = () => {
   return (
     <>
-      <section id="FooterMobile">
-        <div className="footer-mobile h-screen py-10 px-4">
-          <div className="footer-mobile__content">
+      <section id="FooterMobile" className="block md:hidden">
+        <div className="bg-[#2a357a] text-[#fff] h-screen py-10 px-4">
+          <div className="flex flex-col items-center">
             <div className="footer-mobile__menu">
-              <ul>
-                <li>
-                  <span className="footer-mobile__letstalk">
-                    Let&apos;s Talk
-                  </span>
+              <ul className="[list-style:none] p-0 m-0">
+                <li className="mb-[35px]">
+                  <span className="text-[20px]">Let&apos;s Talk</span>
                 </li>
-                <li>
-                  <span className="footer-mobile__hello underline">
+                <li className="mb-[35px]">
+                  <span className="text-[36px] font-medium leading-[123%] underline">
                     Hello@flaeup.co
                   </span>
                 </li>
-                <li>
-                  <span className="flex footer-mobile__phone">
-                    Phone Contact
-                  </span>
+                <li className="mb-[35px]">
+                  <span className="flex text-[20px]">Phone Contact</span>
                   <a
                     href="wa.me/6285255323308"
-                    className="footer-mobile__number"
+                    className="underline text-[20px]"
                   >
                     +62-852-5532-3308
                   </a>
                 </li>
-                <li>
-                  <span className="footer-mobile__subscribe">
+                <li className="mb-[35px]">
+                  <span className="text-[20px]">
                     Join us and Subscribe to our Newsletter
                   </span>
                   <input
-                    className="footer-mobile__input"
+                    className="w-full border-b-2 border-white mt-[10px] bg-transparent"
                     type="email"
                     placeholder="Email Address"
                   />
                   <button
-                    className="inline-block footer-mobile__button w-auto py-4 leading-none"
+                    className="inline-block -ml-[30px] w-auto py-4 leading-none"
                     type="submit"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="29"
-                      height="22"
+                      width="16"
+                      height="16"
                       viewBox="0 0 29 22"
                       fill="none"
                     >
@@ -66,9 +62,9 @@ const FooterMobile = () => {
                     </svg>
                   </button>
                 </li>
-                <li>
+                <li className="mb-[35px]">
                   <a
-                    className="footer-mobile__socmed"
+                    className="inline-flex px-[20px] py-[10px] text-[18px] border-[1px] border-[solid] border-[#fff] rounded-[30px] no-underline text-[#fff] [transition:background-color_0.3s] hover:bg-[#fff] hover:text-[#2a357a]"
                     href="https://www.instagram.com/flaeup"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -76,26 +72,26 @@ const FooterMobile = () => {
                     <span>Instagram</span>
                   </a>
                 </li>
-                <li>
-                  <a href="" className="footer-mobile__term">
+                <li className="mb-[35px]">
+                  <a href="" className="text-[18px] text-[#fff] no-underline">
                     Term of use
                   </a>
                 </li>
-                <li>
-                  <a href="" className="footer-mobile__privacy">
+                <li className="mb-[35px]">
+                  <a href="" className="text-[18px] text-[#fff] no-underline">
                     Privacy Policy
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="footer-mobile__copyright">
+          <div className="mt-[20px] text-[20px] text-[#fff]">
             <p>
               Copyright © 2023 Flaeup. <br />
               All rights reserved.
             </p>
           </div>
-          <div className="footer-mobile__logo">
+          <div className="max-w-full max-h-full mt-[40px]">
             <Image
               src="/images/logos/Logo(White).png"
               alt="Logo Footer"

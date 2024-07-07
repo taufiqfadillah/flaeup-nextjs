@@ -83,7 +83,7 @@ const Hamburger = () => {
               <ul className="flex-col">
                 <li className="mb-6">
                   <a
-                    className="inline-block text-black hamburger-text"
+                    className="inline-block text-black text-5xl font-medium leading-[50px]"
                     href="/"
                   >
                     Home
@@ -91,7 +91,7 @@ const Hamburger = () => {
                 </li>
                 <li className="mb-6">
                   <a
-                    className="inline-block text-black hamburger-text"
+                    className="inline-block text-black text-5xl font-medium leading-[50px]"
                     href="/about"
                   >
                     About
@@ -99,7 +99,7 @@ const Hamburger = () => {
                 </li>
                 <li className="mb-6">
                   <a
-                    className="inline-block text-black hamburger-text"
+                    className="inline-block text-black text-5xl font-medium leading-[50px]"
                     href="/work"
                   >
                     Work
@@ -107,7 +107,7 @@ const Hamburger = () => {
                 </li>
                 <li>
                   <a
-                    className="link-container flex inline-block text-black hamburger-text"
+                    className="link-container flex inline-block text-black text-5xl font-medium leading-[50px]"
                     href="/contact"
                   >
                     Contact

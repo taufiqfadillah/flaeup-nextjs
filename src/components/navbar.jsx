@@ -18,9 +18,9 @@ const Navbar = () => {
                   src="/images/logos/logo.png"
                   alt="Logo"
                   width={64}
-                  height={64}
+                  height={52}
                   priority={true}
-                  style={{ width: "auto", height: "auto" }}
+                  style={{ width: "64px", height: "52px" }}
                 />
               </a>
               <button className="lg:hidden navbar-burger pr-[15px]">
@@ -123,7 +123,7 @@ const Navbar = () => {
                   </svg>
                 </a>
                 <a
-                  className="link-container inline-block hover:underline flex items-center leading-none"
+                  className="inline-block hover:underline flex items-center leading-none"
                   href="/contact"
                 >
                   <AnimatedTextCharacter text="Contact" />
@@ -132,7 +132,7 @@ const Navbar = () => {
                     height="16px"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="ml-2 relative bottom-1 svg-move"
+                    className="ml-2 relative bottom-1 [transition:transform_0.3s_ease-out] hover:translate-x-[3px] hover:translate-y-[-3px]"
                     fill="none"
                     stroke="#000000"
                     strokeWidth="2"
