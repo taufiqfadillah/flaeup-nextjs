@@ -7,6 +7,7 @@ import AnimatedTextWord from "@/libs/AnimatedTextWord.jsx";
 import AnimatedTextCharacter from "@/libs/AnimatedTextCharacter.jsx";
 import AnimatedTextParagraph from "@/libs/AnimatedTextParagraph.jsx";
 import AnimatedImage from "@/libs/AnimatedImage.jsx";
+import AboutHero from "@/components/heroabout.jsx";
 
 const Client_1 = "/images/client/Client Logo black-01.svg";
 const Client_2 = "/images/client/Client Logo black-02.svg";
@@ -33,28 +34,9 @@ const About = () => {
 
   return (
     <>
-      <section className="h-screen overflow-hidden sm:grid sm:grid-cols-2 py-24">
-        <div className="p-8 md:p-12 lg:px-16 lg:py-24">
-          <div className="mx-auto max-w-xl ltr:sm:text-left rtl:sm:text-right">
-            <h1 className="text-6xl font-bold md:text-8xl">
-              <AnimatedTextWord text="About" />
-            </h1>
-          </div>
-        </div>
+      <AboutHero />
 
-        <div className="sm:col-start-2 sm:row-start-1">
-          <AnimatedImage
-            alt="About Flaeup"
-            src="/images/about/About-01.jpg"
-            className="object-cover h-full"
-            width={1024}
-            height={600}
-            priority={true}
-          />
-        </div>
-      </section>
-
-      <section className="overflow-hidden">
+      <section className="overflow-hidden relative z-40 bg-white">
         <div className="pt-24">
           <div className="text-center text-1xl md:text-lg leading-normal tracking-wide">
             <AnimatedTextCharacter text="OUR STORY" />
@@ -407,7 +389,7 @@ const About = () => {
           </div>
         </section>
 
-        <section className="pb-0 md:pb-32 h-[55vh] md:h-[100vh]">
+        <section className="pb-0 md:pb-32 h-[55vh] md:h-[180vh]">
           <div className="px-4 md:px-28">
             <div className="text-black text-2xl md:text-5xl sm:text-left leading-[100.098%] tracking-[0.48px]">
               <AnimatedTextWord text="Clients" />

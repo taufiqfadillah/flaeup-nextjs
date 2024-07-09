@@ -4,7 +4,8 @@ import React, { useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { LinkPreview } from "@/components/ui/link-preview";
+import { LinkPreview } from "@/components/ui/LinkPreview";
+import CopyToClipboardLink from "@/components/ui/CopyToClipboard";
 
 const Footer = () => {
   const lottieLogoRef = useRef(null);
@@ -47,7 +48,6 @@ const Footer = () => {
         scrub: true,
         pin: true,
         pinSpacing: true,
-        markers: false,
         onUpdate: (self) => {
           gsap.to(footerRef.current, {
             y: `${100 - self.progress * 100}vh`,
@@ -79,7 +79,7 @@ const Footer = () => {
         className="hidden md:block footer bg-[#2a357a] text-white fixed bottom-0 left-0 w-full py-4 md:py-10 px-8 h-screen overflow-hidden z-50"
         ref={footerRef}
       >
-        <footer>
+        <footer className="overflow-hidden">
           <div className="flex flex-wrap">
             <div className="flex w-full mb-[16px] md:mb-[24px] lg:mb-[54px]">
               <div className="w-3/4">
@@ -98,13 +98,13 @@ const Footer = () => {
               </div>
             </div>
             <div className="flex w-full mb-[16px] md:mb-[24px] lg:mb-[54px]">
-              <div className="relative w-3/4">
-                <a
+              <div className="relative w-1/2">
+                <CopyToClipboardLink
                   className="text=[40px] lg:text-[60px] font-normal leading-[123%] hover:underline pb-10"
                   href="mailto:hello@flaeup.co"
                 >
                   Hello@flaeup.co
-                </a>
+                </CopyToClipboardLink>
                 <div className="mt-[16px] md:mt-[24px] lg:mt-[54px]">
                   <p className="text-[16px] lg:text-[20px] text-[#82caaa] font-normal leading-[123%]">
                     Flaeup is a design agency. We help businesses at critical
@@ -112,7 +112,7 @@ const Footer = () => {
                   </p>
                 </div>
               </div>
-              <div className="w-1/4 text-right">
+              <div className="w-1/2 text-right">
                 <LinkPreview
                   className="group inline-flex mb-10 mt-[20px] lg:mt-0 py-5 px-8 text-[18px] lg:text-[20px] font-normal leading-[123%] items-center justify-center leading-none font-medium text-white border border-white rounded-full transition duration-200 hover:bg-white hover:text-[#2a357a]"
                   href="https://www.instagram.com/flaeup"
@@ -125,7 +125,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="flex w-full mb-[16px] md:mb-[24px] lg:mb-[54px]">
-              <div className="relative w-3/4">
+              <div className="relative w-1/2">
                 <span className="text-[18px] lg:text-[20px] font-normal leading-[123%]">
                   Join us and Subscribe to our Newsletter
                 </span>
@@ -161,7 +161,7 @@ const Footer = () => {
                   </button>
                 </div>
               </div>
-              <div className="w-1/4 text-right">
+              <div className="w-1/2 text-right">
                 <div className="relative w-full">
                   <span className="text-[18px] lg:text-[16px] font-normal leading-[200%]">
                     Contact Phone
@@ -169,13 +169,13 @@ const Footer = () => {
                   <br />
                   <LinkPreview
                     className="group inline-flex text-[20px] font-normal leading-[123%] text-white"
-                    href="https://wa.me/6285255323308"
+                    href="https://wa.me/6289602505228"
                     target="_blank"
                     rel="noopener noreferrer"
-                    url="https://wa.me/6285255323308"
+                    url="https://wa.me/6289602505228"
                   >
                     <span className="flex w-full hover:underline">
-                      +62-852-5532-3308
+                      +62-896-0250-5228
                     </span>
                   </LinkPreview>
                 </div>

@@ -12,6 +12,7 @@
     "minified": "npx tailwindcss -i ./src/app/globals.css -o ./public/css/tailwind-min.css --minify"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.1",
     "@radix-ui/react-hover-card": "^1.1.1",
     "@studio-freight/react-lenis": "^0.0.47",
     "clsx": "^2.1.1",
@@ -24,6 +25,7 @@
     "qss": "^3.0.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-icons": "^5.2.1",
     "react-infinite-logo-slider": "^1.0.13",
     "react-intersection-observer": "^9.10.3",
     "react-router-dom": "^6.24.1",

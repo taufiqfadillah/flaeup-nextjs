@@ -1,94 +1,76 @@
 "use client";
 
-import React, { useEffect } from "react";
-import lottie from "lottie-web";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import Lenis from "@studio-freight/lenis";
+import LottieScrollTrigger from "@/libs/LottieScrollTrigger";
 
 const Hero = () => {
+  const videoRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(true);
+
   useEffect(() => {
     document.title = "Flaeup | Creativity is centar to our design";
+  }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    const lenis = new Lenis();
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
+
+  useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Hero Animation
-    const video = document.getElementById("heroVideo");
-    let animation;
+    const animation = LottieScrollTrigger({
+      target: ".hero__container",
+      path: "/images/lottie/Creativity_Text_Animation.json",
+      scrub: 1,
+    });
 
-    function initializeLottieAnimation() {
-      animation = lottie.loadAnimation({
-        container: document.querySelector(".hero__container"),
-        renderer: "svg",
-        loop: false,
-        autoplay: false,
-        path: "/images/lottie/Creativity_Text_Animation.json",
-        rendererSettings: {
-          preserveAspectRatio: "xMidYMid slice",
+    return () => animation.destroy();
+  });
+
+  useGSAP(
+    () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.set(videoRef.current, {
+        y: 0,
+      });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: videoRef.current,
+          start: "top 90%",
+          end: "bottom 80%",
+          scrub: 1,
         },
       });
 
-      let playhead = { frame: 0 };
-
-      animation.addEventListener("DOMLoaded", () => {
-        gsap.to(playhead, {
-          frame: animation.totalFrames - 1,
-          ease: "none",
-          onUpdate: () => animation.goToAndStop(playhead.frame, true),
-          scrollTrigger: {
-            trigger: ".hero__container",
-            start: "bottom 99%",
-            end: "bottom 20%",
-            scrub: 1,
-          },
-        });
-
-        ScrollTrigger.sort();
-        ScrollTrigger.refresh();
+      tl.to(videoRef.current, {
+        duration: 1,
+        y: "-65vh",
       });
+    },
+    {
+      scope: videoRef.current,
     }
+  );
 
-    initializeLottieAnimation();
-
-    gsap.set(video, { y: 0 });
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: video,
-        start: "top 90%",
-        end: "bottom 80%",
-        scrub: 1,
-      },
-    });
-
-    tl.to(video, {
-      duration: 1,
-      y: "-65vh",
-    });
-
-    // Video mute/unmute logic
-    const handleVideoPlayback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          video.muted = false;
-          video.play();
-        } else {
-          video.muted = true;
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(handleVideoPlayback, {
-      threshold: 0.5,
-    });
-
-    observer.observe(video);
-
-    // Clean up function
-    return () => {
-      animation?.destroy();
-      observer.disconnect();
-    };
-  }, []);
+  const handleToggleMute = () => {
+    videoRef.current.muted = !isMuted;
+    setIsMuted(!isMuted);
+  };
 
   return (
     <>
@@ -100,13 +82,17 @@ const Hero = () => {
               <div className="hero__container flex items-end mx-auto w-full h-screen"></div>
               <div className="flex justify-content-center w-screen h-auto">
                 <video
-                  id="heroVideo"
+                  ref={videoRef}
                   preload="auto"
-                  className="hero__video absolute w-full h-[650px] translate-y-[0] object-fill left-0"
+                  width="2000"
+                  height="2000"
+                  className="hero__video absolute w-full h-[650px] object-cover"
                   src="/images/video/Homepage Videos.mp4"
-                  autoPlay
-                  playsInline
-                  loop
+                  autoPlay={true}
+                  playsInline={true}
+                  loop={true}
+                  muted={true}
+                  onClick={handleToggleMute}
                 ></video>
               </div>
             </div>

@@ -11,10 +11,10 @@ const Navbar = () => {
       <section className="header">
         <nav className="w-full fixed top-0 backdrop-filter backdrop-blur-lg bg-white bg-opacity-80 z-50">
           <div className="container mx-auto py-4">
-            <div className="flex h-16 items-center justify-between">
+            <div className="flex w-full h-16 items-center justify-between">
               <a className="inline-block" href="/">
                 <AnimatedImage
-                  className="h-8 md:h-12 ml-4"
+                  className="h-8 md:h-12"
                   src="/images/logos/logo.png"
                   alt="Logo"
                   width={64}
@@ -41,7 +41,7 @@ const Navbar = () => {
                   ></rect>
                 </svg>
               </button>
-              <div className="hidden lg:flex items-center space-x-60 font-medium">
+              <div className="hidden lg:flex items-center space-x-40 min-[1300px]:space-x-60 2xl:space-x-72 font-medium">
                 <span className="leading-snug block">
                   <AnimatedTextCharacter text="Design" />
                   <span className="leading-none block">
