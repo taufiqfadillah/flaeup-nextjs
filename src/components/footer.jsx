@@ -73,8 +73,11 @@ const Footer = () => {
     <>
       <section
         id="trigger-footer"
-        className="hidden md:block max-h-screen"
-      ></section>
+        className="hidden md:block h-[1px]"
+      >
+      </section>
+
+
       <section
         className="hidden md:block footer bg-[#2a357a] text-white fixed bottom-0 left-0 w-full py-4 md:py-10 px-8 h-screen overflow-hidden z-50"
         ref={footerRef}
@@ -129,7 +132,7 @@ const Footer = () => {
                 <span className="text-[18px] lg:text-[20px] font-normal leading-[123%]">
                   Join us and Subscribe to our Newsletter
                 </span>
-                <div className="flex w-full py-8 footer-input">
+                <div className="flex w-full py-8 footer-input group">
                   <input
                     className="h-15 py-4 text-white w-4/5 lg:w-full bg-transparent border-b-2"
                     type="email"
@@ -145,6 +148,7 @@ const Footer = () => {
                       height="22"
                       viewBox="0 0 29 22"
                       fill="none"
+                      className="transform transition-transform group-hover:translate-x-2"
                     >
                       <g clipPath="url(#clip0_20_174)">
                         <path

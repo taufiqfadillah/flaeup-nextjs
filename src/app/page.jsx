@@ -1,13 +1,13 @@
 import React from "react";
 import Navbar from "@/components/navbar.jsx";
 import Hamburger from "@/components/hamburger.jsx";
-import Hero from "@/components/hero.jsx";
+import Hero from "@/components/home/hero.jsx";
 import Capabilities from "@/components/capabilities.jsx";
-import Brand from "@/components/brand.jsx";
+import Brand from "@/components/home/brand.jsx";
 import Footer from "@/components/footer.jsx";
 import FooterMobile from "@/components/footer-mobile.jsx";
 
-export default function Home () {
+export default function Home() {
   return (
     <>
       <Navbar />

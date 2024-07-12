@@ -13,27 +13,37 @@ const AboutHero = () => {
 
   useEffect(() => {
     const lenis = new Lenis();
-    const raf = (time) => {
+    function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
-    };
+    }
     requestAnimationFrame(raf);
+  }, []);
 
+  useEffect(() => {
     if (typeof window !== "undefined") {
       window.scrollTo(0, 0);
-
-      if (window.screen.width > 1024) {
-        document.documentElement.classList.add("stop-scrolling");
+      if (window.screen.width > 991) {
+        document.querySelector("html").classList.add("stop-scrolling");
         triggerAboutAnimation();
       }
     }
 
     return () => {
-      document.documentElement.classList.remove("stop-scrolling");
+      document.querySelector("html").classList.remove("stop-scrolling");
     };
   }, []);
 
+  useEffect(() => {
+    if (isAnimationComplete) {
+      ScrollTrigger.refresh();
+      document.querySelector("html").classList.remove("stop-scrolling");
+    }
+  }, [isAnimationComplete]);
+
   const triggerAboutAnimation = () => {
+    if (window.screen.width <= 991) return;
+
     const tl = gsap.timeline({
       defaults: { ease: "power3.out" },
     });
@@ -41,7 +51,7 @@ const AboutHero = () => {
 
     tl.to(
       ".perspective_letters span",
-      { y: "0%", opacity: 1, stagger: 0.08, duration: 0.6 },
+      { y: "0%", opacity: 1, stagger: 0.08, duration: 1.5 },
       0
     )
       .to(
@@ -50,7 +60,7 @@ const AboutHero = () => {
           fontSize: window.screen.width > 2000 ? "7vw" : "6.25rem",
           y: windowHeight > 650 ? "0%" : "40%",
           x: windowHeight > 650 ? "0%" : "-40%",
-          duration: 1.5,
+          duration: 2,
         },
         1.4
       )
@@ -66,26 +76,7 @@ const AboutHero = () => {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (
-        document.getElementById("animated-work-title") &&
-        !isAnimationComplete
-      ) {
-        document.documentElement.style.overflowY = "hidden";
-      } else {
-        document.documentElement.style.overflowY = "scroll";
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [isAnimationComplete]);
-
-  useEffect(() => {
-    if (isAnimationComplete) {
+    if (isAnimationComplete && window.screen.width > 991) {
       const halfScreenWidth = window.screen.width / 2.1;
       const scrollTl = gsap.timeline({
         scrollTrigger: {
@@ -93,7 +84,7 @@ const AboutHero = () => {
           pin: true,
           scrub: 0,
           start: "top top",
-          end: "+=500",
+          end: "+=400",
           ease: "power3.out",
         },
       });
@@ -119,9 +110,6 @@ const AboutHero = () => {
             width: "100%",
             x: "-16vw",
             duration: 1,
-            onComplete: () => {
-              document.documentElement.style.overflow = "hidden";
-            },
           },
           "<="
         );
@@ -129,13 +117,13 @@ const AboutHero = () => {
   }, [isAnimationComplete]);
 
   return (
-    <section className="max-[768px]:pt-[7rem] max-[1024px]:flex-wrap max-[1024px]:h-[auto] section-animated-top w-full relative bg-white flex max-[600px]:px-[1.5rem] px-[2rem] max-[2000px]:pt-[6rem] pt-[14rem]">
-      <div className="max-[1024px]:h-[auto] max-[1024px]:w-[100%] max-[1750px]:w-[35%] h-screen w-[35%] overflow-hidden">
+    <section className="about-hero max-[768px]:pt-[7rem] max-[1024px]:flex-wrap max-[1024px]:h-[auto] section-animated-top w-full relative bg-white flex max-[600px]:px-[1.5rem] px-[2rem] max-[2000px]:pt-[6rem] pt-[14rem]">
+      <div className="max-[1024px]:h-[auto] max-[1024px]:w-full max-[1750px]:w-[35%] h-screen w-[35%]">
         <h1
           id="animated-work-title"
-          className="max-[375px]:text-[4rem] max-[600px]:text-[5rem] max-[768px]:text-[7.2rem] max-[1024px]:translate-x-[0%] max-[1024px]:translate-y-[0%] max-[1024px]:relative max-[1024px]:text-[10rem] max-[1024px]:items-start max-[1024px]:flex-col w-full flex items-center translate-x-[20%] translate-y-[38vh] text-[20vw] absolute pointer-events-none font-medium"
+          className="max-[375px]:text-[4rem] max-[600px]:text-[5rem] max-[768px]:text-[7.2rem] max-[1024px]:translate-x-[0%] max-[1024px]:translate-y-[0%] max-[1024px]:relative max-[1024px]:text-[10rem] max-[1024px]:items-start max-[1024px]:flex-col w-full flex items-center translate-x-[20%] translate-y-[38vh] text-[20vw] absolute pointer-events-none font-medium px-0 md:px-20"
         >
-          <div className="perspective_letters max-[1024px]:w-[100%] flex">
+          <div className="perspective_letters max-[1024px]:w-[100%] flex justify-center">
             <span>A</span>
             <span>b</span>
             <span>o</span>
@@ -144,7 +132,7 @@ const AboutHero = () => {
           </div>
         </h1>
       </div>
-      <div className="max-[600px]:items-start max-[600px]:mt-[0rem] max-[1024px]:justify-between max-[1024px]:w-[100%] max-[1024px]:flex-wrap max-[1024px]:flex max-[1750px]:w-[65%] w-[65%] relative">
+      <div className="max-[600px]:items-start max-[600px]:mt-[0rem] max-[1024px]:justify-between max-[1024px]:w-[100%] max-[1024px]:flex-wrap max-[1024px]:flex w-[65%] relative">
         <Image
           alt="Flaeup Studio"
           width={700}

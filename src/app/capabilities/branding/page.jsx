@@ -1,17 +1,17 @@
 import React from "react";
 import Navbar from "@/components/navbar.jsx";
 import Hamburger from "@/components/hamburger.jsx";
-import About from "@/components/about/about.jsx";
+import Branding from "@/components/branding/branding.jsx";
 import Footer from "@/components/footer.jsx";
 import FooterMobile from "@/components/footer-mobile.jsx";
 
-export default function AboutPage() {
+export default function BrandingPage() {
   return (
     <>
       <Navbar />
       <Hamburger />
 
-      <About />
+      <Branding />
 
       <Footer />
       <FooterMobile />

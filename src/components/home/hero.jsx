@@ -75,11 +75,11 @@ const Hero = () => {
   return (
     <>
       {/* Hero Desktop*/}
-      <section className="relative pb-10 bg-white overflow-hidden hidden lg:block">
-        <div className="container px-4">
+      <section className="relative pb-10 bg-white justify-center overflow-hidden hidden lg:block">
+        <div className="container">
           <div className="flex">
             <div className="w-full h-[140vh]">
-              <div className="hero__container flex items-end mx-auto w-full h-screen"></div>
+              <div className="hero__container flex items-end px-0 md:px-14 w-full h-screen"></div>
               <div className="flex justify-content-center w-screen h-auto">
                 <video
                   ref={videoRef}

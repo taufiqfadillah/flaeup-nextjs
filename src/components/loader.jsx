@@ -17,17 +17,14 @@ const Loader = () => {
 
     if (visitedBefore) {
       setHasVisited(true);
-
       setTimeout(clearLocalStorage, 30 * 60 * 1000);
       return;
     }
 
-    // Loader Animation
-    const animationContainer = animationContainerRef.current;
-
     // Disable scroll
     document.body.style.overflow = "hidden";
 
+    const animationContainer = animationContainerRef.current;
     let animation = null;
 
     if (animationContainer) {
@@ -49,7 +46,7 @@ const Loader = () => {
             const preloader = document.getElementById("loading-screen");
             if (preloader) {
               preloader.style.display = "none";
-              document.body.style.overflow = "auto";
+              document.body.style.overflow = ""; // Restore scroll
 
               localStorage.setItem("hasVisited", true);
               setHasVisited(true);
@@ -73,12 +70,16 @@ const Loader = () => {
   }
 
   return (
-    <>
-      {/* Loader */}
-      <div className="loading-screen fixed z-[9999999] top-0 bottom-0 left-0 right-0 bg-white flex justify-center items-center flex" id="loading-screen">
-        <div id="lottie-animation" className="w-full h-auto max-w-[600px] max-h-[600px]" ref={animationContainerRef}></div>
-      </div>
-    </>
+    <div
+      className="loading-screen fixed z-[9999999] top-0 bottom-0 left-0 right-0 bg-white flex justify-center items-center overflow-hidden"
+      id="loading-screen"
+    >
+      <div
+        id="lottie-animation"
+        className="w-full h-auto max-w-[600px] max-h-[600px]"
+        ref={animationContainerRef}
+      ></div>
+    </div>
   );
 };
 

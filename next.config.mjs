@@ -6,6 +6,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "api.microlink.io",
       },
+      {
+        protocol: "https",
+        hostname: "fakeimg.pl",
+      },
+      {
+        protocol: "https",
+        hostname: "raxo.co",
+      },
     ],
     dangerouslyAllowSVG: true,
   },

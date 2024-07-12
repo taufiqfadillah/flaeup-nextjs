@@ -9,7 +9,7 @@ interface WithCopyToClipboardProps {
 const withCopyToClipboard = (
   Component: ComponentType<any>
 ): FC<WithCopyToClipboardProps> => {
-  return (props) => {
+  const WithCopyToClipboard: FC<WithCopyToClipboardProps> = (props) => {
     const [tooltipText, setTooltipText] = useState("Click to Copy");
     const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
@@ -48,6 +48,12 @@ const withCopyToClipboard = (
       </div>
     );
   };
+
+  WithCopyToClipboard.displayName = `WithCopyToClipboard(${
+    Component.displayName || Component.name || "Component"
+  })`;
+
+  return WithCopyToClipboard;
 };
 
 const CopyToClipboardLink = withCopyToClipboard((props) => <a {...props} />);

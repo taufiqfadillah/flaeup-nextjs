@@ -11,16 +11,16 @@ const Navbar = () => {
       <section className="header">
         <nav className="w-full fixed top-0 backdrop-filter backdrop-blur-lg bg-white bg-opacity-80 z-50">
           <div className="container mx-auto py-4">
-            <div className="flex w-full h-16 items-center justify-between">
+            <div className="flex w-full h-12 md:h-16 items-center justify-between">
               <a className="inline-block" href="/">
                 <AnimatedImage
-                  className="h-8 md:h-12"
+                  className="h-6 md:h-12 mb-6 md:mb-0 pl-[15px] md:pl-0"
                   src="/images/logos/logo.png"
                   alt="Logo"
                   width={64}
                   height={52}
                   priority={true}
-                  style={{ width: "64px", height: "52px" }}
+                  style={{ maxWidth: "64px", maxHeight: "52px" }}
                 />
               </a>
               <button className="lg:hidden navbar-burger pr-[15px]">
@@ -42,12 +42,14 @@ const Navbar = () => {
                 </svg>
               </button>
               <div className="hidden lg:flex items-center space-x-40 min-[1300px]:space-x-60 2xl:space-x-72 font-medium">
-                <span className="leading-snug block">
-                  <AnimatedTextCharacter text="Design" />
+                <a className="leading-snug block items-center hover:underline" href="/">
+                  <AnimatedTextCharacter
+                    text="Design"
+                  />
                   <span className="leading-none block">
                     <AnimatedTextCharacter text="That Speaks" />
                   </span>
-                </span>
+                </a>
                 <a
                   className=" inline-block hover:underline flex items-center leading-none"
                   href="/about"
@@ -123,7 +125,7 @@ const Navbar = () => {
                   </svg>
                 </a>
                 <a
-                  className="inline-block hover:underline flex items-center leading-none"
+                  className="inline-block hover:underline flex items-center leading-none group"
                   href="/contact"
                 >
                   <AnimatedTextCharacter text="Contact" />
@@ -132,7 +134,7 @@ const Navbar = () => {
                     height="16px"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="ml-2 relative bottom-1 [transition:transform_0.3s_ease-out] hover:translate-x-[3px] hover:translate-y-[-3px]"
+                    className="ml-2 relative bottom-1 [transition:transform_0.3s_ease-out] group-hover:translate-x-[3px] group-hover:translate-y-[-3px]"
                     fill="none"
                     stroke="#000000"
                     strokeWidth="2"

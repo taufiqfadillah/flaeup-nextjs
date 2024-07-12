@@ -16,10 +16,18 @@
 /* (similar definitions for other font weights and styles omitted for brevity) */
 
 /* Global styles */
+html {
+  overflow-y: auto;
+  overflow-anchor: none;
+  -webkit-overflow-scrolling: touch;
+}
 body {
   font-family: "Aeonik";
   background-color: white;
   cursor: none;
+  overflow-y: auto;
+  overflow-anchor: none;
+  -webkit-overflow-scrolling: touch;
 }
 .hero__container svg {
   width: 100%;
@@ -54,4 +62,45 @@ body {
 }
 input:focus {
   outline: none;
+}
+.stop-scrolling {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+.underlined_button p {
+  position: relative;
+}
+.underlined_button p:before {
+  width: 0;
+  left: 0;
+}
+.underlined_button p:after,
+.underlined_button p:before {
+  content: "";
+  background-color: #1a1a1a;
+  height: 2px;
+  position: absolute;
+  bottom: -0.5rem;
+  transition: width 0.3s ease-in-out;
+}
+.underlined_button p:after {
+  width: 100%;
+  right: 0;
+}
+.underlined_button p:hover:before {
+  width: 100%;
+  transition-delay: 0.2s;
+}
+.underlined_button p:hover:after {
+  width: 0;
+}
+.capabilities_capability {
+  border-top: 1px solid #000;
+}
+.capabilities_capability:last-child {
+  border-bottom: 1px solid #000;
 }

@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "host": "next dev -H 0.0.0.0 -p 8800",
     "dev-watch": "concurrently \"next dev\" \"npm run watch\"",
     "build": "next build",
     "start": "next start",
@@ -16,7 +17,7 @@
     "@radix-ui/react-hover-card": "^1.1.1",
     "@studio-freight/react-lenis": "^0.0.47",
     "clsx": "^2.1.1",
-    "framer-motion": "^11.2.12",
+    "framer-motion": "^11.3.2",
     "gsap": "^3.12.5",
     "jquery": "^3.7.1",
     "lottie-web": "^5.12.2",

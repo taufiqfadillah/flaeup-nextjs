@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "@/components/navbar.jsx";
 import Hamburger from "@/components/hamburger.jsx";
-import Contact from "@/components/contact.jsx";
-import Brand from "@/components/brand.jsx";
+import Contact from "@/components/contact/contact.jsx";
+import Brand from "@/components/home/brand.jsx";
 import Footer from "@/components/footer.jsx";
 
 export default function ContactPage() {

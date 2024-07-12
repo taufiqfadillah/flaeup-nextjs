@@ -5,8 +5,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import AnimatedTextWord from "@/libs/AnimatedTextWord.jsx";
-import AnimatedTextParagraph from "@/libs/AnimatedTextParagraph";
-import AnimatedImage from "@/libs/AnimatedImage.jsx";
 
 const Capabilities = () => {
   useEffect(() => {
