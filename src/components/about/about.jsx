@@ -25,7 +25,7 @@ const About = () => {
             <AnimatedTextCharacter text="OUR STORY" />
           </div>
           <div className="w-full h-px mt-20 bg-black"></div>
-          <div className="w-full px-5 md:px-28 py-10 text-xl text-left md:text-[28px] leading-normal tracking-normal">
+          <div className="w-full px-5 md:px-14 py-10 text-xl text-left md:text-[28px] leading-normal tracking-normal">
             <div className="px-2">
               <AnimatedTextParagraph
                 text="The studio is centered on the power of simplicity, focusing on
@@ -38,7 +38,7 @@ const About = () => {
               />
             </div>
           </div>
-          <div className="w-full flex py-10 px-4 md:px-28 justify-center items-center md:gap-6">
+          <div className="w-full flex py-10 px-4 md:px-14 justify-center items-center md:gap-6">
             <div className="w-3/10 flex justify-center">
               <AnimatedImage
                 src="/images/about/About-02.jpg"
@@ -61,13 +61,13 @@ const About = () => {
             </div>
           </div>
 
-          <div className="w-full flex py-10 px-2 md:px-28 justify-center align-items-center">
+          <div className="w-full flex py-10 px-2 md:px-14">
             <div className="w-[340px] px-2">
               <div className="text-[18px] text-left font-normal md:text-base">
                 <AnimatedTextCharacter text="OUR STORY" />
               </div>
             </div>
-            <div className="w-[900px] px-2 md:pl-20 pb-24">
+            <div className="w-[900px] px-2 md:pl-32 pb-24">
               <div className="text-lg text-left font-normal md:text-[28px] md:leading-normal md:tracking-normal">
                 <AnimatedTextParagraph
                   text="Flaeup is a creative collective of design
@@ -98,7 +98,7 @@ const About = () => {
       <section className="bg-[#82CAAA] text-black">
         <section className="py-20">
           <div>
-            <div className="text-2xl text-black px-4 md:text-5xl md:px-28">
+            <div className="text-2xl text-black px-4 md:text-5xl md:px-14">
               <AnimatedTextWord text="Our Capabilities" />
             </div>
             <div className="py-24 px-10">
@@ -164,7 +164,7 @@ const About = () => {
         <ServicesList />
 
         <section className="h-[55vh] md:h-[85vh] lg:h-[170vh]">
-          <div className="px-4 md:px-28">
+          <div className="px-4 md:px-14">
             <div className="text-black text-2xl md:text-5xl sm:text-left leading-[100.098%] tracking-[0.48px]">
               <AnimatedTextWord text="Clients" />
             </div>

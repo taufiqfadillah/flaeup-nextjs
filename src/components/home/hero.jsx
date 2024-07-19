@@ -79,7 +79,7 @@ const Hero = () => {
         <div className="container">
           <div className="flex">
             <div className="w-full h-[140vh]">
-              <div className="hero__container flex items-end px-0 md:px-14 w-full h-screen"></div>
+              <div className="hero__container flex items-end w-full h-screen"></div>
               <div className="flex justify-content-center w-screen h-auto">
                 <video
                   ref={videoRef}

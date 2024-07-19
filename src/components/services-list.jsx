@@ -17,7 +17,7 @@ const ServicesList = () => {
             </div>
             <a
               className="relative group block md:flex pb-4 mb-16 mt-16 items-center border-b border-black"
-              href="#"
+              href="/capabilities/branding"
             >
               <div className="md:mb-8 xl:mb-0">
                 <h3 className="text-3xl text-black md:text-5xl inline-block md:pb-2 hover:underline transition duration-150">
@@ -57,7 +57,7 @@ const ServicesList = () => {
 
             <a
               className="relative group block md:flex pb-4 mb-16 mt-16 items-center border-b border-black"
-              href="#"
+              href="/capabilities/retouching"
             >
               <div className="md:mb-8 xl:mb-0">
                 <h3 className="text-3xl text-black md:text-5xl inline-block md:pb-2 hover:underline transition duration-150">
@@ -96,7 +96,7 @@ const ServicesList = () => {
             </a>
             <a
               className="relative group block md:flex pb-4 mb-16 mt-16 items-center border-b border-black"
-              href="#"
+              href="/capabilities/uiux design"
             >
               <div className="md:mb-8 xl:mb-0">
                 <h3 className="text-3xl text-black md:text-5xl inline-block md:pb-2 hover:underline transition duration-150">
@@ -135,7 +135,7 @@ const ServicesList = () => {
             </a>
             <a
               className="relative group block md:flex pb-4 mb-16 mt-16 items-center border-b border-black"
-              href="#"
+              href="/capabilities/packaging"
             >
               <div className="md:mb-8 xl:mb-0">
                 <h3 className="text-3xl text-black md:text-5xl inline-block md:pb-2 hover:underline transition duration-150">

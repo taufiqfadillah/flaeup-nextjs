@@ -10,7 +10,7 @@ const Navbar = () => {
       {/* <!-- Navbar --> */}
       <section className="header">
         <nav className="w-full fixed top-0 backdrop-filter backdrop-blur-lg bg-white bg-opacity-80 z-50">
-          <div className="container mx-auto py-4">
+          <div className="lg:mx-16 py-4 md:py-2">
             <div className="flex w-full h-12 md:h-16 items-center justify-between">
               <a className="inline-block" href="/">
                 <AnimatedImage
@@ -23,7 +23,7 @@ const Navbar = () => {
                   style={{ maxWidth: "64px", maxHeight: "52px" }}
                 />
               </a>
-              <button className="lg:hidden navbar-burger pr-[15px]">
+              <button className="lg:hidden navbar-burger pr-[15px] md:pr-0">
                 <svg
                   width="32"
                   height="16"
@@ -41,11 +41,12 @@ const Navbar = () => {
                   ></rect>
                 </svg>
               </button>
-              <div className="hidden lg:flex items-center space-x-40 min-[1300px]:space-x-60 2xl:space-x-72 font-medium">
-                <a className="leading-snug block items-center hover:underline" href="/">
-                  <AnimatedTextCharacter
-                    text="Design"
-                  />
+              <div className="hidden lg:flex items-center space-x-44 min-[1300px]:space-x-[260px] 2xl:space-x-72 font-medium">
+                <a
+                  className="leading-snug block items-center hover:underline"
+                  href="/"
+                >
+                  <AnimatedTextCharacter text="Design" />
                   <span className="leading-none block">
                     <AnimatedTextCharacter text="That Speaks" />
                   </span>

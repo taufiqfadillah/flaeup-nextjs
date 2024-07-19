@@ -104,3 +104,9 @@ input:focus {
 .capabilities_capability:last-child {
   border-bottom: 1px solid #000;
 }
+.capabilties_no_scrollbar::-webkit-scrollbar {
+  display: none;
+}
+#digital-experience-scroller {
+  overflow: hidden;
+}

@@ -16,7 +16,7 @@ const Capabilities = () => {
 
     function initGSAP() {
       const lastItemWidth = items[items.length - 1].offsetWidth;
-      const offset = (window.innerWidth - lastItemWidth) / 2 + 135;
+      const offset = (window.innerWidth - lastItemWidth) / 2 + 50;
 
       scrollTween = gsap.to(".carousel-item", {
         ease: "power1.inOut",
@@ -62,10 +62,10 @@ const Capabilities = () => {
     <>
       {/* <!-- Our Capabilities --> */}
       <section className="capabilities lg:pt-14 md:pt-20">
-        <div className="container mx-auto px-8">
-          <div className="relative mx-auto pt-12">
-            <div className="relative mt-3 pb-4 md:pb-10">
-              <div className="md:flex md:justify-between px-2 md:px-6 lg:px-10 items-start">
+        <div className="">
+          <div className="relative pt-12">
+            <div className="lg:mx-16 relative mt-3 pb-4 md:pb-10">
+              <div className="md:flex md:justify-between items-start">
                 <h1 className="text-3xl sm:text-4xl md:text-4xl xl:text-6xl tracking-tightest font-bold mb-4 md:mb-0">
                   <AnimatedTextWord text="Our" className="block" />
                   <AnimatedTextWord text="Capabilities" className="block" />
@@ -83,7 +83,7 @@ const Capabilities = () => {
                 </div>
               </div>
             </div>
-            <div className="max-w-xl lg:max-w-none mx-auto">
+            <div className="container mx-auto px-8 max-w-xl lg:max-w-none mx-auto">
               <div className="flex flex-wrap items-center pt-20">
                 <div className="w-full flex flex-col md:flex-row lg:gap-[200px] md:gap-[70px] gap-[40px] overflow-hidden justify-start slider-carousel">
                   <div className="carousel-item flex-[0_0_auto] relative w-full transform-origin-center">

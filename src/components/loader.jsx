@@ -6,6 +6,8 @@ import lottie from "lottie-web";
 const Loader = () => {
   const animationContainerRef = useRef(null);
   const [hasVisited, setHasVisited] = useState(false);
+  const [animationComplete, setAnimationComplete] = useState(false);
+  const removeTimeoutRef = useRef(null);
 
   useEffect(() => {
     const clearLocalStorage = () => {
@@ -17,7 +19,6 @@ const Loader = () => {
 
     if (visitedBefore) {
       setHasVisited(true);
-      setTimeout(clearLocalStorage, 30 * 60 * 1000);
       return;
     }
 
@@ -48,10 +49,11 @@ const Loader = () => {
               preloader.style.display = "none";
               document.body.style.overflow = ""; // Restore scroll
 
+              setAnimationComplete(true);
               localStorage.setItem("hasVisited", true);
-              setHasVisited(true);
 
-              setTimeout(clearLocalStorage, 30 * 60 * 1000);
+              const timeoutId = setTimeout(clearLocalStorage, 30 * 60 * 1000);
+              removeTimeoutRef.current = timeoutId;
             }
           }, 300);
         });
@@ -62,10 +64,13 @@ const Loader = () => {
       if (animation) {
         animation.destroy();
       }
+      if (removeTimeoutRef.current) {
+        clearTimeout(removeTimeoutRef.current);
+      }
     };
   }, []);
 
-  if (hasVisited) {
+  if (hasVisited || animationComplete) {
     return null;
   }
 
