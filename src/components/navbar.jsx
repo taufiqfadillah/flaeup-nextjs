@@ -17,10 +17,10 @@ const Navbar = () => {
                   className="h-6 md:h-12 mb-6 md:mb-0 pl-[15px] md:pl-0"
                   src="/images/logos/logo.png"
                   alt="Logo"
-                  width={64}
-                  height={52}
+                  width={58}
+                  height={46}
                   priority={true}
-                  style={{ maxWidth: "64px", maxHeight: "52px" }}
+                  style={{ maxWidth: "58px", maxHeight: "46px" }}
                 />
               </a>
               <button className="lg:hidden navbar-burger pr-[15px] md:pr-0">
@@ -47,6 +47,37 @@ const Navbar = () => {
                   href="/"
                 >
                   <AnimatedTextCharacter text="Design" />
+                  <svg
+                    id="SvgjsSvg1011"
+                    width="8"
+                    height="8"
+                    xmlns="http://www.w3.org/2000/svg"
+                    version="1.1"
+                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                    xmlnssvgjs="http://svgjs.com/svgjs"
+                    className="ml-3 relative inline-block"
+                  >
+                    <defs id="SvgjsDefs1012"></defs>
+                    <g id="SvgjsG1013">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        width="8"
+                        height="8"
+                      >
+                        <rect
+                          width="16.15"
+                          height="16.15"
+                          x="3.92"
+                          y="3.92"
+                          data-name="49. Box, design, geometry, square, stop"
+                          rx=".9"
+                          fill="#82caaa"
+                          className="color000 svgShape"
+                        ></rect>
+                      </svg>
+                    </g>
+                  </svg>
                   <span className="leading-none block">
                     <AnimatedTextCharacter text="That Speaks" />
                   </span>

@@ -5,15 +5,20 @@ import { useInView } from "react-intersection-observer";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
-import HeroCapabilities from "@/components/branding/herocapabilities";
+import HeroCapabilities from "@/components/uiuxdesign/herocapabilities";
 import PotentialCapabilities from "@/components/potential-capabilities";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Branding = () => {
+const UiUxDesign = () => {
   useEffect(() => {
-    document.title = "Branding | Creativity is central to our design.";
+    document.title = "UI/UX Design | Creativity is central to our design.";
   }, []);
+
+  const { ref: ref2, inView: inView2 } = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  });
 
   const { ref: titleRef, inView: titleInView } = useInView({
     triggerOnce: true,
@@ -79,48 +84,48 @@ const Branding = () => {
   //   }
   // }, []);
 
-  useEffect(() => {
-    if (window.screen.width) {
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: "#digital-experience-scroller-inner",
-          pin: false,
-          scrub: 0,
-          once: true,
-          top: "top 50%",
-          onEnter: () => {
-            gsap.to(".trigger-one .inner", 1, {
-              ease: "power4.out",
-              y: "0%",
-              opacity: 1,
-              stagger: 0.2,
-              once: true,
-            }),
-              gsap.to(".trigger-one-left .trigger-one-left-inner", 1, {
-                ease: "power4.out",
-                y: "0%",
-                opacity: 1,
-                once: true,
-              }),
-              gsap.to(".trigger-one-main .trigger-one-main-inner", 1, {
-                ease: "power4.out",
-                y: "0%",
-                opacity: 1,
-                stagger: 0.2,
-                once: true,
-              }),
-              gsap.to(".trigger-two-list span", 1, {
-                ease: "power4.out",
-                y: "0%",
-                opacity: 1,
-                stagger: 0.1,
-                once: true,
-              });
-          },
-        },
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (window.screen.width) {
+  //     gsap.timeline({
+  //       scrollTrigger: {
+  //         trigger: "#digital-experience-scroller-inner",
+  //         pin: false,
+  //         scrub: 0,
+  //         once: true,
+  //         top: "top 50%",
+  //         onEnter: () => {
+  //           gsap.to(".trigger-one .inner", 1, {
+  //             ease: "power4.out",
+  //             y: "0%",
+  //             opacity: 1,
+  //             stagger: 0.2,
+  //             once: true,
+  //           }),
+  //             gsap.to(".trigger-one-left .trigger-one-left-inner", 1, {
+  //               ease: "power4.out",
+  //               y: "0%",
+  //               opacity: 1,
+  //               once: true,
+  //             }),
+  //             gsap.to(".trigger-one-main .trigger-one-main-inner", 1, {
+  //               ease: "power4.out",
+  //               y: "0%",
+  //               opacity: 1,
+  //               stagger: 0.2,
+  //               once: true,
+  //             }),
+  //             gsap.to(".trigger-two-list span", 1, {
+  //               ease: "power4.out",
+  //               y: "0%",
+  //               opacity: 1,
+  //               stagger: 0.1,
+  //               once: true,
+  //             });
+  //         },
+  //       },
+  //     });
+  //   }
+  // }, []);
 
   useEffect(() => {
     const heroCapabilities = document.querySelector("#capabilities-wrapper");
@@ -172,8 +177,8 @@ const Branding = () => {
               id="de-title"
             >
               <span className="overflow-hidden">
-                <span className="block">A Digital</span>
-                <span className="block"> Glow Up</span>
+                <span className="block">Digital</span>
+                <span className="block"> Experience</span>
               </span>
             </p>
           </div>
@@ -189,40 +194,43 @@ const Branding = () => {
             <div className="trigger-one-main w-full overflow-hidden">
               <p className="max-[600px]:hidden max-[600px]:mb-[3rem] max-[600px]:mt-[0rem] max-[600px]:text-[2rem] max-[1024px]:mb-[4rem] max-[1024px]:text-[2rem] max-[1024px]:leading-[120%] max-[1750px]:mb-[5rem] max-[1750px]:text-[3rem] text-[2.5vw] text-[#080808] font-normal leading-[140%] mb-[8rem] block">
                 <span>
-                  We ensure the visual impact of every project is maximized for
-                  each brand we collaborate with.
+                  We create engaging digital journeys that fulfill your
+                  brand&apos;s goals and captivate your audience&apos;s needs.
                 </span>
               </p>
             </div>
             <div className="max-[1024px]:w-[50%] w-[44.44%]">
               <p className="trigger-two-list  max-[600px]:text-[0.75rem] text-[#080808] text-xl font-medium leading-[180%] tracking-[-0.02rem] mb-[2rem] overflow-hidden">
-                BRANDING
+                UIUX DESIGN
               </p>
               <p className="trigger-two-list  max-[600px]:text-[0.75rem] text-[#080808] text-xl font-medium leading-[180%] tracking-[-0.02rem] mb-[2rem] overflow-hidden">
-                LOGOS
+                WEV DEVELOPMENT
               </p>
               <p className="trigger-two-list  max-[600px]:text-[0.75rem] text-[#080808] text-xl font-medium leading-[180%] tracking-[-0.02rem] mb-[2rem] overflow-hidden">
-                DESIGN
+                DIGITAL EXPERIENCE
               </p>
               <p className="trigger-two-list  max-[600px]:text-[0.75rem] text-[#080808] text-xl font-medium leading-[180%] tracking-[-0.02rem] mb-[2rem] overflow-hidden">
-                IDENTITY
+                FRONT END
               </p>
               <p className="trigger-two-list  max-[600px]:text-[0.75rem] text-[#080808] text-xl font-medium leading-[180%] tracking-[-0.02rem] mb-[2rem] overflow-hidden">
-                RESEARCH
+                BACK END
               </p>
             </div>
             <div className="max-[1024px]:w-[50%] w-[44.44%]">
               <p className="trigger-two-list  max-[600px]:text-[0.75rem] text-[#080808] text-xl font-medium leading-[180%] tracking-[-0.02rem] mb-[2rem] text-[1rem] overflow-hidden">
-                CHARACTER DESIGN
+                IOS APP
               </p>
               <p className="trigger-two-list  max-[600px]:text-[0.75rem] text-[#080808] text-xl font-medium leading-[180%] tracking-[-0.02rem] mb-[2rem] text-[1rem] overflow-hidden">
-                CONTENT
+                ANDROID APP
               </p>
               <p className="trigger-two-list  max-[600px]:text-[0.75rem] text-[#080808] text-xl font-medium leading-[180%] tracking-[-0.02rem] mb-[2rem] text-[1rem] overflow-hidden">
-                SOCIAL MEDIA
+                WEB DESIGN
               </p>
               <p className="trigger-two-list  max-[600px]:text-[0.75rem] text-[#080808] text-xl font-medium leading-[180%] tracking-[-0.02rem] mb-[2rem] text-[1rem] overflow-hidden">
-                DIGITAL CAMPAIGNS
+                HTML - CSS - JS
+              </p>
+              <p className="trigger-two-list  max-[600px]:text-[0.75rem] text-[#080808] text-xl font-medium leading-[180%] tracking-[-0.02rem] mb-[2rem] text-[1rem] overflow-hidden">
+                E - COMMERCE
               </p>
             </div>
           </div>
@@ -329,7 +337,10 @@ const Branding = () => {
                       >
                         <a
                           className="w-[90%]"
-                          href={`/capabilities/${capability.replace(/\s+/g, '').replace('/', '').toLowerCase()}`}
+                          href={`/capabilities/${capability
+                            .replace(/\s+/g, "")
+                            .replace("/", "")
+                            .toLowerCase()}`}
                         >
                           <motion.p
                             initial={{ opacity: 0, x: -100 }}
@@ -387,4 +398,4 @@ const Branding = () => {
   );
 };
 
-export default Branding;
+export default UiUxDesign;

@@ -9,11 +9,14 @@ import AnimatedImage from "@/libs/AnimatedImage.jsx";
 import AboutHero from "@/components/about/heroabout.jsx";
 import ServicesList from "@/components/services-list.jsx";
 import BrandMultiple from "@/components/brand-multiple.jsx";
+import useStickySection from "@/hooks/useStickySection.jsx";
 
 const About = () => {
   useEffect(() => {
     document.title = "About | Creativity is central to our design.";
   }, []);
+
+  useStickySection();
 
   return (
     <>
@@ -94,9 +97,8 @@ const About = () => {
           </div>
         </div>
       </section>
-
       <section className="bg-[#82CAAA] text-black">
-        <section className="py-20">
+        <section className="py-20 bg-[#82CAAA] text-black">
           <div>
             <div className="text-2xl text-black px-4 md:text-5xl md:px-14">
               <AnimatedTextWord text="Our Capabilities" />
@@ -162,16 +164,15 @@ const About = () => {
         </section>
 
         <ServicesList />
+      </section>
 
-        <section className="h-[55vh] md:h-[85vh] lg:h-[170vh]">
-          <div className="px-4 md:px-14">
-            <div className="text-black text-2xl md:text-5xl sm:text-left leading-[100.098%] tracking-[0.48px]">
-              <AnimatedTextWord text="Clients" />
-            </div>
+      <section className="h-[55vh] md:h-[85vh] lg:h-[170vh] bg-[#82CAAA] text-black panel">
+        <div className="px-4 md:px-14">
+          <div className="text-black text-2xl md:text-5xl sm:text-left leading-[100.098%] tracking-[0.48px]">
+            <AnimatedTextWord text="Clients" />
           </div>
-
-          <BrandMultiple />
-        </section>
+        </div>
+        <BrandMultiple />
       </section>
     </>
   );

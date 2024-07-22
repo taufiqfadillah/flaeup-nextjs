@@ -44,15 +44,20 @@ const Footer = () => {
       ScrollTrigger.create({
         trigger: "#trigger-footer",
         start: "top bottom",
-        end: "+=100vh",
+        end: "+=300vh",
         scrub: true,
         pin: true,
         pinSpacing: true,
         onUpdate: (self) => {
+          const progress = self.progress;
+          const y = `${100 - progress * 100}vh`;
+          const duration = 0;
+          const ease = "none";
+
           gsap.to(footerRef.current, {
-            y: `${100 - self.progress * 100}vh`,
-            duration: 0,
-            ease: "none",
+            y,
+            duration,
+            ease,
           });
         },
       });
@@ -74,9 +79,7 @@ const Footer = () => {
       <section
         id="trigger-footer"
         className="hidden md:block h-[1px]"
-      >
-      </section>
-
+      ></section>
 
       <section
         className="hidden md:block footer bg-[#2a357a] text-white fixed bottom-0 left-0 w-full py-4 md:py-10 px-8 h-screen overflow-hidden z-50"
@@ -134,7 +137,7 @@ const Footer = () => {
                 </span>
                 <div className="flex w-full py-8 footer-input group">
                   <input
-                    className="h-15 py-4 text-white w-4/5 lg:w-full bg-transparent border-b-2"
+                    className="h-15 py-4 text-white w-4/5 lg:w-[94%] bg-transparent border-b-2"
                     type="email"
                     placeholder="Email Address"
                   />

@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
+import useStickySection from "@/hooks/useStickySection.jsx";
 
 const Brand = () => {
+  useStickySection();
+
   const sliderRef = useRef(null);
 
   useEffect(() => {
@@ -41,7 +44,7 @@ const Brand = () => {
   return (
     <>
       {/* <!-- Logo Brand --> */}
-      <section className="py-12 md:py-20" id="logo-brand-slider">
+      <section className="py-12 md:py-20 panel" id="logo-brand-slider">
         <div className="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
           <div className="overflow-hidden relative w-full">
             <div
