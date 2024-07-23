@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import CopyToClipboardLink from "@/components/ui/CopyToClipboard.tsx";
@@ -15,10 +15,84 @@ const Contact = () => {
 
   useStickySection();
 
+  // State to track form values and errors
+  const [formData, setFormData] = useState({
+    name: "",
+    lastname: "",
+    email: "",
+    about: "",
+    selectedValue: "",
+  });
+
+  const [errors, setErrors] = useState({});
+
+  // Use refs for GSAP animations
   const eRef = useRef(null);
   const tRef = useRef(null);
   const aRef = useRef(null);
   const iRef = useRef(null);
+
+  // Handle input changes
+  const handleInputChange = useCallback((e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+
+    // Reset error when user types
+    if (value.trim() !== "") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: false,
+      }));
+    }
+  }, []);
+
+  // Handle button click
+  const handleButtonClick = useCallback((value) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      selectedValue: value,
+    }));
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      selectedValue: false,
+    }));
+  }, []);
+
+  // Validate form inputs
+  const validateForm = () => {
+    const newErrors = {
+      name: formData.name.trim() === "",
+      lastname: formData.lastname.trim() === "",
+      email: !/\S+@\S+\.\S+/.test(formData.email),
+      about: formData.about.trim() === "",
+      selectedValue: formData.selectedValue.trim() === "",
+    };
+
+    setErrors(newErrors);
+
+    return !Object.values(newErrors).some(Boolean);
+  };
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (validateForm()) {
+      console.log("Form submitted successfully", formData);
+
+      // Reset form after submission
+      setFormData({
+        name: "",
+        lastname: "",
+        email: "",
+        about: "",
+        selectedValue: "",
+      });
+    }
+  };
 
   const triggerInitialAnimation = () => {
     const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
@@ -123,12 +197,12 @@ const Contact = () => {
               >
                 <span className="overflow-hidden">
                   <span className="flex opacity-0 translate-y-[100%] inner">
-                    Connect with our team to bring your ideas
+                    Collaborate with our team
                   </span>
                 </span>
                 <span className="overflow-hidden">
                   <span className="flex opacity-0 translate-y-[100%] inner">
-                    to life through motion.
+                    to animate your ideas.
                   </span>
                 </span>
               </h2>
@@ -138,7 +212,7 @@ const Contact = () => {
         <div className="max-[1024px]:flex header__section hidden flex-wrap mobile__heading">
           <div className="w-[100%] pt-[7rem]">
             <h1 className="max-[375px]:text-[4rem] max-[600px]:text-[5rem] text-[10rem] leading-[1] font-[500]">
-              We Bring <br /> Your <br />
+              We Transform Your <br /> Ideas into Tangible <br />
             </h1>
             <div className="max-[375px]:text-[4rem] max-[600px]:text-[5rem] text-[10rem] leading-[1] font-[500]">
               <h1>
@@ -161,7 +235,7 @@ const Contact = () => {
                   </span>
                   <br />
                   <span className="max-[375px]:flex max-[375px]:items-center inline-block flex-nowrap">
-                    Life
+                    Result
                   </span>
                 </span>
               </h1>
@@ -169,15 +243,15 @@ const Contact = () => {
           </div>
           <div className="w-[100%]">
             <h2 className="max-[600px]:my-[2.5rem] max-[600px]:text-[1.5rem] max-[768px]:my-[4rem] max-[768px]:text-[3rem] my-[5rem] text-[3.3vw] leading-[120%] font-[400]">
-              Connect with our team to bring your ideas{" "}
-              <br className="hidden lg:inline-block" /> to life through motion.
+              Collaborate with our team{" "}
+              <br className="hidden lg:inline-block" /> to animate your ideas.
             </h2>
           </div>
         </div>
         <div className="contact__options mb-[65px] lg:mb-52 px-[2rem]">
-          <div className="contact__options__second lg:pt-52 lg:pb-[70px] flex flex-wrap">
+          <div className="flex flex-wrap lg:pt-[35px] lg:pb-[70px] contact__email  ">
             <div className="max-[1024px]:w-[100%] max-[1750px]:w-[35%] w-[55%]">
-              <h3 className="pt-[30px] lg:pt-[45px] pb-[20px] lg:pb-[0] font-[400] max-[600px]:text-[1rem] max-[1750px]:text-[1.063rem] text-[1vw] uppercase leading-[120%] overflow-hidden">
+              <h3 className="max-[768px]:text-[1rem] pt-[30px] lg:pt-[45px] pb-[20px] lg:pb-[0] font-[400] max-[600px]:text-[1rem] max-[1750px]:text-[1.063rem] text-[1vw] uppercase leading-[120%] overflow-hidden">
                 <span
                   className="flex max-[1024px]:translate-y-[0] max-[1024px]:opacity-100 translate-y-[50px] opacity-0 inner"
                   style={{
@@ -188,28 +262,233 @@ const Contact = () => {
                     transform: "translate(0px, 0%)",
                   }}
                 >
-                  Project Inquires
+                  Let&apos;s Collab
                 </span>
               </h3>
             </div>
             <div className="max-[1024px]:justify-start max-[1024px]:text-left max-[1024px]:w-[100%] max-[1750px]:w-[65%] w-[45%] pb-[30px] lg:pb-[0]  flex ">
-              <div className="max-[600px]:text-[3rem] max-[768px]:text-[3.25rem] footer_email_footer__VFmDJ footer_contact__2uxCy leading-[1] font-[400] max-[1200px]:text-[3rem] max-[1750px]:text-[4rem] text-[3.3vw] cursor-react no-underline">
-                <CopyToClipboardLink
-                  className="flex max-[1024px]:translate-y-[0] max-[1024px]:opacity-100 translate-y-[50px] opacity-0 inner"
-                  href="mailto:hello@flaeup.co"
-                  style={{
-                    translate: "none",
-                    rotate: "none",
-                    scale: "none",
-                    opacity: 1,
-                    transform: "translate(0px, 0%)",
-                  }}
+              <form className="form_form_wrapper" onSubmit={handleSubmit}>
+                <div className="flex w-full">
+                  <div className="max-[600px]:w-full w-[50%] flex flex-col justify-start relative">
+                    <input
+                      className="form_name"
+                      type="text"
+                      id="name"
+                      placeholder="Name*"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    {errors.name && (
+                      <p className="max-[1750px]:text-[0.675rem] text-[0.675vw] text-[#db4e43] absolute bottom-[-1.5rem]">
+                        Please add a valid name
+                      </p>
+                    )}
+                  </div>
+                  <div className="max-[600px]:w-full w-[50%] flex flex-col justify-end items-end relative">
+                    <input
+                      className="form_lastname"
+                      type="text"
+                      id="lastname"
+                      placeholder="Last Name*"
+                      name="lastname"
+                      value={formData.lastname}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    {errors.lastname && (
+                      <p className="max-[1750px]:text-[0.675rem] text-[0.675vw] text-[#db4e43] absolute bottom-[-1.5rem]">
+                        Please add a valid last name
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div className="flex flex-col w-full py-[2.5rem] relative">
+                  <input
+                    className="form_email"
+                    type="email"
+                    id="email"
+                    placeholder="Email*"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                  />
+                  {errors.email && (
+                    <p className="max-[1750px]:text-[0.675rem] text-[0.675vw] text-[#db4e43] absolute bottom-[01rem]">
+                      Please add a valid email
+                    </p>
+                  )}
+                </div>
+                <div className="flex flex-col w-full relative">
+                  <textarea
+                    className="form_about"
+                    type="text"
+                    name="about"
+                    id="about"
+                    placeholder="Let us know about your project*"
+                    value={formData.about}
+                    onChange={handleInputChange}
+                    required
+                  />
+                  {errors.about && (
+                    <p className="max-[1750px]:text-[0.675rem] text-[0.675vw] text-[#db4e43] absolute bottom-[-1.5rem]">
+                      Please let us know a bit more about your project
+                    </p>
+                  )}
+                </div>
+                <div className="flex w-full relative">
+                  <div className="flex w-full flex-wrap form_buttons_wrapper">
+                    <button
+                      type="button"
+                      className={`form_button_pill cursor-pointer ${
+                        formData.selectedValue === "Animation"
+                          ? "form_active"
+                          : ""
+                      }`}
+                      data-value="Animation"
+                      onClick={() => handleButtonClick("Animation")}
+                    >
+                      Animation
+                    </button>
+                    <button
+                      type="button"
+                      className={`form_button_pill cursor-pointer ${
+                        formData.selectedValue === "UXUI" ? "form_active" : ""
+                      }`}
+                      data-value="UXUI"
+                      onClick={() => handleButtonClick("UXUI")}
+                    >
+                      UXUI
+                    </button>
+                    <button
+                      type="button"
+                      className={`form_button_pill cursor-pointer ${
+                        formData.selectedValue === "Social Media"
+                          ? "form_active"
+                          : ""
+                      }`}
+                      data-value="Social Media"
+                      onClick={() => handleButtonClick("Social Media")}
+                    >
+                      Social Media
+                    </button>
+                    <button
+                      type="button"
+                      className={`form_button_pill cursor-pointer ${
+                        formData.selectedValue === "Design" ? "form_active" : ""
+                      }`}
+                      data-value="Design"
+                      onClick={() => handleButtonClick("Design")}
+                    >
+                      Design
+                    </button>
+                    <button
+                      type="button"
+                      className={`form_button_pill cursor-pointer ${
+                        formData.selectedValue === "Copywriting"
+                          ? "form_active"
+                          : ""
+                      }`}
+                      data-value="Copywriting"
+                      onClick={() => handleButtonClick("Copywriting")}
+                    >
+                      Copywriting
+                    </button>
+                    <button
+                      type="button"
+                      className={`form_button_pill cursor-pointer ${
+                        formData.selectedValue === "Brand" ? "form_active" : ""
+                      }`}
+                      data-value="Brand"
+                      onClick={() => handleButtonClick("Brand")}
+                    >
+                      Brand
+                    </button>
+                    <button
+                      type="button"
+                      className={`form_button_pill cursor-pointer ${
+                        formData.selectedValue === "Strategy"
+                          ? "form_active"
+                          : ""
+                      }`}
+                      data-value="Strategy"
+                      onClick={() => handleButtonClick("Strategy")}
+                    >
+                      Strategy
+                    </button>
+                    <button
+                      type="button"
+                      className={`form_button_pill cursor-pointer ${
+                        formData.selectedValue === "Technology"
+                          ? "form_active"
+                          : ""
+                      }`}
+                      data-value="Technology"
+                      onClick={() => handleButtonClick("Technology")}
+                    >
+                      Technology
+                    </button>
+                  </div>
+                  {errors.selectedValue && (
+                    <p className="max-[1750px]:text-[0.675rem] text-[0.675vw] text-[#db4e43] absolute bottom-[-1.5rem]">
+                      Select an area related to your project
+                    </p>
+                  )}
+                </div>
+                <p
+                  className="max-[600px]:text-[2rem] max-[768px]:text-[2.25rem] footer_email_footer footer_contact leading-[1] font-[400] max-[1200px]:text-[2.5rem] max-[1750px]:text-[3rem] text-[3vw] cursor-pointer no-underline mt-[3rem]"
+                  onClick={handleSubmit}
                 >
-                  hello@flaeup.co
-                </CopyToClipboardLink>
-              </div>
+                  <span
+                    className="flex max-[1024px]:translate-y-[0] max-[1024px]:opacity-100 translate-y-[50px] opacity-0 inner"
+                    style={{
+                      translate: "none",
+                      rotate: "none",
+                      scale: "none",
+                      opacity: 1,
+                      transform: "translate(0px, 0%)",
+                    }}
+                  >
+                    <span className="undefined">Contact us</span>
+                    <span className="footer_email_footer_line" />
+                    <span className="footer_email_footer_line footer_two" />
+                    <span className="footer_email_footer_tooltip text-[1.2rem] email-tooltip">
+                      Click to submit
+                    </span>
+                  </span>
+                  <span
+                    className="flex max-[1024px]:translate-y-[0] max-[1024px]:opacity-100 translate-y-[50px] opacity-0 inner"
+                    style={{
+                      translate: "none",
+                      rotate: "none",
+                      scale: "none",
+                      opacity: 1,
+                      transform: "translate(0px, 0%)",
+                    }}
+                  >
+                    <svg width={48} height={48} viewBox="0 0 48 48" fill="none">
+                      <path
+                        d="M13.9978 40L32.9978 21"
+                        stroke="#080808"
+                        strokeWidth={4}
+                        strokeLinecap="square"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M13.9978 20.001H33.9978V40.001"
+                        stroke="#080808"
+                        strokeWidth={4}
+                        strokeLinecap="square"
+                      />
+                    </svg>
+                  </span>
+                </p>
+              </form>
             </div>
           </div>
+
           <div className="contact__options__second lg:pt-[35px] lg:pb-[70px] contact__email flex flex-wrap border-t border-solid border-1 border-black">
             <div className="max-[1024px]:w-[100%] max-[1750px]:w-[35%] w-[55%]">
               <h3 className="pt-[30px] lg:pt-[45px] pb-[20px] lg:pb-[0] font-[400] max-[600px]:text-[1rem] max-[1750px]:text-[1.063rem] text-[1vw] uppercase leading-[120%] overflow-hidden">
@@ -223,12 +502,12 @@ const Contact = () => {
                     transform: "translate(0px, 0%)",
                   }}
                 >
-                  Project Inquires
+                  Join Our Team
                 </span>
               </h3>
             </div>
             <div className="max-[1024px]:justify-start max-[1024px]:text-left max-[1024px]:w-[100%] max-[1750px]:w-[65%] w-[45%] pb-[30px] lg:pb-[0]  flex ">
-              <div className="max-[600px]:text-[3rem] max-[768px]:text-[3.25rem] footer_email_footer__VFmDJ footer_contact__2uxCy leading-[1] font-[400] max-[1200px]:text-[3rem] max-[1750px]:text-[4rem] text-[3.3vw] cursor-react no-underline">
+              <div className="max-[600px]:text-[3rem] max-[768px]:text-[3.25rem] footer_email_footer footer_contact leading-[1] font-[400] max-[1200px]:text-[3rem] max-[1750px]:text-[4rem] text-[3.3vw] cursor-react no-underline">
                 <CopyToClipboardLink
                   className="flex max-[1024px]:translate-y-[0] max-[1024px]:opacity-100 translate-y-[50px] opacity-0 inner"
                   href="mailto:apply@flaeup.co"
@@ -242,6 +521,8 @@ const Contact = () => {
                 >
                   apply@flaeup.co
                 </CopyToClipboardLink>
+                <span className="footer_email_footer_line email-to-copy" />
+                <span className="footer_email_footer_line footer_two" />
               </div>
             </div>
           </div>
