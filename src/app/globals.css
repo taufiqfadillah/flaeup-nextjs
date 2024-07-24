@@ -4,9 +4,8 @@
 
 /* Font-face definitions */
 @font-face {
-  font-family: "Aeonik";
-  src: url("/fonts/Aeonik-Regular.woff2") format("woff2"),
-    url("/fonts/Aeonik-Regular.woff") format("woff");
+  font-family: 'Aeonik';
+  src: url('/fonts/Aeonik-Regular.woff2') format('woff2'), url('/fonts/Aeonik-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -22,7 +21,7 @@ html {
   -webkit-overflow-scrolling: touch;
 }
 body {
-  font-family: "Aeonik";
+  font-family: 'Aeonik';
   background-color: white;
   cursor: none;
   overflow-y: auto;
@@ -83,7 +82,7 @@ textarea:focus {
 }
 .underlined_button p:after,
 .underlined_button p:before {
-  content: "";
+  content: '';
   background-color: #1a1a1a;
   height: 2px;
   position: absolute;
@@ -260,6 +259,27 @@ textarea:focus {
     padding: 0.5625rem 2.5625rem 1rem 0;
   }
   .footer_email_footer_line {
+    display: none;
+  }
+}
+.menu_menu_link {
+  position: relative;
+  padding-bottom: 3px;
+}
+.menu_menu_link:after {
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: #080808;
+  position: absolute;
+  bottom: 0;
+  transition: width 0.3s ease-in-out;
+}
+.menu_menu_link:hover:after {
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  .menu_menu_link:after {
     display: none;
   }
 }

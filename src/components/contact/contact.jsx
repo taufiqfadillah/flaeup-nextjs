@@ -1,11 +1,12 @@
 'use client';
 
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import crypto from 'crypto-js';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import CopyToClipboardLink from '@/components/ui/CopyToClipboard.tsx';
 import useStickySection from '@/hooks/useStickySection.jsx';
+import { useForm } from '@formspree/react';
+import ToastDemo from '@/components/ui/Toast.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,7 +17,13 @@ const Contact = () => {
 
   useStickySection();
 
-  // State to track form values and errors
+  // Use refs for GSAP animations
+  const eRef = useRef(null);
+  const tRef = useRef(null);
+  const aRef = useRef(null);
+  const iRef = useRef(null);
+
+  const [state, handleSubmit] = useForm('xvgpzrwd');
   const [formData, setFormData] = useState({
     name: '',
     lastname: '',
@@ -26,14 +33,8 @@ const Contact = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [showToast, setShowToast] = useState({ open: false, message: '', type: '' });
 
-  // Use refs for GSAP animations
-  const eRef = useRef(null);
-  const tRef = useRef(null);
-  const aRef = useRef(null);
-  const iRef = useRef(null);
-
-  // Handle input changes
   const handleInputChange = useCallback((e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -41,7 +42,6 @@ const Contact = () => {
       [name]: value,
     }));
 
-    // Reset error when user types
     if (value.trim() !== '') {
       setErrors((prevErrors) => ({
         ...prevErrors,
@@ -50,7 +50,6 @@ const Contact = () => {
     }
   }, []);
 
-  // Handle button click
   const handleButtonClick = useCallback((value) => {
     setFormData((prevData) => ({
       ...prevData,
@@ -62,7 +61,6 @@ const Contact = () => {
     }));
   }, []);
 
-  // Validate form inputs
   const validateForm = () => {
     const newErrors = {
       name: formData.name.trim() === '',
@@ -73,82 +71,30 @@ const Contact = () => {
     };
 
     setErrors(newErrors);
-
     return !Object.values(newErrors).some(Boolean);
   };
 
-  // Sanitize inputs to prevent XSS attacks
-  const sanitizeInput = (input) => {
-    const map = {
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#x27;',
-      '/': '&#x2F;',
-    };
-    const reg = /[&<>"'/]/gi;
-    return input.replace(reg, (match) => map[match]);
-  };
-
-  // Encrypt form data before submission
-  const encryptData = (data) => {
-    const encryptedData = crypto.AES.encrypt(JSON.stringify(data), 'secret-key').toString();
-    return encryptedData;
-  };
-
-  // Handle form submission
-  const handleSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
-      // Sanitize form data
-      const sanitizedData = {
-        name: sanitizeInput(formData.name),
-        lastname: sanitizeInput(formData.lastname),
-        email: sanitizeInput(formData.email),
-        about: sanitizeInput(formData.about),
-        selectedValue: sanitizeInput(formData.selectedValue),
-      };
+      try {
+        await handleSubmit({
+          ...formData,
+          _subject: 'New submission from your site',
+        });
 
-      // Encrypt sanitized data
-      const encryptedFormData = encryptData(sanitizedData);
-
-      console.log('Form submitted successfully', encryptedFormData);
-
-      // Simulate sending encrypted data
-      sendFormData(encryptedFormData);
-
-      // Reset form after submission
-      setFormData({
-        name: '',
-        lastname: '',
-        email: '',
-        about: '',
-        selectedValue: '',
-      });
-    }
-  };
-
-  // Simulate sending form data
-  const sendFormData = async (data) => {
-    try {
-      const response = await fetch('https://api.example.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ encryptedData: data }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to submit form');
+        setShowToast({ open: true, message: 'Form submitted successfully!', type: 'success' });
+        setFormData({
+          name: '',
+          lastname: '',
+          email: '',
+          about: '',
+          selectedValue: '',
+        });
+      } catch (error) {
+        setShowToast({ open: true, message: 'Something went wrong. Please try again.', type: 'error' });
       }
-
-      const result = await response.json();
-      console.log('Server response:', result);
-    } catch (error) {
-      console.error('Error submitting form:', error);
     }
   };
 
@@ -291,7 +237,7 @@ const Contact = () => {
           </div>
         </div>
         <div className="contact__options mb-[65px] lg:mb-52 px-[2rem] mt-20">
-          <div className="flex flex-wrap lg:pt-[35px] lg:pb-[70px] contact__email  ">
+          <div className="flex flex-wrap lg:pt-[35px] lg:pb-[70px] contact__email ">
             <div className="max-[1024px]:w-[100%] max-[1750px]:w-[35%] w-[55%]">
               <h3 className="max-[768px]:text-[1rem] pt-[30px] lg:pt-[45px] pb-[20px] lg:pb-[0] font-[400] max-[600px]:text-[1rem] max-[1750px]:text-[1.063rem] text-[1vw] uppercase leading-[120%] overflow-hidden">
                 <span
@@ -309,7 +255,7 @@ const Contact = () => {
               </h3>
             </div>
             <div className="max-[1024px]:justify-start max-[1024px]:text-left max-[1024px]:w-[100%] max-[1750px]:w-[65%] w-[45%] pb-[30px] lg:pb-[0] flex ">
-              <form className="form_form_wrapper" onSubmit={handleSubmit}>
+              <form className="form_form_wrapper" onSubmit={handleFormSubmit}>
                 <div className="flex w-full">
                   <div className="max-[600px]:w-full w-[50%] flex flex-col justify-start relative">
                     <input className="form_name" type="text" id="name" placeholder="Name*" name="name" value={formData.name} onChange={handleInputChange} required />
@@ -330,45 +276,18 @@ const Contact = () => {
                 </div>
                 <div className="flex w-full relative">
                   <div className="flex w-full flex-wrap form_buttons_wrapper">
-                    <button type="button" className={`form_button_pill cursor-pointer ${formData.selectedValue === 'Branding' ? 'form_active' : ''}`} data-value="Branding" onClick={() => handleButtonClick('Branding')}>
-                      Branding
-                    </button>
-                    <button type="button" className={`form_button_pill cursor-pointer ${formData.selectedValue === 'UXUI' ? 'form_active' : ''}`} data-value="UXUI" onClick={() => handleButtonClick('UXUI')}>
-                      UXUI
-                    </button>
-                    <button type="button" className={`form_button_pill cursor-pointer ${formData.selectedValue === 'Social Media' ? 'form_active' : ''}`} data-value="Social Media" onClick={() => handleButtonClick('Social Media')}>
-                      Social Media
-                    </button>
-                    <button type="button" className={`form_button_pill cursor-pointer ${formData.selectedValue === 'Design' ? 'form_active' : ''}`} data-value="Design" onClick={() => handleButtonClick('Design')}>
-                      Design
-                    </button>
-                    <button type="button" className={`form_button_pill cursor-pointer ${formData.selectedValue === 'Copywriting' ? 'form_active' : ''}`} data-value="Copywriting" onClick={() => handleButtonClick('Copywriting')}>
-                      Copywriting
-                    </button>
-                    <button type="button" className={`form_button_pill cursor-pointer ${formData.selectedValue === 'Brand' ? 'form_active' : ''}`} data-value="Brand" onClick={() => handleButtonClick('Brand')}>
-                      Brand
-                    </button>
-                    <button type="button" className={`form_button_pill cursor-pointer ${formData.selectedValue === 'Strategy' ? 'form_active' : ''}`} data-value="Strategy" onClick={() => handleButtonClick('Strategy')}>
-                      Strategy
-                    </button>
-                    <button type="button" className={`form_button_pill cursor-pointer ${formData.selectedValue === 'Packaging' ? 'form_active' : ''}`} data-value="Packaging" onClick={() => handleButtonClick('Packaging')}>
-                      Packaging
-                    </button>
-                    <button type="button" className={`form_button_pill cursor-pointer ${formData.selectedValue === 'Retouching' ? 'form_active' : ''}`} data-value="Retouching" onClick={() => handleButtonClick('Retouching')}>
-                      Retouching
-                    </button>
-                    <button type="button" className={`form_button_pill cursor-pointer ${formData.selectedValue === 'Product Design' ? 'form_active' : ''}`} data-value="Product Design" onClick={() => handleButtonClick('Product Design')}>
-                      Product Design
-                    </button>
-                    <button type="button" className={`form_button_pill cursor-pointer ${formData.selectedValue === 'Web Design' ? 'form_active' : ''}`} data-value="Web Design" onClick={() => handleButtonClick('Web Design')}>
-                      Web Design
-                    </button>
+                    {['Branding', 'UXUI', 'Social Media', 'Design', 'Copywriting', 'Strategy', 'Packaging', 'Retouching', 'Product Design', 'Web Design'].map((value) => (
+                      <button key={value} type="button" className={`form_button_pill cursor-pointer ${formData.selectedValue === value ? 'form_active' : ''}`} data-value={value} onClick={() => handleButtonClick(value)}>
+                        {value}
+                      </button>
+                    ))}
                   </div>
                   {errors.selectedValue && <p className="max-[1750px]:text-[0.675rem] text-[0.675vw] text-[#db4e43] absolute bottom-[-1.5rem]">Select an area related to your project</p>}
                 </div>
+
                 <p
                   className="max-[600px]:text-[2rem] max-[768px]:text-[2.25rem] footer_email_footer footer_contact leading-[1] font-[400] max-[1200px]:text-[2.5rem] max-[1750px]:text-[3rem] text-[3vw] cursor-pointer no-underline mt-[3rem]"
-                  onClick={handleSubmit}
+                  onClick={handleFormSubmit}
                 >
                   <span
                     className="flex max-[1024px]:translate-y-[0] max-[1024px]:opacity-100 translate-y-[50px] opacity-0 inner"
@@ -402,6 +321,7 @@ const Contact = () => {
                   </span>
                 </p>
               </form>
+              <ToastDemo open={showToast.open} message={showToast.message} type={showToast.type} onClose={() => setShowToast({ ...showToast, open: false })} />
             </div>
           </div>
 
@@ -422,7 +342,7 @@ const Contact = () => {
                 </span>
               </h3>
             </div>
-            <div className="max-[1024px]:justify-start max-[1024px]:text-left max-[1024px]:w-[100%] max-[1750px]:w-[65%] w-[45%] pb-[30px] lg:pb-[0]  flex ">
+            <div className="max-[1024px]:justify-start max-[1024px]:text-left max-[1024px]:w-[100%] max-[1750px]:w-[65%] w-[45%] pb-[30px] lg:pb-[0] flex ">
               <div className="max-[600px]:text-[3rem] max-[768px]:text-[3.25rem] footer_email_footer footer_contact leading-[1] font-[400] max-[1200px]:text-[3rem] max-[1750px]:text-[4rem] text-[3.3vw] cursor-react no-underline">
                 <CopyToClipboardLink
                   className="flex max-[1024px]:translate-y-[0] max-[1024px]:opacity-100 translate-y-[50px] opacity-0 inner"
@@ -459,7 +379,7 @@ const Contact = () => {
                 </span>
               </h3>
             </div>
-            <div className="max-[1024px]:justify-start max-[1024px]:text-left max-[1024px]:w-[100%] max-[1750px]:w-[65%] w-[45%] pb-[30px] lg:pb-[0]  flex flex-col ">
+            <div className="max-[1024px]:justify-start max-[1024px]:text-left max-[1024px]:w-[100%] max-[1750px]:w-[65%] w-[45%] pb-[30px] lg:pb-[0] flex flex-col ">
               <h3 className="pt-[30px] lg:pt-[45px] pb-[20px] lg:pb-[0] font-[400] max-[600px]:text-[1rem] max-[1750px]:text-[1.063rem] text-[1vw] uppercase leading-[120%] overflow-hidden">
                 <span
                   className="flex max-[1024px]:translate-y-[0] max-[1024px]:opacity-100 translate-y-[50px] opacity-0 inner"
@@ -506,7 +426,7 @@ const Contact = () => {
                   Phone Number
                 </span>
               </h3>
-              <div className="max-[600px]:text-[2rem] max-[768px]:mt-[0rem] max-[768px]:text-[2.25rem]  leading-[1] font-[400] max-[1750px]:text-[2rem] text-[2vw] cursor-react underline mt-[1rem]">
+              <div className="max-[600px]:text-[2rem] max-[768px]:mt-[0rem] max-[768px]:text-[2.25rem] leading-[1] font-[400] max-[1750px]:text-[2rem] text-[2vw] cursor-react underline mt-[1rem]">
                 <CopyToClipboardLink
                   className="flex max-[1024px]:translate-y-[0] max-[1024px]:opacity-100 translate-y-[50px] opacity-0 inner underline"
                   href="tel:+62-896-0250-5228"
@@ -547,7 +467,7 @@ const Contact = () => {
             <div className="header__section max-[1024px]:hidden block desktop__heading">
               <div>
                 <h1
-                  className="work_design_title__IseCw max-[1024px]:text-[10rem] text-[10vw] leading-[110%] font-medium opacity-0 flex flex-col items-center translate-y-[60px] opacity-0"
+                  className="work_design_title__IseCw max-[1024px]:text-[10rem] text-[10vw] leading-[80%] font-medium opacity-0 flex flex-col items-center translate-y-[60px] opacity-0"
                   style={{
                     translate: 'none',
                     rotate: 'none',
@@ -572,7 +492,7 @@ const Contact = () => {
                     >
                       <video
                         id="vid-colaborate"
-                        className="w-[17vw] h-[10vw] object-cover pointer-events-none"
+                        className="w-[20vw] h-[10vw] pl-10 object-cover pointer-events-none"
                         src="/images/video/Branding Video.mp4"
                         autoPlay
                         playsInline
@@ -584,7 +504,7 @@ const Contact = () => {
                           scale: 'none',
                           transformOrigin: '50% 50%',
                           transform: 'translate(0px, 0px)',
-                          width: '17vw',
+                          width: '20vw',
                         }}
                       />
                     </span>

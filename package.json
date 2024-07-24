@@ -13,8 +13,10 @@
     "minified": "npx tailwindcss -i ./src/app/globals.css -o ./public/css/tailwind-min.css --minify"
   },
   "dependencies": {
+    "@formspree/react": "^2.5.1",
     "@gsap/react": "^2.1.1",
     "@radix-ui/react-hover-card": "^1.1.1",
+    "@radix-ui/react-toast": "^1.2.1",
     "@studio-freight/react-lenis": "^0.0.47",
     "clsx": "^2.1.1",
     "crypto-js": "^4.2.0",

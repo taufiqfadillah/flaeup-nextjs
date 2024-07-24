@@ -118,13 +118,13 @@ const Footer = () => {
                 </div>
                 <div>
                   <LinkPreview
-                    className="group inline-flex py-5 px-8 text-[18px] lg:text-[20px] font-normal leading-[123%] items-center justify-center leading-none font-medium text-white border border-white rounded-full transition duration-200 hover:bg-white hover:text-[#2a357a]"
+                    className="group inline-flex py-5 px-6 text-[18px] lg:text-[20px] font-normal leading-[123%] items-center justify-center leading-none font-medium text-white border border-white rounded-full transition duration-200 hover:bg-white hover:text-[#2a357a]"
                     href="https://x.com/@flaeupstudio"
                     target="_blank"
                     rel="noopener noreferrer"
                     url="https://x.com/@flaeupstudio"
                   >
-                    <span>Twitter</span>
+                    <span>X</span>
                   </LinkPreview>
                 </div>
               </div>

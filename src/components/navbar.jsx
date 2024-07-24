@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React from "react";
-import AnimatedTextCharacter from "@/libs/AnimatedTextCharacter";
-import AnimatedImage from "@/libs/AnimatedImage";
+import React from 'react';
+import AnimatedTextCharacter from '@/libs/AnimatedTextCharacter';
+import AnimatedImage from '@/libs/AnimatedImage';
 
 const Navbar = () => {
   return (
@@ -13,68 +13,22 @@ const Navbar = () => {
           <div className="lg:mx-16 py-4 md:py-2">
             <div className="flex w-full h-12 md:h-16 items-center justify-between">
               <a className="inline-block" href="/">
-                <AnimatedImage
-                  className="h-6 md:h-12 mb-6 md:mb-0 pl-[15px] md:pl-0"
-                  src="/images/logos/logo.png"
-                  alt="Logo"
-                  width={58}
-                  height={46}
-                  priority={true}
-                  style={{ maxWidth: "58px", maxHeight: "46px" }}
-                />
+                <AnimatedImage className="h-6 md:h-12 mb-6 md:mb-0 pl-[15px] md:pl-0" src="/images/logos/logo.png" alt="Logo" width={58} height={46} priority={true} style={{ maxWidth: '58px', maxHeight: '46px' }} />
               </a>
               <button className="lg:hidden navbar-burger pr-[15px] md:pr-0">
-                <svg
-                  width="32"
-                  height="16"
-                  viewBox="0 0 44 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="32" height="16" viewBox="0 0 44 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect width="24" height="2" rx="1" fill="black"></rect>
-                  <rect
-                    y="14"
-                    width="12"
-                    height="1.5"
-                    rx="1"
-                    fill="black"
-                  ></rect>
+                  <rect y="14" width="12" height="1.5" rx="1" fill="black"></rect>
                 </svg>
               </button>
               <div className="hidden lg:flex items-center space-x-44 min-[1300px]:space-x-[260px] 2xl:space-x-72 font-medium">
-                <a
-                  className="leading-snug block items-center hover:underline"
-                  href="/"
-                >
+                <a className="leading-snug block items-center" href="/">
                   <AnimatedTextCharacter text="Design" />
-                  <svg
-                    id="SvgjsSvg1011"
-                    width="8"
-                    height="8"
-                    xmlns="http://www.w3.org/2000/svg"
-                    version="1.1"
-                    xmlnsXlink="http://www.w3.org/1999/xlink"
-                    xmlnssvgjs="http://svgjs.com/svgjs"
-                    className="ml-3 relative inline-block"
-                  >
+                  <svg id="SvgjsSvg1011" width="8" height="8" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlnsXlink="http://www.w3.org/1999/xlink" xmlnssvgjs="http://svgjs.com/svgjs" className="ml-3 relative inline-block">
                     <defs id="SvgjsDefs1012"></defs>
                     <g id="SvgjsG1013">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        width="8"
-                        height="8"
-                      >
-                        <rect
-                          width="16.15"
-                          height="16.15"
-                          x="3.92"
-                          y="3.92"
-                          data-name="49. Box, design, geometry, square, stop"
-                          rx=".9"
-                          fill="#82caaa"
-                          className="color000 svgShape"
-                        ></rect>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="8" height="8">
+                        <rect width="16.15" height="16.15" x="3.92" y="3.92" data-name="49. Box, design, geometry, square, stop" rx=".9" fill="#82caaa" className="color000 svgShape"></rect>
                       </svg>
                     </g>
                   </svg>
@@ -82,84 +36,29 @@ const Navbar = () => {
                     <AnimatedTextCharacter text="That Speaks" />
                   </span>
                 </a>
-                <a
-                  className=" inline-block hover:underline flex items-center leading-none"
-                  href="/about"
-                >
+                <a className="inline-block menu_menu_link flex items-center leading-none" href="/about">
                   <AnimatedTextCharacter text="About" />
-                  <svg
-                    id="SvgjsSvg1011"
-                    width="8"
-                    height="8"
-                    xmlns="http://www.w3.org/2000/svg"
-                    version="1.1"
-                    xmlnsXlink="http://www.w3.org/1999/xlink"
-                    xmlnssvgjs="http://svgjs.com/svgjs"
-                    className="ml-2 relative top-1"
-                  >
+                  <svg id="SvgjsSvg1011" width="8" height="8" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlnsXlink="http://www.w3.org/1999/xlink" xmlnssvgjs="http://svgjs.com/svgjs" className="ml-2 relative top-1">
                     <defs id="SvgjsDefs1012"></defs>
                     <g id="SvgjsG1013">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        width="8"
-                        height="8"
-                      >
-                        <rect
-                          width="16.15"
-                          height="16.15"
-                          x="3.92"
-                          y="3.92"
-                          data-name="49. Box, design, geometry, square, stop"
-                          rx=".9"
-                          fill="#82caaa"
-                          className="color000 svgShape"
-                        ></rect>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="8" height="8">
+                        <rect width="16.15" height="16.15" x="3.92" y="3.92" data-name="49. Box, design, geometry, square, stop" rx=".9" fill="#82caaa" className="color000 svgShape"></rect>
                       </svg>
                     </g>
                   </svg>
                 </a>
-                <a
-                  className="inline-block hover:underline flex items-center leading-none"
-                  href="/work"
-                >
+                <a className="inline-block menu_menu_link flex items-center leading-none" href="/work">
                   <AnimatedTextCharacter text="Work" />
-                  <svg
-                    id="SvgjsSvg1011"
-                    width="8"
-                    height="8"
-                    xmlns="http://www.w3.org/2000/svg"
-                    version="1.1"
-                    xmlnsXlink="http://www.w3.org/1999/xlink"
-                    xmlnssvgjs="http://svgjs.com/svgjs"
-                    className="ml-2 relative top-1"
-                  >
+                  <svg id="SvgjsSvg1011" width="8" height="8" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlnsXlink="http://www.w3.org/1999/xlink" xmlnssvgjs="http://svgjs.com/svgjs" className="ml-2 relative top-1">
                     <defs id="SvgjsDefs1012"></defs>
                     <g id="SvgjsG1013">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        width="8"
-                        height="8"
-                      >
-                        <rect
-                          width="16.15"
-                          height="16.15"
-                          x="3.92"
-                          y="3.92"
-                          data-name="49. Box, design, geometry, square, stop"
-                          rx=".9"
-                          fill="#82caaa"
-                          className="color000 svgShape"
-                        ></rect>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="8" height="8">
+                        <rect width="16.15" height="16.15" x="3.92" y="3.92" data-name="49. Box, design, geometry, square, stop" rx=".9" fill="#82caaa" className="color000 svgShape"></rect>
                       </svg>
                     </g>
                   </svg>
                 </a>
-                <a
-                  className="inline-block hover:underline flex items-center leading-none group"
-                  href="/contact"
-                >
+                <a className="inline-block menu_menu_link flex items-center leading-none group" href="/contact">
                   <AnimatedTextCharacter text="Contact" />
                   <svg
                     width="16px"
