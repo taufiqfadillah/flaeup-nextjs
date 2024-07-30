@@ -1,39 +1,40 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import Lenis from "@studio-freight/lenis";
-import LottieScrollTrigger from "@/libs/LottieScrollTrigger";
+import React, { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import LottieScrollTrigger from '@/libs/LottieScrollTrigger';
+import { useInView } from 'react-intersection-observer';
 
 const Hero = () => {
   const videoRef = useRef(null);
+  const heroContainerRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
-
-  useEffect(() => {
-    document.title = "Flaeup | Creativity is centar to our design";
-  }, []);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-
-    const lenis = new Lenis();
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-  }, []);
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+  });
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    gsap.fromTo(
+      heroContainerRef.current,
+      {
+        opacity: 0,
+        y: 100,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 3,
+        ease: 'back.inOut(2)',
+      }
+    );
+
     const animation = LottieScrollTrigger({
-      target: ".hero__container",
-      path: "/images/lottie/Creativity_Text_Animation.json",
+      target: '.hero__container',
+      path: '/images/lottie/Creativity_Text_Animateds.json',
       scrub: 1,
     });
 
@@ -51,15 +52,15 @@ const Hero = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: videoRef.current,
-          start: "top 90%",
-          end: "bottom 80%",
+          start: 'top 90%',
+          end: 'bottom 80%',
           scrub: 1,
         },
       });
 
       tl.to(videoRef.current, {
         duration: 1,
-        y: "-65vh",
+        y: '-65vh',
       });
     },
     {
@@ -67,10 +68,15 @@ const Hero = () => {
     }
   );
 
-  const handleToggleMute = () => {
-    videoRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
-  };
+  useEffect(() => {
+    if (inView) {
+      videoRef.current.muted = false;
+      setIsMuted(false);
+    } else {
+      videoRef.current.muted = true;
+      setIsMuted(true);
+    }
+  }, [inView]);
 
   return (
     <>
@@ -79,21 +85,24 @@ const Hero = () => {
         <div className="container">
           <div className="flex">
             <div className="w-full h-[140vh]">
-              <div className="hero__container flex items-end w-full h-screen"></div>
-              <div className="flex justify-content-center w-screen h-auto">
+              <div ref={heroContainerRef} className="hero__container items-end w-screen h-screen rotate-180" />
+              <div className="flex justify-center w-screen h-auto">
                 <video
-                  ref={videoRef}
+                  ref={(element) => {
+                    videoRef.current = element;
+                    ref(element);
+                  }}
                   preload="auto"
+                  rel="preload"
                   width="2000"
                   height="2000"
                   className="hero__video absolute w-full h-[650px] object-cover"
                   src="/images/video/Homepage Videos.mp4"
-                  autoPlay={true}
-                  playsInline={true}
-                  loop={true}
-                  muted={true}
-                  onClick={handleToggleMute}
-                ></video>
+                  autoPlay
+                  playsInline
+                  loop
+                  muted={isMuted}
+                />
               </div>
             </div>
           </div>
@@ -105,21 +114,11 @@ const Hero = () => {
         <div className="h-85vh lg:h-auto w-auto">
           <div className="mt-[120px]">
             <div className="flex border-b">
-              <h1 className="text-6xl font-bold px-2 pb-4">
-                Creativity is centar to our design.
-              </h1>
+              <h1 className="text-6xl font-bold px-2 pb-4">Creativity is centar to our design.</h1>
             </div>
             <div className="flex flex-wrap -mx-3 align-items-end">
               <div className="w-full h-full">
-                <video
-                  className="flex h-[70vh] w-full overflow-hidden object-cover"
-                  src="/images/video/Homepage Videos.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  preload="auto"
-                  alt=""
-                ></video>
+                <video className="flex h-[70vh] w-full overflow-hidden object-cover" src="/images/video/Homepage Videos.mp4" autoPlay loop muted preload="auto" alt="Flaeup Video" />
               </div>
             </div>
           </div>

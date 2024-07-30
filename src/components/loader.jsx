@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef, useState } from "react";
-import lottie from "lottie-web";
+import { useEffect, useRef, useState } from 'react';
+import lottie from 'lottie-web';
 
 const Loader = () => {
   const animationContainerRef = useRef(null);
@@ -11,11 +11,11 @@ const Loader = () => {
 
   useEffect(() => {
     const clearLocalStorage = () => {
-      localStorage.removeItem("hasVisited");
+      localStorage.removeItem('hasVisited');
       setHasVisited(false);
     };
 
-    const visitedBefore = localStorage.getItem("hasVisited");
+    const visitedBefore = localStorage.getItem('hasVisited');
 
     if (visitedBefore) {
       setHasVisited(true);
@@ -23,7 +23,7 @@ const Loader = () => {
     }
 
     // Disable scroll
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
 
     const animationContainer = animationContainerRef.current;
     let animation = null;
@@ -31,26 +31,26 @@ const Loader = () => {
     if (animationContainer) {
       animation = lottie.loadAnimation({
         container: animationContainer,
-        renderer: "svg",
+        renderer: 'svg',
         loop: false,
         autoplay: true,
-        path: "/images/lottie/Loader.json",
+        path: '/images/lottie/Loader.json',
       });
 
-      animation.addEventListener("DOMLoaded", () => {
+      animation.addEventListener('DOMLoaded', () => {
         animation.goToAndStop(animation.totalFrames, true);
         animation.setDirection(-1);
         animation.play();
 
-        animation.addEventListener("complete", () => {
+        animation.addEventListener('complete', () => {
           setTimeout(() => {
-            const preloader = document.getElementById("loading-screen");
+            const preloader = document.getElementById('loading-screen');
             if (preloader) {
-              preloader.style.display = "none";
-              document.body.style.overflow = ""; // Restore scroll
+              preloader.style.display = 'none';
+              document.body.style.overflow = ''; // Restore scroll
 
               setAnimationComplete(true);
-              localStorage.setItem("hasVisited", true);
+              localStorage.setItem('hasVisited', true);
 
               const timeoutId = setTimeout(clearLocalStorage, 30 * 60 * 1000);
               removeTimeoutRef.current = timeoutId;
@@ -75,15 +75,8 @@ const Loader = () => {
   }
 
   return (
-    <div
-      className="loading-screen fixed z-[9999999] top-0 bottom-0 left-0 right-0 bg-white flex justify-center items-center overflow-hidden"
-      id="loading-screen"
-    >
-      <div
-        id="lottie-animation"
-        className="w-full h-auto max-w-[600px] max-h-[600px]"
-        ref={animationContainerRef}
-      ></div>
+    <div className="loading-screen fixed z-[9999999] top-0 bottom-0 left-0 right-0 bg-white flex justify-center items-center overflow-hidden" id="loading-screen">
+      <div id="lottie-animation" className="w-full h-auto max-w-[600px] max-h-[600px]" ref={animationContainerRef} />
     </div>
   );
 };

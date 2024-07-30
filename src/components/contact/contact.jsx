@@ -1,20 +1,17 @@
 'use client';
 
-import React, { useRef, useEffect, useState, useCallback } from 'react';
+import React, { useRef, useEffect, useState, useCallback, lazy } from 'react';
+import Link from 'next/link';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import CopyToClipboardLink from '@/components/ui/CopyToClipboard.tsx';
 import useStickySection from '@/hooks/useStickySection.jsx';
 import { useForm } from '@formspree/react';
-import ToastDemo from '@/components/ui/Toast.jsx';
+const CopyToClipboardLink = lazy(() => import('@/components/ui/CopyToClipboard.tsx'));
+const ToastDemo = lazy(() => import('@/components/ui/Toast.jsx'));
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
-  useEffect(() => {
-    document.title = 'Contact | Creativity is centar to our design.';
-  }, []);
-
   useStickySection();
 
   // Use refs for GSAP animations
@@ -29,11 +26,15 @@ const Contact = () => {
     lastname: '',
     email: '',
     about: '',
-    selectedValue: '',
+    selectedValues: [], // Change from string to array
   });
 
   const [errors, setErrors] = useState({});
-  const [showToast, setShowToast] = useState({ open: false, message: '', type: '' });
+  const [showToast, setShowToast] = useState({
+    open: false,
+    message: '',
+    type: '',
+  });
 
   const handleInputChange = useCallback((e) => {
     const { name, value } = e.target;
@@ -50,14 +51,19 @@ const Contact = () => {
     }
   }, []);
 
+  // Update button click handler to toggle selection
   const handleButtonClick = useCallback((value) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      selectedValue: value,
-    }));
+    setFormData((prevData) => {
+      const newSelectedValues = prevData.selectedValues.includes(value) ? prevData.selectedValues.filter((val) => val !== value) : [...prevData.selectedValues, value];
+      return {
+        ...prevData,
+        selectedValues: newSelectedValues,
+      };
+    });
+
     setErrors((prevErrors) => ({
       ...prevErrors,
-      selectedValue: false,
+      selectedValues: false,
     }));
   }, []);
 
@@ -67,7 +73,7 @@ const Contact = () => {
       lastname: formData.lastname.trim() === '',
       email: !/\S+@\S+\.\S+/.test(formData.email),
       about: formData.about.trim() === '',
-      selectedValue: formData.selectedValue.trim() === '',
+      selectedValues: formData.selectedValues.length === 0,
     };
 
     setErrors(newErrors);
@@ -84,16 +90,24 @@ const Contact = () => {
           _subject: 'New submission from your site',
         });
 
-        setShowToast({ open: true, message: 'Form submitted successfully!', type: 'success' });
+        setShowToast({
+          open: true,
+          message: 'Form submitted successfully!',
+          type: 'success',
+        });
         setFormData({
           name: '',
           lastname: '',
           email: '',
           about: '',
-          selectedValue: '',
+          selectedValues: [],
         });
       } catch (error) {
-        setShowToast({ open: true, message: 'Something went wrong. Please try again.', type: 'error' });
+        setShowToast({
+          open: true,
+          message: 'Something went wrong. Please try again.',
+          type: 'error',
+        });
       }
     }
   };
@@ -183,17 +197,17 @@ const Contact = () => {
   return (
     <>
       <section className="pr-[32px] pl-[32px]">
-        <div className="header__section max-[1024px]:hidden block desktop__heading">
-          <div className="pt-[150px] items-center justify-between px-[2rem]">
-            <h1 className="max-[1024px]:text-[7rem] max-[1750px]:text-[6rem] text-[6rem] leading-[110%] font-bold opacity-0 flex flex-col mb-10 pt-6" ref={eRef}>
+        <div className="header__section max-[1024px]:hidden block desktop__heading h-screen flex flex-col justify-between px-[2rem]">
+          <div className="flex-1 flex items-center">
+            <h1 className="max-[1024px]:text-[7rem] max-[1750px]:text-[6rem] text-[6rem] leading-[120%] font-normal opacity-0 flex flex-col mb-10" ref={eRef}>
               <span>We Transform Your</span>
               <span>Ideas into Tangible</span>
               <span ref={tRef}>Results.</span>
             </h1>
           </div>
-          <div className="w-[100%] flex px-[2rem]">
+          <div className="w-[100%] flex">
             <div className="w-[50%]">
-              <h2 id="connect-text" className="mt-[50px] mb-[50px] leading-[120%] max-[1200px]:text-[1.5rem] max-[1750px]:text-[2rem] text-[2vw] font-[400]">
+              <h2 id="connect-text" className="leading-[120%] max-[1200px]:text-[1.5rem] max-[1750px]:text-[2rem] text-[2vw] font-[400] flex flex-col pb-10 justify-end">
                 <span className="overflow-hidden">
                   <span className="flex opacity-0 translate-y-[100%] inner">Collaborate with our team</span>
                 </span>
@@ -206,28 +220,12 @@ const Contact = () => {
         </div>
         <div className="max-[1024px]:flex header__section hidden flex-wrap mobile__heading">
           <div className="w-[100%] pt-[7rem]">
-            <h1 className="max-[375px]:text-[4rem] max-[600px]:text-[5rem] text-[10rem] leading-[1] font-[500]">
-              We Transform Your <br /> Ideas into Tangible <br />
+            <h1 className="max-[375px]:text-[2rem] max-[600px]:text-[3rem] text-[3rem] leading-[120%] font-[500]">
+              We Transform Your Ideas <br />
+              into Tangible <br />
             </h1>
-            <div className="max-[375px]:text-[4rem] max-[600px]:text-[5rem] text-[10rem] leading-[1] font-[500]">
-              <h1>
-                Vision to
-                <span className="flex flex-wrap">
-                  <span className="inline-block mt-[20px]" role="img" aria-label="Animation">
-                    <video
-                      className="max-[600px]:top-[-0.8rem] max-[600px]:mr-[1rem] max-[600px]:h-[70px] max-[600px]:w-[100px] mr-[2rem] h-[140px] w-[250px] object-cover relative"
-                      src="https://cms.raxo.co/wp-content/uploads/2023/12/COURIUS_2_465X404.mp4"
-                      controls={false}
-                      autoPlay
-                      playsInline
-                      loop
-                      muted
-                    />
-                  </span>
-                  <br />
-                  <span className="max-[375px]:flex max-[375px]:items-center inline-block flex-nowrap">Result</span>
-                </span>
-              </h1>
+            <div className="max-[375px]:text-[2rem] max-[600px]:text-[3rem] text-[3rem] leading-[120%] font-[500]">
+              <h1>Vision to Result</h1>
             </div>
           </div>
           <div className="w-[100%]">
@@ -236,7 +234,7 @@ const Contact = () => {
             </h2>
           </div>
         </div>
-        <div className="contact__options mb-[65px] lg:mb-52 px-[2rem] mt-20">
+        <div className="contact__options mb-[65px] lg:mb-52 px-0 md:px-[2rem] mt-10 md:mt-20">
           <div className="flex flex-wrap lg:pt-[35px] lg:pb-[70px] contact__email ">
             <div className="max-[1024px]:w-[100%] max-[1750px]:w-[35%] w-[55%]">
               <h3 className="max-[768px]:text-[1rem] pt-[30px] lg:pt-[45px] pb-[20px] lg:pb-[0] font-[400] max-[600px]:text-[1rem] max-[1750px]:text-[1.063rem] text-[1vw] uppercase leading-[120%] overflow-hidden">
@@ -277,7 +275,7 @@ const Contact = () => {
                 <div className="flex w-full relative">
                   <div className="flex w-full flex-wrap form_buttons_wrapper">
                     {['Branding', 'UXUI', 'Social Media', 'Design', 'Copywriting', 'Strategy', 'Packaging', 'Retouching', 'Product Design', 'Web Design'].map((value) => (
-                      <button key={value} type="button" className={`form_button_pill cursor-pointer ${formData.selectedValue === value ? 'form_active' : ''}`} data-value={value} onClick={() => handleButtonClick(value)}>
+                      <button key={value} type="button" className={`form_button_pill cursor-pointer ${formData.selectedValues.includes(value) ? 'form_active' : ''}`} data-value={value} onClick={() => handleButtonClick(value)}>
                         {value}
                       </button>
                     ))}
@@ -285,9 +283,17 @@ const Contact = () => {
                   {errors.selectedValue && <p className="max-[1750px]:text-[0.675rem] text-[0.675vw] text-[#db4e43] absolute bottom-[-1.5rem]">Select an area related to your project</p>}
                 </div>
 
-                <p
+                <button
+                  type="submit"
                   className="max-[600px]:text-[2rem] max-[768px]:text-[2.25rem] footer_email_footer footer_contact leading-[1] font-[400] max-[1200px]:text-[2.5rem] max-[1750px]:text-[3rem] text-[3vw] cursor-pointer no-underline mt-[3rem]"
                   onClick={handleFormSubmit}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      handleFormSubmit(e);
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
                 >
                   <span
                     className="flex max-[1024px]:translate-y-[0] max-[1024px]:opacity-100 translate-y-[50px] opacity-0 inner"
@@ -314,12 +320,13 @@ const Contact = () => {
                       transform: 'translate(0px, 0%)',
                     }}
                   >
-                    <svg width={48} height={48} viewBox="0 0 48 48" fill="none">
+                    <svg className="w-[48px] h-[48px] max-[600px]:w-[24px] max-[600px]:h-[24px] pl-1 md:pl-0" viewBox="0 0 48 48" fill="none">
+                      <title>Submit Icon</title>
                       <path d="M13.9978 40L32.9978 21" stroke="#080808" strokeWidth={4} strokeLinecap="square" strokeLinejoin="round" />
                       <path d="M13.9978 20.001H33.9978V40.001" stroke="#080808" strokeWidth={4} strokeLinecap="square" />
                     </svg>
                   </span>
-                </p>
+                </button>
               </form>
               <ToastDemo open={showToast.open} message={showToast.message} type={showToast.type} onClose={() => setShowToast({ ...showToast, open: false })} />
             </div>
@@ -394,8 +401,8 @@ const Contact = () => {
                   Address
                 </span>
               </h3>
-              <p className="max-[600px]:text-[2rem] max-[768px]:mt-[0rem] max-[768px]:text-[2.25rem] footer_email_footer__VFmDJ footer_contact__2uxCy leading-[2] font-[400] max-[1750px]:text-[2rem] text-[3vw] cursor-react no-underline mt-[1rem]">
-                <a href="#" target="_BLANK">
+              <p className="max-[600px]:text-[1.8rem] max-[768px]:mt-[0rem] max-[768px]:text-[2.25rem] footer_email_footer footer_contact leading-[1.5] font-[400] max-[1750px]:text-[2rem] text-[3vw] cursor-react no-underline mt-[1rem]">
+                <Link href="#" target="_BLANK">
                   <span
                     className="flex max-[1024px]:translate-y-[0] max-[1024px]:opacity-100 translate-y-[50px] opacity-0 inner"
                     style={{
@@ -407,10 +414,10 @@ const Contact = () => {
                     }}
                   >
                     <span className="">
-                      Indonesia, Grogol, Jakarta Barat <br /> Jakarta, 11710.
+                      Komp Depart Agama, Cengkareng <br /> West Java, DKI Jakarta, 11710.
                     </span>
                   </span>
-                </a>
+                </Link>
               </p>
               <h3 className="pt-[30px] lg:pt-[45px] pb-[20px] lg:pb-[0] font-[400] max-[600px]:text-[1rem] max-[1750px]:text-[1.063rem] text-[1vw] uppercase leading-[120%] overflow-hidden ">
                 <span
@@ -426,7 +433,7 @@ const Contact = () => {
                   Phone Number
                 </span>
               </h3>
-              <div className="max-[600px]:text-[2rem] max-[768px]:mt-[0rem] max-[768px]:text-[2.25rem] leading-[1] font-[400] max-[1750px]:text-[2rem] text-[2vw] cursor-react underline mt-[1rem]">
+              <div className="max-[600px]:text-[1.8rem] max-[768px]:mt-[0rem] max-[768px]:text-[2.25rem] leading-[1] font-[400] max-[1750px]:text-[2rem] text-[2vw] cursor-react underline mt-[1rem]">
                 <CopyToClipboardLink
                   className="flex max-[1024px]:translate-y-[0] max-[1024px]:opacity-100 translate-y-[50px] opacity-0 inner underline"
                   href="tel:+62-896-0250-5228"
@@ -456,18 +463,19 @@ const Contact = () => {
             inset: '0px auto auto 0px',
             margin: 0,
             maxWidth: 1430,
-            width: 1430,
+            width: 'auto',
             maxHeight: 750,
             height: 750,
             padding: 0,
             transform: 'translate(0px, 0px)',
           }}
         >
-          <section className="pr-[32px] pl-[32px]">
+          {/* Dekstop */}
+          <section className="px-0 lg:px-[32px]">
             <div className="header__section max-[1024px]:hidden block desktop__heading">
               <div>
                 <h1
-                  className="work_design_title__IseCw max-[1024px]:text-[10rem] text-[10vw] leading-[80%] font-medium opacity-0 flex flex-col items-center translate-y-[60px] opacity-0"
+                  className="work_design_title__IseCw max-[1024px]:text-[10rem] text-[10vw] leading-[80%] font-medium opacity-0 flex flex-col items-center translate-y-[60px]"
                   style={{
                     translate: 'none',
                     rotate: 'none',
@@ -493,7 +501,7 @@ const Contact = () => {
                       <video
                         id="vid-colaborate"
                         className="w-[20vw] h-[10vw] pl-10 object-cover pointer-events-none"
-                        src="/images/video/Branding Video.mp4"
+                        src="/images/video/Homepage Videos.mp4"
                         autoPlay
                         playsInline
                         loop
@@ -519,12 +527,21 @@ const Contact = () => {
                   <h1 className="flex">
                     Let&apos;s
                     <span className="flex flex-wrap">
-                      <span className="max-[768px]:mt-[30px] inline-block mt-[20px]" role="img" aria-label="Animation"></span>
+                      <span className="max-[768px]:mt-[30px] inline-block mt-[20px]" role="img" aria-label="Animation">
+                        <video
+                          className="max-[1024px]:top-[-0.8rem] max-[1024px]:mr-[1rem] max-[1024px]:h-[70px] max-[1024px]:w-[100px] max-[1024px]:mx-[1rem] mr-[2rem] h-[140px] w-[350px] object-cover relative"
+                          src="/images/video/Homepage Videos.mp4"
+                          autoPlay
+                          playsInline
+                          loop
+                          muted
+                        />
+                      </span>
                       <br />
                     </span>
                   </h1>
                 </div>
-                <h1 className="max-[375px]:text-[4rem] max-[600px]:text-[5.6rem] max-[768px]:text-[6.5rem] max-[1024px]:text-[6rem] text-[5rem] leading-[1] font-[500]">Collab!</h1>
+                <h1 className="max-[375px]:text-[4rem] max-[600px]:text-[5.6rem] max-[768px]:text-[6.5rem] max-[1024px]:text-[6rem] text-[5rem] leading-[1] font-[500]">Team Up!</h1>
               </div>
             </div>
           </section>

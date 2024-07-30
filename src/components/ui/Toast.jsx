@@ -11,7 +11,7 @@ const ToastDemo = ({ open, message, type, onClose }) => {
         <Toast.Title className="ToastTitle">{type === 'success' ? 'Success' : 'Error'}</Toast.Title>
         <Toast.Description className="ToastDescription">{message}</Toast.Description>
         <Toast.Action className="ToastAction" asChild altText="Close">
-          <button className={`Button small ${type === 'success' ? 'green' : 'red'}`} onClick={onClose}>
+          <button className={`Button small ${type === 'success' ? 'green' : 'red'}`} type="button" onClick={onClose}>
             Close
           </button>
         </Toast.Action>
