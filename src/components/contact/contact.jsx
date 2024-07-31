@@ -8,6 +8,7 @@ import useStickySection from '@/hooks/useStickySection.jsx';
 import { useForm } from '@formspree/react';
 const CopyToClipboardLink = lazy(() => import('@/components/ui/CopyToClipboard.tsx'));
 const ToastDemo = lazy(() => import('@/components/ui/Toast.jsx'));
+import 'dotenv/config';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,13 +21,14 @@ const Contact = () => {
   const aRef = useRef(null);
   const iRef = useRef(null);
 
-  const [state, handleSubmit] = useForm('xvgpzrwd');
+  const [state, handleSubmit] = useForm('myzgwkdv');
   const [formData, setFormData] = useState({
     name: '',
     lastname: '',
     email: '',
     about: '',
-    selectedValues: [], // Change from string to array
+    selectedBudget: '',
+    selectedValues: [],
   });
 
   const [errors, setErrors] = useState({});
@@ -51,8 +53,19 @@ const Contact = () => {
     }
   }, []);
 
-  // Update button click handler to toggle selection
-  const handleButtonClick = useCallback((value) => {
+  const handleButtonBudget = useCallback((value) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      selectedBudget: prevData.selectedBudget === value ? '' : value, // Single select logic
+    }));
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      selectedBudget: false,
+    }));
+  }, []);
+
+  const handleButtonProject = useCallback((value) => {
     setFormData((prevData) => {
       const newSelectedValues = prevData.selectedValues.includes(value) ? prevData.selectedValues.filter((val) => val !== value) : [...prevData.selectedValues, value];
       return {
@@ -73,6 +86,7 @@ const Contact = () => {
       lastname: formData.lastname.trim() === '',
       email: !/\S+@\S+\.\S+/.test(formData.email),
       about: formData.about.trim() === '',
+      selectedBudget: formData.selectedBudget === '',
       selectedValues: formData.selectedValues.length === 0,
     };
 
@@ -87,7 +101,7 @@ const Contact = () => {
       try {
         await handleSubmit({
           ...formData,
-          _subject: 'New submission from your site',
+          _subject: 'New submission from Flaeup.co',
         });
 
         setShowToast({
@@ -100,6 +114,7 @@ const Contact = () => {
           lastname: '',
           email: '',
           about: '',
+          selectedBudget: '',
           selectedValues: [],
         });
       } catch (error) {
@@ -272,17 +287,32 @@ const Contact = () => {
                   <textarea className="form_about" type="text" name="about" id="about" placeholder="Let us know about your project*" value={formData.about} onChange={handleInputChange} required />
                   {errors.about && <p className="max-[1750px]:text-[0.675rem] text-[0.675vw] text-[#db4e43] absolute bottom-[-1.5rem]">Please let us know a bit more about your project</p>}
                 </div>
-                <div className="flex w-full relative">
+                <div className="flex flex-col w-full relative">
+                  {/* Budget Label */}
+                  <span className="text-[#080808] mt-10">Project Budget (USD)*</span>
+
+                  <div className="flex flex-wrap w-full form_buttons_wrapper pb-4">
+                    {/* Budget Buttons */}
+                    {['< 5.000', '5k - 10k', '20k - 30k', '40k - 50k', '> 50.000'].map((value) => (
+                      <button key={value} type="button" className={`form_button_pill cursor-pointer ${formData.selectedBudget === value ? 'form_active' : ''}`} data-value={value} onClick={() => handleButtonBudget(value)}>
+                        {value}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Error Message */}
+                  {errors.selectedBudget && <p className="max-[1750px]:text-[0.675rem] text-[0.675vw] text-[#db4e43] absolute bottom-[-1.5rem]">Select an area related to your budget</p>}
+                </div>
+                <div className="flex w-full border-t border-solid border-1 border-black">
                   <div className="flex w-full flex-wrap form_buttons_wrapper">
                     {['Branding', 'UXUI', 'Social Media', 'Design', 'Copywriting', 'Strategy', 'Packaging', 'Retouching', 'Product Design', 'Web Design'].map((value) => (
-                      <button key={value} type="button" className={`form_button_pill cursor-pointer ${formData.selectedValues.includes(value) ? 'form_active' : ''}`} data-value={value} onClick={() => handleButtonClick(value)}>
+                      <button key={value} type="button" className={`form_button_pill cursor-pointer ${formData.selectedValues.includes(value) ? 'form_active' : ''}`} data-value={value} onClick={() => handleButtonProject(value)}>
                         {value}
                       </button>
                     ))}
                   </div>
                   {errors.selectedValue && <p className="max-[1750px]:text-[0.675rem] text-[0.675vw] text-[#db4e43] absolute bottom-[-1.5rem]">Select an area related to your project</p>}
                 </div>
-
                 <button
                   type="submit"
                   className="max-[600px]:text-[2rem] max-[768px]:text-[2.25rem] footer_email_footer footer_contact leading-[1] font-[400] max-[1200px]:text-[2.5rem] max-[1750px]:text-[3rem] text-[3vw] cursor-pointer no-underline mt-[3rem]"

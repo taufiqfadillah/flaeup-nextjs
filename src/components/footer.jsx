@@ -86,8 +86,8 @@ const Footer = () => {
     <>
       <section id="trigger-footer" className="hidden md:block" />
 
-      <section ref={footerRef} className="hidden md:block footer bg-[#2a357a] fixed bottom-0 left-0 w-full py-4 md:py-10 px-8 h-screen overflow-hidden z-50">
-        <footer className="overflow-hidden z-50">
+      <section ref={footerRef} className="hidden md:block footer bg-[#2a357a] fixed bottom-0 left-0 w-full py-4 md:py-10 px-8 min-h-screen overflow-hidden z-50">
+        <footer className="overflow-hidden">
           <div className="flex flex-wrap">
             <div className="flex w-full mb-[16px] md:mb-[24px] lg:mb-[24px]">
               <div className="w-3/4">
@@ -124,7 +124,7 @@ const Footer = () => {
                   <div className="max-[600px]:mt-[0px] footer_job_applications max-[768px]:pt-[1rem] max-[768px]:pl-[0rem] max-[1024px]:pl-[2rem] pl-[4rem]">
                     <p className="max-[600px]:text-[1.25rem] text-white max-[1750px]:text-[1.063rem] text-[1.25rem] leading-normal font-medium ">Address </p>
                     <p className="max-[600px]:text-[1.25rem] text-[#82caaa] max-[1750px]:text-[1.063rem] text-[1.25rem] leading-[130%] font-light mt-[12px]">
-                        Komp Depart Agama, Cengkareng, <br /> West Jakarta, DKI Jakarta 11710.
+                      Komp Depart Agama, Cengkareng, <br /> West Jakarta, DKI Jakarta 11710.
                     </p>
                   </div>
                   <div className="max-[600px]:mt-[0px] footer_job_applications max-[768px]:pt-[1rem] max-[768px]:pl-[0rem] max-[1024px]:pl-[2rem] pl-[4rem]">

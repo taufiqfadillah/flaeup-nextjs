@@ -88,7 +88,7 @@ const HeroCapabilities = ({ headingTextOne, headingTextTwo, subheadingTextOne, s
             </h2>
             <p className=" max-[600px]:mb-[2rem] max-[600px]:opacity-100 max-[600px]:mt-[2rem] max-[1024px]:mb-[3rem] max-[1024px]:mt-[1rem] text-[#212121] max-[1750px]:text-[1rem] text-[0.8vw] font-normal leading-[110%] tracking-normal uppercase my-[4rem] overflow-hidden top-strategy flex">
               <span className="flex relative overflow-hidden">
-                <span ref={descriptionRef} className="inner max-[1024px]:translate-y-[0px] max-[1024px]:opacity-100 translate-y-[50px] relative opacity-0 flex">
+                <span ref={descriptionRef} className="inner max-[1024px]:translate-y-[0px] max-[1024px]:opacity-100 translate-y-[50px] relative flex">
                   {descriptionTextOne} <br /> {descriptionTextTwo}
                 </span>
               </span>
@@ -116,94 +116,28 @@ const HeroCapabilities = ({ headingTextOne, headingTextTwo, subheadingTextOne, s
               }}
             >
               <div className="image-holder overflow-hidden one-image w-[100%]">
-                <Image
-                  alt="Project Image"
-                  title="Project Image"
-                  fetchPriority="high"
-                  width={800}
-                  height={800}
-                  className="max-[1024px]:opacity-100 object-cover opacity-0 w-[100%]"
-                  style={{ color: 'transparent', opacity: 1 }}
-                  src="https://fakeimg.pl/1024x700/2a357a/ffffff"
-                  priority
-                />
+                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[100%]" src="https://fakeimg.pl/1024x700/2a357a/ffffff" priority />
               </div>
               <div className="image-holder overflow-hidden two-images w-[100%] flex gap-5 overflow-hidden mt-[1rem]">
-                <video preload="auto" className="max-[1024px]:opacity-100 object-cover opacity-0 w-[55%]" src="/images/video/Branding Video.mp4" autoPlay loop style={{ opacity: 1 }}>
-                  <track kind="captions" />
-                </video>
-                <Image
-                  alt="Project Image"
-                  title="Project Image"
-                  fetchPriority="high"
-                  width={800}
-                  height={800}
-                  className="max-[1024px]:opacity-100 object-cover opacity-0 w-[45%]"
-                  style={{ color: 'transparent', opacity: 1 }}
-                  src="https://fakeimg.pl/1024x700/2a357a/ffffff"
-                  priority
-                />
+                <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[55%]" src="/images/video/Branding Video.mp4" autoPlay loop muted />
+                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[45%]" src="https://fakeimg.pl/1024x700/2a357a/ffffff" priority />
               </div>
               <div className="image-holder overflow-hidden one-image w-[100%]  mt-[1rem]">
-                <video preload="auto" className="max-[1024px]:opacity-100 object-cover opacity-0 w-[100%]" src="/images/video/Retouching Video.mp4" autoPlay loop style={{ opacity: 1 }}>
-                  <track kind="captions" />
-                </video>
+                <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[100%]" src="/images/capabilities/Capabilities.mp4" autoPlay loop muted />
               </div>
               <div className="image-holder overflow-hidden two-images w-[100%] flex gap-5 overflow-hidden mt-[1rem]">
-                <video preload="auto" className="max-[1024px]:opacity-100 object-cover opacity-0 w-[45%]" src="/images/video/UIUX Video.mp4" autoPlay loop style={{ opacity: 1 }}>
-                  <track kind="captions" />
-                </video>
-                <Image
-                  alt="Project Image"
-                  title="Project Image"
-                  fetchPriority="high"
-                  width={800}
-                  height={800}
-                  className="max-[1024px]:opacity-100 object-cover opacity-0 w-[55%]"
-                  style={{ color: 'transparent', opacity: 1 }}
-                  src="https://fakeimg.pl/1024x700/2a357a/ffffff"
-                  priority
-                />
+                <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[45%]" src="/images/video/UIUX Video.mp4" autoPlay loop muted />
+                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[55%]" src="https://fakeimg.pl/1024x700/2a357a/ffffff" priority />
               </div>
               <div className="image-holder overflow-hidden one-image w-[100%] mt-[1rem]">
-                <Image
-                  alt="Project Image"
-                  title="Project Image"
-                  fetchPriority="high"
-                  width={800}
-                  height={800}
-                  className="max-[1024px]:opacity-100 object-cover opacity-0 w-[100%]"
-                  style={{ color: 'transparent', opacity: 1 }}
-                  src="https://fakeimg.pl/1024x700/2a357a/ffffff"
-                  priority
-                />
+                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[100%]" src="https://fakeimg.pl/1024x700/2a357a/ffffff" priority />
               </div>
               <div className="image-holder overflow-hidden two-images w-[100%] flex gap-5 overflow-hidden mt-[1rem]">
-                <Image
-                  alt="Project Image"
-                  title="Project Image"
-                  fetchPriority="high"
-                  width={800}
-                  height={800}
-                  className="max-[1024px]:opacity-100 object-cover opacity-0 w-[55%]"
-                  style={{ color: 'transparent', opacity: 1 }}
-                  src="https://fakeimg.pl/1024x700/2a357a/ffffff"
-                  priority
-                />
-                <video preload="auto" className="max-[1024px]:opacity-100 object-cover opacity-0 w-[45%]" src="/images/video/Homepage Videos.mp4" autoPlay loop muted style={{ opacity: 1 }} />
+                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[55%]" src="https://fakeimg.pl/1024x700/2a357a/ffffff" priority />
+                <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[45%]" src="/images/video/Homepage Videos.mp4" autoPlay loop muted />
               </div>
               <div className="image-holder overflow-hidden one-image w-[100%] mt-[1rem]">
-                <Image
-                  alt="Project Image"
-                  title="Project Image"
-                  fetchPriority="high"
-                  width={800}
-                  height={800}
-                  className="max-[1024px]:opacity-100 object-cover opacity-0 w-[100%]"
-                  style={{ color: 'transparent', opacity: 1 }}
-                  src="https://fakeimg.pl/1024x700/2a357a/ffffff"
-                  priority
-                />
+                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[100%]" src="https://fakeimg.pl/1024x700/2a357a/ffffff" priority />
               </div>
             </div>
           </div>
