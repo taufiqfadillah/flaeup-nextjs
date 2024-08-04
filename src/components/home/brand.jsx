@@ -44,6 +44,7 @@ const Brand = () => {
   return (
     <>
       {/* <!-- Logo Brand --> */}
+      <div className="h-[60px] md:h-[800px] lg:h-[1000px]" />
       <section className="py-12 md:py-20 panel" id="logo-brand-slider">
         <div className="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
           <div className="overflow-hidden relative w-full">

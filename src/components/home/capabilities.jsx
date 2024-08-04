@@ -18,7 +18,7 @@ const Capabilities = () => {
 
     const initGSAP = () => {
       const lastItemWidth = items[items.length - 1].offsetWidth;
-      const offset = (window.innerWidth - lastItemWidth) / 2 + 50;
+      const offset = (window.innerWidth - lastItemWidth) / 1;
 
       scrollTween = gsap.to('.carousel-item', {
         ease: 'power1.inOut',

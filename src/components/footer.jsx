@@ -1,92 +1,116 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import lottie from 'lottie-web';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { LinkPreview } from '@/components/ui/LinkPreview';
 import CopyToClipboardLink from '@/components/ui/CopyToClipboard';
+import debounce from 'lodash.debounce';
+import useMediaQueries from '@/hooks/useMediaQueries';
 
 const Footer = () => {
   const lottieLogoRef = useRef(null);
   const footerRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const { isMobile } = useMediaQueries();
 
   useEffect(() => {
-    // Lottie Footer Logo
-    const lottieInstance = lottie.loadAnimation({
-      container: lottieLogoRef.current,
-      renderer: 'svg',
-      loop: true,
-      autoplay: false,
-      path: '/images/lottie/Footer_Logo.json',
-    });
-
+    // Define event handlers
     const handleMouseEnter = () => {
-      lottieInstance.play();
+      if (lottieInstance) {
+        lottieInstance.play();
+      }
     };
 
     const handleMouseLeave = () => {
-      lottieInstance.stop();
+      if (lottieInstance) {
+        lottieInstance.stop();
+      }
     };
 
-    const lottieLogoElement = lottieLogoRef.current;
-    if (lottieLogoElement) {
-      lottieLogoElement.addEventListener('mouseenter', handleMouseEnter);
-      lottieLogoElement.addEventListener('mouseleave', handleMouseLeave);
-    }
+    let lottieInstance = null;
 
-    // GSAP ScrollTrigger
-    gsap.registerPlugin(ScrollTrigger);
+    if (!isMobile) {
+      // Initialize Lottie animation only on non-mobile devices
+      lottieInstance = lottie.loadAnimation({
+        container: lottieLogoRef.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: false,
+        path: '/images/lottie/Footer_Logo.json',
+      });
 
-    const footerElement = footerRef.current;
-    if (footerElement) {
-      const footerHeight = footerElement.offsetHeight;
-      const triggerElement = document.getElementById('trigger-footer');
-      if (triggerElement) {
-        triggerElement.style.height = `${footerHeight}px`;
+      const lottieLogoElement = lottieLogoRef.current;
+      if (lottieLogoElement) {
+        lottieLogoElement.addEventListener('mouseenter', handleMouseEnter);
+        lottieLogoElement.addEventListener('mouseleave', handleMouseLeave);
       }
 
-      gsap.set(footerElement, { y: `${footerHeight}px` });
+      gsap.registerPlugin(ScrollTrigger);
 
-      ScrollTrigger.create({
-        trigger: '#trigger-footer',
-        start: 'top bottom',
-        end: () => `+=${footerHeight}`,
-        scrub: true,
-        pin: true,
-        pinSpacing: false,
-        // markers: true, // Uncomment for debugging
-        onUpdate: (self) => {
-          const progress = self.progress;
-          const y = `${(1 - progress) * footerHeight}px`;
+      const footerElement = footerRef.current;
+      if (footerElement) {
+        const footerHeight = footerElement.offsetHeight;
+        const triggerElement = document.getElementById('trigger-footer');
+        if (triggerElement) {
+          triggerElement.style.height = `${footerHeight}px`;
+        }
 
-          gsap.set(footerElement, {
-            y,
-            duration: 0,
-            ease: 'none',
-          });
-        },
-      });
+        gsap.set(footerElement, { y: `${footerHeight}px` });
+
+        ScrollTrigger.create({
+          trigger: '#trigger-footer',
+          start: 'top bottom',
+          end: () => `+=${footerHeight}`,
+          scrub: true,
+          pin: true,
+          pinSpacing: false,
+          onUpdate: (self) => {
+            const progress = self.progress;
+            const y = `${(1 - progress) * footerHeight}px`;
+
+            gsap.set(footerElement, {
+              y,
+              duration: 0,
+              ease: 'none',
+            });
+          },
+        });
+      }
     }
+
+    const debouncedLoading = debounce(() => {
+      requestAnimationFrame(() => {
+        setIsLoading(false);
+      });
+    }, 100);
+
+    debouncedLoading();
 
     // Clean-up
     return () => {
-      if (lottieLogoElement) {
-        lottieLogoElement.removeEventListener('mouseenter', handleMouseEnter);
-        lottieLogoElement.removeEventListener('mouseleave', handleMouseLeave);
-      }
-      lottieInstance.destroy();
-      for (const trigger of ScrollTrigger.getAll()) {
-        trigger.kill();
+      debouncedLoading.cancel();
+      if (!isMobile) {
+        if (lottieLogoRef.current) {
+          lottieLogoRef.current.removeEventListener('mouseenter', handleMouseEnter);
+          lottieLogoRef.current.removeEventListener('mouseleave', handleMouseLeave);
+        }
+        if (lottieInstance) {
+          lottieInstance.destroy();
+        }
+        for (const trigger of ScrollTrigger.getAll()) {
+          trigger.kill();
+        }
       }
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <>
       <section id="trigger-footer" className="hidden md:block" />
 
-      <section ref={footerRef} className="hidden md:block footer bg-[#2a357a] fixed bottom-0 left-0 w-full py-4 md:py-10 px-8 min-h-screen overflow-hidden z-50">
+      <section ref={footerRef} className={`hidden md:block footer bg-[#2a357a] fixed bottom-0 left-0 w-full py-4 md:py-10 px-8 min-h-screen overflow-hidden z-50 transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <footer className="overflow-hidden">
           <div className="flex flex-wrap">
             <div className="flex w-full mb-[16px] md:mb-[24px] lg:mb-[24px]">

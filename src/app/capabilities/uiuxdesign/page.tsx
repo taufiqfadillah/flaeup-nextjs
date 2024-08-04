@@ -1,10 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import Navbar from "@/components/navbar.jsx";
-import Hamburger from "@/components/hamburger.jsx";
-import UiUxDesign from "@/components/capabilities/uiuxdesign/uiuxdesign.jsx";
-import Footer from "@/components/footer.jsx";
-import FooterMobile from "@/components/footer-mobile.jsx";
+import UiUxDesign from "@/components/capabilities/uiuxdesign/uiuxdesign";
 
 export const metadata: Metadata = {
 	title: "UIUX Design | Creativity is centar to our design",
@@ -14,13 +10,7 @@ export const metadata: Metadata = {
 export default function UiUxDesignPage() {
 	return (
 		<>
-			<Navbar />
-			<Hamburger />
-
 			<UiUxDesign />
-
-			<Footer />
-			<FooterMobile />
 		</>
 	);
 }

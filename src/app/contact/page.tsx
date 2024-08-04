@@ -1,10 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import Navbar from "@/components/navbar.jsx";
-import Hamburger from "@/components/hamburger.jsx";
-import Contact from "@/components/contact/contact.jsx";
-import Footer from "@/components/footer.jsx";
-import FooterMobile from "@/components/footer-mobile.jsx";
+import Contact from "@/components/contact/contact";
 
 export const metadata: Metadata = {
 	title: "Contact | Creativity is centar to our design",
@@ -14,13 +10,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
 	return (
 		<>
-			<Navbar />
-			<Hamburger />
-
 			<Contact />
-
-			<Footer />
-			<FooterMobile />
 		</>
 	);
 }

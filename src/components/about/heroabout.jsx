@@ -5,6 +5,7 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import useMediaQueries from '@/hooks/useMediaQueries';
+import debounce from 'lodash.debounce';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,12 +14,10 @@ const AboutHero = () => {
   const { isMobile } = useMediaQueries();
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && !isMobile) {
       window.scrollTo(0, 0);
-      if (!isMobile) {
-        document.documentElement.classList.add('stop-scrolling');
-        triggerAboutAnimation();
-      }
+      document.documentElement.classList.add('stop-scrolling');
+      triggerAboutAnimation();
     }
 
     return () => {
@@ -33,29 +32,32 @@ const AboutHero = () => {
     }
   }, [isAnimationComplete]);
 
-  const triggerAboutAnimation = useCallback(() => {
-    if (isMobile) return;
+  const triggerAboutAnimation = useCallback(
+    debounce(() => {
+      if (isMobile) return;
 
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-    const windowHeight = window.innerHeight;
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      const windowHeight = window.innerHeight;
 
-    tl.to('.perspective_letters span', { y: '0%', opacity: 1, stagger: 0.08, duration: 1.5 }, 0)
-      .to(
-        '#animated-work-title',
-        {
-          fontSize: window.innerWidth > 2000 ? '7vw' : '6.25rem',
-          y: windowHeight > 650 ? '0%' : '40%',
-          x: windowHeight > 650 ? '0%' : '-40%',
-          duration: 2,
-        },
-        1.4
-      )
-      .to('.section-animated-top-image-one', { width: '56%', duration: 1 }, 2.2)
-      .to('.section-animated-top-image-two', { width: '43%', height: '18.5vw', duration: 1 }, 2.2)
-      .eventCallback('onComplete', () => {
-        setIsAnimationComplete(true);
-      });
-  }, [isMobile]);
+      tl.to('.perspective_letters span', { y: '0%', opacity: 1, stagger: 0.08, duration: 1.5 }, 0)
+        .to(
+          '#animated-work-title',
+          {
+            fontSize: window.innerWidth > 2000 ? '7vw' : '6.25rem',
+            y: windowHeight > 650 ? '0%' : '40%',
+            x: windowHeight > 650 ? '0%' : '-40%',
+            duration: 2,
+          },
+          1.4
+        )
+        .to('.section-animated-top-image-one', { width: '56%', duration: 1 }, 2.2)
+        .to('.section-animated-top-image-two', { width: '43%', height: '18.5vw', duration: 1 }, 2.2)
+        .eventCallback('onComplete', () => {
+          setIsAnimationComplete(true);
+        });
+    }, 100),
+    []
+  );
 
   useEffect(() => {
     if (isAnimationComplete && !isMobile) {
@@ -80,7 +82,6 @@ const AboutHero = () => {
           y: '0%',
         },
         {
-          // x: `-${window.innerWidth / 2.1}px`,
           y: '0%',
           width: '100%',
           x: '-16vw',
@@ -118,8 +119,8 @@ const AboutHero = () => {
         />
         <Image
           alt="Flaeup Team"
-          width={700}
-          height={700}
+          width={400}
+          height={400}
           className="max-[600px]:translate-y-[-9vw] max-[600px]:object-contain max-[600px]:h-[50vw] max-[768px]:translate-y-[-8.2vw] max-[1024px]:translate-y-[-7.8vw] max-[1024px]:object-contain max-[1024px]:h-[54.4vw] max-[1024px]:w-[60%] max-[1024px]:left-[0%] w-[0%] max-[1024px]:relative absolute w-[0%] top-[2rem] right-[0px] h-[18.5vw] object-cover section-animated-top-image-two"
           src="/images/about/About-01.jpg"
           priority

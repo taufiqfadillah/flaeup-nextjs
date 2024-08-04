@@ -1,40 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useMemo, lazy } from 'react';
-import Slider from 'react-infinite-logo-slider';
-import useStickySection from '@/hooks/useStickySection.jsx';
-import { v4 as uuidv4 } from 'uuid';
+import { lazy } from 'react';
 
-const AboutHero = lazy(() => import('@/components/about/heroabout.jsx'));
-const ServicesList = lazy(() => import('@/components/about/services-list.jsx'));
+const AboutHero = lazy(() => import('@/components/about/heroabout'));
+const OurCapabilities = lazy(() => import('@/components/about/ourcapabilities'));
+const ServicesList = lazy(() => import('@/components/about/serviceslist'));
+const LogoSlider = lazy(() => import('@/components/about/logoslider'));
 
 const About = () => {
-  useStickySection();
-
-  const clientLogos = useMemo(
-    () => [
-      '/images/client/Client Logo black-01.svg',
-      '/images/client/Client Logo black-02.svg',
-      '/images/client/Client Logo black-03.svg',
-      '/images/client/Client Logo black-04.svg',
-      '/images/client/Client Logo black-05.svg',
-      '/images/client/Client Logo black-06.svg',
-      '/images/client/Client Logo black-07.svg',
-    ],
-    []
-  );
-
-  const clientSlides = useMemo(
-    () =>
-      clientLogos.map((src, index) => (
-        <Slider.Slide key={src}>
-          <Image src={src} alt={`Client Logo ${index + 1}`} className="md:w-40 w-28" width={300} height={300} />
-        </Slider.Slide>
-      )),
-    [clientLogos]
-  );
-
   return (
     <>
       <AboutHero />
@@ -51,10 +25,10 @@ const About = () => {
           </div>
           <div className="w-full flex py-10 px-4 md:px-14 justify-center items-center gap-5 lg:gap-6">
             <div className="w-3/10 flex justify-center">
-              <Image src="/images/about/About-02.jpg" alt="About Image" width={430} height={490} />
+              <Image src="/images/about/About-02.jpg" alt="About Image" width={430} height={490} loading="eager" style={{ maxWidth: '900', maxHeight: '430px' }} />
             </div>
             <div className="w-7/10 flex justify-center">
-              <Image src="/images/about/About-03.jpg" alt="About Image" width={900} height={490} />
+              <Image src="/images/about/About-03.jpg" alt="About Image" width={900} height={490} loading="eager" style={{ maxWidth: '900', maxHeight: '430px' }} />
             </div>
           </div>
           <div className="w-full flex py-10 px-2 md:px-14">
@@ -78,37 +52,10 @@ const About = () => {
         </div>
       </section>
       <section className="bg-[#82CAAA] text-black">
-        <div className="py-20 bg-[#82CAAA] text-black">
-          <div className="text-2xl md:text-5xl px-4 md:px-14 pb-0 md:pb-20">Our Capabilities</div>
-          <div className="py-0 md:py-24 pt-24 md:pt-0">
-            <Slider width="100%" duration={20} toRight={false} pauseOnHover={false} blurBorders={false} blurBoderColor="#82caaa" className="grid grid-cols-1 md:grid-cols-3 gap-10">
-              {['/images/video/Branding Video.mp4', '/images/video/Retouching Video.mp4', '/images/video/UIUX Video.mp4'].map((src, index) => (
-                <div key={src}>
-                  <video src={src} alt={`Video ${index + 1}`} className="h-[300px] md:h-[260px]" autoPlay muted loop style={{ width: 'calc(100% - 20px)', objectFit: 'cover', marginRight: '20px' }} />
-                </div>
-              ))}
-            </Slider>
-          </div>
-        </div>
+        <OurCapabilities />
         <ServicesList />
       </section>
-      <section className="h-[55vh] md:h-[85vh] lg:h-[105vh] bg-[#82CAAA] text-black panel">
-        <div className="px-4 md:px-14">
-          <div className="text-2xl md:text-5xl sm:text-left leading-[100.098%] tracking-[0.48px]">Clients</div>
-        </div>
-        <div className="pt-10 md:pt-20">
-          {Array(3)
-            .fill(null)
-            .map((_, index) => {
-              const uniqueKey = `${index}-${uuidv4()}`; // Create a unique key using index and uuid
-              return (
-                <Slider key={uniqueKey} width="200px" duration={index * 10 + 20} pauseOnHover={false} blurBorders={false} blurBorderColor="#82CAAA">
-                  {clientSlides}
-                </Slider>
-              );
-            })}
-        </div>
-      </section>
+      <LogoSlider />
     </>
   );
 };

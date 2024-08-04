@@ -1,4 +1,13 @@
 /** @type {import('next').NextConfig} */
+
+// import bundleAnalyzer from '@next/bundle-analyzer';
+
+// // Enable bundle analyzer if the 'ANALYZE' environment variable is true
+// const withBundleAnalyzer = bundleAnalyzer({
+//   enabled: process.env.ANALYZE === 'true',
+// });
+
+// Define the Next.js configuration
 const nextConfig = {
   images: {
     remotePatterns: [

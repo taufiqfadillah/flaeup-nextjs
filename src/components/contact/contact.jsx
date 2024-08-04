@@ -4,11 +4,10 @@ import React, { useRef, useEffect, useState, useCallback, lazy } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import useStickySection from '@/hooks/useStickySection.jsx';
+import useStickySection from '@/hooks/useStickySection';
 import { useForm } from '@formspree/react';
-const CopyToClipboardLink = lazy(() => import('@/components/ui/CopyToClipboard.tsx'));
-const ToastDemo = lazy(() => import('@/components/ui/Toast.jsx'));
-import 'dotenv/config';
+const CopyToClipboardLink = lazy(() => import('@/components/ui/CopyToClipboard'));
+const ToastDemo = lazy(() => import('@/components/ui/Toast'));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,7 +20,7 @@ const Contact = () => {
   const aRef = useRef(null);
   const iRef = useRef(null);
 
-  const [state, handleSubmit] = useForm('myzgwkdv');
+  const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM);
   const [formData, setFormData] = useState({
     name: '',
     lastname: '',
@@ -30,7 +29,6 @@ const Contact = () => {
     selectedBudget: '',
     selectedValues: [],
   });
-
   const [errors, setErrors] = useState({});
   const [showToast, setShowToast] = useState({
     open: false,
@@ -56,7 +54,7 @@ const Contact = () => {
   const handleButtonBudget = useCallback((value) => {
     setFormData((prevData) => ({
       ...prevData,
-      selectedBudget: prevData.selectedBudget === value ? '' : value, // Single select logic
+      selectedBudget: prevData.selectedBudget === value ? '' : value,
     }));
 
     setErrors((prevErrors) => ({
@@ -554,22 +552,7 @@ const Contact = () => {
             <div className="max-[1024px]:flex items-center justify-center header__section hidden flex-wrap mobile__heading">
               <div className="w-[100%]">
                 <div className="max-[375px]:text-[4rem] max-[600px]:text-[5rem] max-[1024px]:text-[6rem] text-[5rem] leading-[1] font-[500]">
-                  <h1 className="flex">
-                    Let&apos;s
-                    <span className="flex flex-wrap">
-                      <span className="max-[768px]:mt-[30px] inline-block mt-[20px]" role="img" aria-label="Animation">
-                        <video
-                          className="max-[1024px]:top-[-0.8rem] max-[1024px]:mr-[1rem] max-[1024px]:h-[70px] max-[1024px]:w-[100px] max-[1024px]:mx-[1rem] mr-[2rem] h-[140px] w-[350px] object-cover relative"
-                          src="/images/video/Homepage Videos.mp4"
-                          autoPlay
-                          playsInline
-                          loop
-                          muted
-                        />
-                      </span>
-                      <br />
-                    </span>
-                  </h1>
+                  <h1 className="flex">Let&apos;s</h1>
                 </div>
                 <h1 className="max-[375px]:text-[4rem] max-[600px]:text-[5.6rem] max-[768px]:text-[6.5rem] max-[1024px]:text-[6rem] text-[5rem] leading-[1] font-[500]">Team Up!</h1>
               </div>

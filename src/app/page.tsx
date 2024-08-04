@@ -1,10 +1,10 @@
 import React from "react";
 import type { Metadata } from "next";
-import Navbar from "@/components/navbar.jsx";
-import Hamburger from "@/components/hamburger.jsx";
-import Home from "@/components/home/home.jsx";
-import Footer from "@/components/footer.jsx";
-import FooterMobile from "@/components/footer-mobile.jsx";
+import dynamic from "next/dynamic";
+import Home from "@/components/home/home";
+const Loader = dynamic(() => import("@/components/loader"), {
+	ssr: false,
+});
 
 export const metadata: Metadata = {
 	title: "Flaeup | Creativity is centar to our design",
@@ -14,13 +14,8 @@ export const metadata: Metadata = {
 export default function HomePage() {
 	return (
 		<>
-			<Navbar />
-			<Hamburger />
-
+			<Loader />
 			<Home />
-
-			<Footer />
-			<FooterMobile />
 		</>
 	);
 }

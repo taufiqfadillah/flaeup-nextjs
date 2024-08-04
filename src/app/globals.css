@@ -42,9 +42,13 @@ body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-100%));
+    transform: translateX(-50%);
   }
 }
+.animate-slide-left {
+  animation: slide-left 10s linear infinite;
+}
+
 input:focus {
   outline: none;
 }

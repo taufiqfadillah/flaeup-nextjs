@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import "/public/css/tailwind-min.css";
 import localFont from "next/font/local";
-import SmoothScrolling from "@/libs/SmoothScrolling.jsx";
+import SmoothScrolling from "@/libs/SmoothScrolling";
 import CustomCursor from "@/libs/CustomCursor";
 import FaviconSwitcher from "@/libs/FaviconSwitcher";
-import Loader from "@/components/loader.jsx";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Suspense, lazy } from "react";
+const Navbar = lazy(() => import("@/components/navbar"));
+const Hamburger = lazy(() => import("@/components/hamburger"));
+const Footer = lazy(() => import("@/components/footer"));
+const FooterMobile = lazy(() => import("@/components/footer-mobile"));
 
 export const metadata: Metadata = {
 	title: "Flaeup",
@@ -62,16 +66,21 @@ export default function RootLayout({
 					id="favicon"
 					rel="icon"
 					type="image/svg+xml"
-					href="/images/favicon_blue.ico"
+					href="../images/favicon_blue.ico"
 				/>
 			</head>
 			<body>
-				<Loader />
+				<Suspense fallback={<div>Loading...</div>}>
+					<FaviconSwitcher>
+						<Navbar />
+						<Hamburger />
+						<SmoothScrolling>{children}</SmoothScrolling>
+						<Footer />
+						<FooterMobile />
+						<CustomCursor />
+					</FaviconSwitcher>
+				</Suspense>
 				<SpeedInsights />
-				<FaviconSwitcher>
-					<SmoothScrolling>{children}</SmoothScrolling>
-					<CustomCursor />
-				</FaviconSwitcher>
 			</body>
 		</html>
 	);
