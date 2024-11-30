@@ -8,9 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function WorkPage() {
-	return (
-		<>
-			<Work />
-		</>
-	);
+	return <Work />;
 }

@@ -6,7 +6,26 @@ import useMediaQueries from '@/hooks/useMediaQueries';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const HeroCapabilities = ({ headingTextOne, headingTextTwo, subheadingTextOne, subheadingTextTwo, subheadingTextThree, subheadingTextFour, descriptionTextOne, descriptionTextTwo }) => {
+const HeroCapabilities = ({
+  headingTextOne,
+  headingTextTwo,
+  subheadingTextOne,
+  subheadingTextTwo,
+  subheadingTextThree,
+  subheadingTextFour,
+  descriptionTextOne,
+  descriptionTextTwo,
+  images1,
+  images2,
+  images3,
+  images4,
+  images5,
+  images6,
+  images7,
+  images8,
+  images9,
+  images10,
+}) => {
   const { isMobile, isLaptopAndDesktop } = useMediaQueries();
 
   useEffect(() => {
@@ -116,28 +135,52 @@ const HeroCapabilities = ({ headingTextOne, headingTextTwo, subheadingTextOne, s
               }}
             >
               <div className="image-holder overflow-hidden one-image w-[100%]">
-                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[100%]" src="https://fakeimg.pl/1024x700/2a357a/ffffff" priority />
+                {images1.endsWith('.mp4') ? (
+                  <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[100%]" src={images1} autoPlay loop muted />
+                ) : (
+                  <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[100%]" src={images1} priority />
+                )}
               </div>
               <div className="image-holder overflow-hidden two-images w-[100%] flex gap-5 overflow-hidden mt-[1rem]">
-                <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[55%]" src="/images/video/Branding Video.mp4" autoPlay loop muted />
-                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[45%]" src="https://fakeimg.pl/1024x700/2a357a/ffffff" priority />
+                {images2.endsWith('.mp4') ? (
+                  <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[50%]" src={images2} autoPlay loop muted />
+                ) : (
+                  <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[50%]" src={images2} priority />
+                )}
+                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[50%]" src={images3} priority />
               </div>
               <div className="image-holder overflow-hidden one-image w-[100%]  mt-[1rem]">
-                <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[100%]" src="/images/capabilities/Capabilities.mp4" autoPlay loop muted />
+                <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[100%]" src={images4} autoPlay loop muted />
               </div>
               <div className="image-holder overflow-hidden two-images w-[100%] flex gap-5 overflow-hidden mt-[1rem]">
-                <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[45%]" src="/images/video/UIUX Video.mp4" autoPlay loop muted />
-                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[55%]" src="https://fakeimg.pl/1024x700/2a357a/ffffff" priority />
+                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[50%]" src={images5} priority />
+                {images6.endsWith('.mp4') ? (
+                  <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[50%]" src={images6} autoPlay loop muted />
+                ) : (
+                  <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[50%]" src={images6} priority />
+                )}
               </div>
               <div className="image-holder overflow-hidden one-image w-[100%] mt-[1rem]">
-                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[100%]" src="https://fakeimg.pl/1024x700/2a357a/ffffff" priority />
+                {images7.endsWith('.mp4') ? (
+                  <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[100%]" src={images7} autoPlay loop muted />
+                ) : (
+                  <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[100%]" src={images7} priority />
+                )}
               </div>
               <div className="image-holder overflow-hidden two-images w-[100%] flex gap-5 overflow-hidden mt-[1rem]">
-                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[55%]" src="https://fakeimg.pl/1024x700/2a357a/ffffff" priority />
-                <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[45%]" src="/images/video/Homepage Videos.mp4" autoPlay loop muted />
+                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[50%]" src={images8} priority />
+                {images9.endsWith('.mp4') ? (
+                  <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[50%]" src={images9} autoPlay loop muted />
+                ) : (
+                  <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[50%]" src={images9} priority />
+                )}
               </div>
               <div className="image-holder overflow-hidden one-image w-[100%] mt-[1rem]">
-                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[100%]" src="https://fakeimg.pl/1024x700/2a357a/ffffff" priority />
+                {images10.endsWith('.mp4') ? (
+                  <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[100%]" src={images10} autoPlay loop muted />
+                ) : (
+                  <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[100%]" src={images10} priority />
+                )}
               </div>
             </div>
           </div>

@@ -1,17 +1,18 @@
 'use client';
-import React from 'react';
+
 import Image from 'next/image';
 import { BentoGrid, BentoGridItem } from '@/components/ui/BentoGrid.tsx';
+import { v4 as uuidv4 } from 'uuid';
 
-export function BentoGridDemo({ items = [], category }) {
+export function BentoGridDemo({ category }) {
   // Filter items based on the selected category
-  const filteredItems = category === 'All' ? items : items.filter((item) => item.dataCategory === category);
+  const filteredItems = category === 'All' ? items : items.filter((item) => item.dataCategory.includes(category));
 
   return (
     <BentoGrid className="w-full h-full">
       {filteredItems.map((item, i) => (
         <BentoGridItem
-          key={i}
+          key={item.id}
           title={item.title}
           description={item.description}
           header={<Skeleton src={item.image} type={item.type} />}
@@ -55,80 +56,88 @@ const Skeleton = ({ src, type }) => {
 };
 
 const items = [
+  // {
+  //   id: uuidv4(),
+  //   title: 'Branding',
+  //   description: 'Explore the birth of groundbreaking ideas and inventions.',
+  //   header: <Skeleton src="https://fakeimg.pl/600x600/f5f5f5/000" />,
+  //   image: '/images/video/Branding Video.mp4',
+  //   dataCategory: 'Branding',
+  //   type: 'video',
+  //   href: '#',
+  // },
+  // {
+  //   id: uuidv4(),
+  //   title: 'UI/UX',
+  //   description: 'Dive into the transformative power of technology.',
+  //   header: <Skeleton src="https://fakeimg.pl/600x600/f5f5f5/000" />,
+  //   image: '/images/video/UIUX Video.mp4',
+  //   dataCategory: 'UIUX',
+  //   type: 'video',
+  //   href: '#',
+  // },
+  // {
+  //   id: uuidv4(),
+  //   title: 'Retouching',
+  //   description: 'Discover the beauty of thoughtful and functional design.',
+  //   header: <Skeleton src="https://fakeimg.pl/600x600/f5f5f5/000" />,
+  //   image: '/images/video/Retouching Video.mp4',
+  //   dataCategory: 'Retouching',
+  //   type: 'video',
+  //   href: '#',
+  // },
+  // {
+  //   id: uuidv4(),
+  //   title: 'Social Media',
+  //   description: 'Join the quest for understanding and enlightenment.',
+  //   header: <Skeleton src="https://fakeimg.pl/600x600/f5f5f5/000" />,
+  //   image: '/images/video/Muhammad Ali Packaging-01.jpg',
+  //   dataCategory: 'Social Media',
+  //   type: 'image',
+  //   href: '#',
+  // },
+  // {
+  //   id: uuidv4(),
+  //   title: 'Apps',
+  //   description: 'Experience the thrill of bringing ideas to life.',
+  //   header: <Skeleton src="https://fakeimg.pl/600x600/f5f5f5/000" />,
+  //   image: '/images/video/Muhammad Ali Packaging-01.jpg',
+  //   dataCategory: 'Apps',
+  //   type: 'image',
+  //   href: '#',
+  // },
+  // {
+  //   id: uuidv4(),
+  //   title: 'Copywriting',
+  //   description: 'Embark on exciting journeys and thrilling discoveries.',
+  //   header: <Skeleton src="https://fakeimg.pl/600x600/f5f5f5/000" />,
+  //   image: '/images/video/Muhammad Ali Packaging-01.jpg',
+  //   dataCategory: 'Copywriting',
+  //   type: 'image',
+  //   href: '#',
+  // },
   {
-    title: 'Branding',
-    description: 'Explore the birth of groundbreaking ideas and inventions.',
+    id: uuidv4(),
+    title: 'Perfume Legacy Oud Round Muhammad Ali',
+    description: 'Product Packaging Design.',
     header: <Skeleton src="https://fakeimg.pl/600x600/f5f5f5/000" />,
-    image: '/images/video/Branding Video.mp4',
-    dataCategory: 'Branding',
-    type: 'video',
-    href: '#',
-  },
-  {
-    title: 'UI/UX',
-    description: 'Dive into the transformative power of technology.',
-    header: <Skeleton src="https://fakeimg.pl/600x600/f5f5f5/000" />,
-    image: '/images/video/UIUX Video.mp4',
-    dataCategory: 'UIUX',
-    type: 'video',
-    href: '#',
-  },
-  {
-    title: 'Retouching',
-    description: 'Discover the beauty of thoughtful and functional design.',
-    header: <Skeleton src="https://fakeimg.pl/600x600/f5f5f5/000" />,
-    image: '/images/video/Retouching Video.mp4',
-    dataCategory: 'Retouching',
-    type: 'video',
-    href: '#',
-  },
-  {
-    title: 'Packaging',
-    description: 'Understand the impact of effective communication in our lives.',
-    header: <Skeleton src="https://fakeimg.pl/600x600/f5f5f5/000" />,
-    image: '/images/video/Muhammad Ali Packaging-01.jpg',
-    dataCategory: 'Packaging',
+    image: '/images/work/Parfum Muhammad Ali.jpg',
+    dataCategory: ['Packaging'],
     type: 'image',
-    href: '#',
+    href: 'https://dribbble.com/shots/24633119-Muhammad-Ali-Packaging-design-for-Perfume',
   },
   {
-    title: 'Social Media',
-    description: 'Join the quest for understanding and enlightenment.',
-    header: <Skeleton src="https://fakeimg.pl/600x600/f5f5f5/000" />,
-    image: '/images/video/Muhammad Ali Packaging-01.jpg',
-    dataCategory: 'Social Media',
-    type: 'image',
-    href: '#',
-  },
-  {
-    title: 'Apps',
-    description: 'Experience the thrill of bringing ideas to life.',
-    header: <Skeleton src="https://fakeimg.pl/600x600/f5f5f5/000" />,
-    image: '/images/video/Muhammad Ali Packaging-01.jpg',
-    dataCategory: 'Apps',
-    type: 'image',
-    href: '#',
-  },
-  {
-    title: 'Copywriting',
-    description: 'Embark on exciting journeys and thrilling discoveries.',
-    header: <Skeleton src="https://fakeimg.pl/600x600/f5f5f5/000" />,
-    image: '/images/video/Muhammad Ali Packaging-01.jpg',
-    dataCategory: 'Copywriting',
-    type: 'image',
-    href: '#',
-  },
-  {
+    id: uuidv4(),
     title: 'Hanny&Friends',
     description: 'Company Profile & Copywriting.',
     header: <Skeleton src="https://fakeimg.pl/600x600/f5f5f5/000" />,
     image: '/images/work/hanny&friend.jpg',
-    dataCategory: 'Company Profile',
+    dataCategory: ['Company Profile', 'Copywriting'],
     type: 'image',
-    href: 'https://www.instagram.com/hannyandfriends/',
+    href: 'https://dribbble.com/shots/24634061-Company-Profile-Design-HannyandFriends',
   },
 ];
 
-items.sort((a, b) => a.dataCategory.localeCompare(b.title));
+items.sort((a, b) => a.dataCategory[0].localeCompare(b.dataCategory[0]));
 
 export { items };

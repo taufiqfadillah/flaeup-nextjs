@@ -9,6 +9,8 @@ import HeroCapabilities from '@/components/capabilities/hero-capabilities';
 import ServicesListCapabilities from '@/components/capabilities/serviceslist-capabilities';
 import PotentialCapabilities from '@/components/capabilities/potential-capabilities';
 import useMediaQueries from '@/hooks/useMediaQueries';
+import { lazy } from 'react';
+const Button = lazy(() => import('@/components/button-whatsapp'));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -67,6 +69,16 @@ const Retouching = () => {
         subheadingTextFour="and precision."
         descriptionTextOne="ANYTIME WE GET A PROJECT IN THIS FIELD, WE FEEL"
         descriptionTextTwo="EXCITED MOTIVATED AND CREATIVE."
+        images1="/images/capabilities/Hello01.mp4"
+        images2="/images/capabilities/Branding Billboard.jpg"
+        images3="/images/capabilities/flaeup_progress.jpg"
+        images4="/images/capabilities/Capabilities.mp4"
+        images5="/images/capabilities/flaeup_progress.jpg"
+        images6="/images/capabilities/flaeup_progress.jpg"
+        images7="/images/video/Retouching Video.mp4"
+        images8="/images/capabilities/Alia.jpg"
+        images9="/images/capabilities/brouhaha-mockup.jpg"
+        images10="/images/capabilities/Retouching.mp4"
       />
 
       <section className="w-full h-full [background:#82CAAA] text-black rounded-t-lg px-6 lg:px-0" id="digital-experience-scroller">
@@ -174,6 +186,7 @@ const Retouching = () => {
       </section>
 
       <PotentialCapabilities />
+      <Button />
     </>
   );
 };

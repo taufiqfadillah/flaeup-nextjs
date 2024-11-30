@@ -9,6 +9,8 @@ import HeroCapabilities from '@/components/capabilities/hero-capabilities';
 import ServicesListCapabilities from '@/components/capabilities/serviceslist-capabilities';
 import PotentialCapabilities from '@/components/capabilities/potential-capabilities';
 import useMediaQueries from '@/hooks/useMediaQueries';
+import { lazy } from 'react';
+const Button = lazy(() => import('@/components/button-whatsapp'));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -67,6 +69,16 @@ const Packaging = () => {
         subheadingTextFour={null}
         descriptionTextOne="We provide you with the perfect recipe"
         descriptionTextTwo="to make it irresistibly appetizing."
+        images1="/images/capabilities/Sayur Mayur.mp4"
+        images2="/images/work/Parfum Muhammad Ali.jpg"
+        images3="/images/capabilities/flaeup_progress.jpg"
+        images4="/images/capabilities/Capabilities.mp4"
+        images5="/images/capabilities/flaeup_progress.jpg"
+        images6="/images/capabilities/flaeup_progress.jpg"
+        images7="/images/capabilities/Hello01.mp4"
+        images8="/images/capabilities/flaeup_progress.jpg"
+        images9="/images/capabilities/Free_Soda_Cans_Mockup.jpg"
+        images10="/images/capabilities/Packaging.mp4"
       />
 
       <section className="w-full h-full [background:#82CAAA] text-black rounded-t-lg px-6 lg:px-0" id="digital-experience-scroller">
@@ -174,6 +186,7 @@ const Packaging = () => {
       </section>
 
       <PotentialCapabilities />
+      <Button />
     </>
   );
 };

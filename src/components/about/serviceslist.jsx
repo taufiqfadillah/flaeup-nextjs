@@ -17,7 +17,7 @@ const ServicesList = () => {
                     <p className="text-[#080808] text-normal font-normal leading-[100%] transition duration-150 max-[600px]:text-[2.2rem] max-[1024px]:text-[2.2rem] text-[2.6vw] opacity-100 translate-x-0">{capability}</p>
                   </a>
                   <div className="w-[10%] flex justify-end">
-                    <a aria-label={`Check our ${capability} capabilities`} className="transform transition duration-100 mr-2 group-hover:rotate-45" href={`/capabilities/${capability.toLowerCase()}`}>
+                    <a aria-label={`Check our ${capability} capabilities`} className="transform transition duration-100 mr-2 group-hover:rotate-45" href={`/capabilities/${capability.replace(/\s+/g, '').replace('/', '').toLowerCase()}`}>
                       <svg width="24" height="24" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <title>Arrow Icon</title>
                         <path d="M30 3L3 30" stroke="black" strokeWidth="4.3875" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />

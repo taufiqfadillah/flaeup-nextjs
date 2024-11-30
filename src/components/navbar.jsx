@@ -6,7 +6,7 @@ import Image from 'next/image';
 const Navbar = () => {
   return (
     <section className="header">
-      <nav className="w-full fixed top-0 backdrop-filter backdrop-blur-lg bg-white bg-opacity-80 z-50">
+      <nav className="w-screen fixed top-0 backdrop-filter backdrop-blur-lg bg-white bg-opacity-80 z-50">
         <div className="lg:mx-16 py-4 md:py-2">
           <div className="flex w-full h-12 md:h-16 items-center justify-between">
             <a className="inline-block" href="/">
@@ -19,7 +19,7 @@ const Navbar = () => {
                 <rect y="14" width="12" height="1.5" rx="1" fill="black" />
               </svg>
             </button>
-            <div className="hidden lg:flex items-center space-x-44 min-[1300px]:space-x-[260px] 2xl:space-x-72 font-medium">
+            <div className="hidden lg:flex w-[55%] items-center justify-between">
               <a className="leading-snug block items-center" href="/">
                 Design
                 <svg id="SvgjsSvg1011" width="8" height="8" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlnsXlink="http://www.w3.org/1999/xlink" xmlnssvgjs="http://svgjs.com/svgjs" className="ml-3 relative inline-block">
@@ -59,26 +59,26 @@ const Navbar = () => {
                   </g>
                 </svg>
               </a>
-              <a className="inline-block menu_menu_link flex items-center leading-none group" href="/contact">
-                Contact
-                <svg
-                  width="16px"
-                  height="16px"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="ml-2 relative bottom-1 [transition:transform_0.3s_ease-out] group-hover:translate-x-[3px] group-hover:translate-y-[-3px]"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <title>Navbar Icon</title>
-                  <line x1="7" y1="17" x2="17" y2="7" />
-                  <polyline points="7 7 17 7 17 17" />
-                </svg>
-              </a>
             </div>
+            <a className="hidden lg:flex inline-block menu_menu_link flex items-center leading-none group" href="/contact">
+              Contact
+              <svg
+                width="16px"
+                height="16px"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                className="ml-2 relative bottom-1 [transition:transform_0.3s_ease-out] group-hover:translate-x-[3px] group-hover:translate-y-[-3px]"
+                fill="none"
+                stroke="#000000"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <title>Navbar Icon</title>
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </a>
           </div>
         </div>
       </nav>

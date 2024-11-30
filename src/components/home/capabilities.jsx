@@ -149,7 +149,7 @@ const Capabilities = () => {
                     <div className="relative w-[1024px] max-w-full overflow-hidden mx-[auto] my-[0]">
                       <Image
                         className="block w-full lg:h-[580px] md:h-[600px] h-[300px] object-cover carousel-size"
-                        src="/images/video/Muhammad Ali Packaging-01.jpg"
+                        src="/images/work/Parfum Muhammad Ali.jpg"
                         alt="Packaging Design"
                         height={580}
                         width={1024}

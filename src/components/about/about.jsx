@@ -7,6 +7,7 @@ const AboutHero = lazy(() => import('@/components/about/heroabout'));
 const OurCapabilities = lazy(() => import('@/components/about/ourcapabilities'));
 const ServicesList = lazy(() => import('@/components/about/serviceslist'));
 const LogoSlider = lazy(() => import('@/components/about/logoslider'));
+const Button = lazy(() => import('@/components/button-whatsapp'));
 
 const About = () => {
   return (
@@ -56,6 +57,7 @@ const About = () => {
         <ServicesList />
       </section>
       <LogoSlider />
+      <Button />
     </>
   );
 };

@@ -6,6 +6,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import useStickySection from '@/hooks/useStickySection.jsx';
 import { BentoGridDemo, items } from '@/components/work/bento-grid.jsx';
 import useMediaQueries from '@/hooks/useMediaQueries';
+import { lazy } from 'react';
+const Button = lazy(() => import('@/components/button-whatsapp'));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,37 +64,37 @@ const Work = () => {
   const buttonData = [
     { category: 'All', count: items.length },
     {
-      category: 'Apps',
-      count: items.filter((item) => item.dataCategory === 'Apps').length,
-    },
-    {
-      category: 'Branding',
-      count: items.filter((item) => item.dataCategory === 'Branding').length,
-    },
-    {
       category: 'Company Profile',
-      count: items.filter((item) => item.dataCategory === 'Company Profile').length,
+      count: items.filter((item) => item.dataCategory.includes('Company Profile')).length,
     },
     {
       category: 'Copywriting',
-      count: items.filter((item) => item.dataCategory === 'Copywriting').length,
+      count: items.filter((item) => item.dataCategory.includes('Copywriting')).length,
     },
     {
       category: 'Packaging',
-      count: items.filter((item) => item.dataCategory === 'Packaging').length,
+      count: items.filter((item) => item.dataCategory.includes('Packaging')).length,
     },
-    {
-      category: 'Retouching',
-      count: items.filter((item) => item.dataCategory === 'Retouching').length,
-    },
-    {
-      category: 'Social Media',
-      count: items.filter((item) => item.dataCategory === 'Social Media').length,
-    },
-    {
-      category: 'UIUX',
-      count: items.filter((item) => item.dataCategory === 'UIUX').length,
-    },
+    // {
+    //   category: 'Apps',
+    //   count: items.filter((item) => item.dataCategory === 'Apps').length,
+    // },
+    // {
+    //   category: 'Branding',
+    //   count: items.filter((item) => item.dataCategory === 'Branding').length,
+    // },
+    // {
+    //   category: 'Copywriting',
+    //   count: items.filter((item) => item.dataCategory === 'Copywriting').length,
+    // },
+    // {
+    //   category: 'Social Media',
+    //   count: items.filter((item) => item.dataCategory === 'Social Media').length,
+    // },
+    // {
+    //   category: 'UIUX',
+    //   count: items.filter((item) => item.dataCategory === 'UIUX').length,
+    // },
   ];
 
   return (
@@ -293,6 +295,7 @@ const Work = () => {
           </main>
         </section>
       </main>
+      <Button />
     </>
   );
 };

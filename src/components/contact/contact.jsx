@@ -291,7 +291,7 @@ const Contact = () => {
 
                   <div className="flex flex-wrap w-full form_buttons_wrapper pb-4">
                     {/* Budget Buttons */}
-                    {['< 5.000', '5k - 10k', '20k - 30k', '40k - 50k', '> 50.000'].map((value) => (
+                    {['< 500', '500 - 1k', '1k - 3k', '3k - 5k', '> 5.000'].map((value) => (
                       <button key={value} type="button" className={`form_button_pill cursor-pointer ${formData.selectedBudget === value ? 'form_active' : ''}`} data-value={value} onClick={() => handleButtonBudget(value)}>
                         {value}
                       </button>
@@ -303,7 +303,7 @@ const Contact = () => {
                 </div>
                 <div className="flex w-full border-t border-solid border-1 border-black">
                   <div className="flex w-full flex-wrap form_buttons_wrapper">
-                    {['Branding', 'UXUI', 'Social Media', 'Design', 'Copywriting', 'Strategy', 'Packaging', 'Retouching', 'Product Design', 'Web Design'].map((value) => (
+                    {['Branding', 'UXUI', 'Social Media', 'Design', 'Copywriting', 'Strategy', 'Packaging', 'Retouching', 'Product Design', 'Web Design', 'Mobile Apps', 'Web Development'].map((value) => (
                       <button key={value} type="button" className={`form_button_pill cursor-pointer ${formData.selectedValues.includes(value) ? 'form_active' : ''}`} data-value={value} onClick={() => handleButtonProject(value)}>
                         {value}
                       </button>
@@ -320,7 +320,6 @@ const Contact = () => {
                       handleFormSubmit(e);
                     }
                   }}
-                  role="button"
                   tabIndex={0}
                 >
                   <span
@@ -500,10 +499,10 @@ const Contact = () => {
         >
           {/* Dekstop */}
           <section className="px-0 lg:px-[32px]">
-            <div className="header__section max-[1024px]:hidden block desktop__heading">
+            <div className="header__section max-[1024px]:hidden block desktop__heading ml-[5rem]">
               <div>
                 <h1
-                  className="work_design_title__IseCw max-[1024px]:text-[10rem] text-[10vw] leading-[80%] font-medium opacity-0 flex flex-col items-center translate-y-[60px]"
+                  className="work_design_title__IseCw max-[1024px]:text-[10rem] text-[9vw] leading-[80%] font-medium opacity-0 flex flex-col items-center translate-y-[60px]"
                   style={{
                     translate: 'none',
                     rotate: 'none',
@@ -544,8 +543,8 @@ const Contact = () => {
                         }}
                       />
                     </span>
+                    <span className="pl-10">Team Up!</span>
                   </div>
-                  <span className="mt-[1rem]">Team Up!</span>
                 </h1>
               </div>
             </div>

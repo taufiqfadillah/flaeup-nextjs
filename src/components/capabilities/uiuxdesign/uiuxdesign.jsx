@@ -9,6 +9,8 @@ import HeroCapabilities from '@/components/capabilities/hero-capabilities';
 import ServicesListCapabilities from '@/components/capabilities/serviceslist-capabilities';
 import PotentialCapabilities from '@/components/capabilities/potential-capabilities';
 import useMediaQueries from '@/hooks/useMediaQueries';
+import { lazy } from 'react';
+const Button = lazy(() => import('@/components/button-whatsapp'));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -67,6 +69,16 @@ const UiUxDesign = () => {
         subheadingTextFour="and more."
         descriptionTextOne="We align your brand with your audience to"
         descriptionTextTwo="achieve your desired positioning."
+        images1="/images/capabilities/UIUX.mp4"
+        images2="/images/capabilities/flaeup_progress.jpg"
+        images3="/images/capabilities/flaeup_progress.jpg"
+        images4="/images/capabilities/Capabilities.mp4"
+        images5="/images/capabilities/flaeup_progress.jpg"
+        images6="/images/capabilities/flaeup_progress.jpg"
+        images7="/images/capabilities/Hello01.mp4"
+        images8="/images/capabilities/Hanny.jpg"
+        images9="/images/capabilities/flaeup_progress.jpg"
+        images10="/images/capabilities/flaeup_progress.jpg"
       />
 
       <section className="w-full h-full [background:#82CAAA] text-black rounded-t-lg px-6 lg:px-0" id="digital-experience-scroller">
@@ -95,7 +107,7 @@ const UiUxDesign = () => {
             </div>
             <div className="max-[1024px]:w-[50%] w-[44.44%]">
               <p className="trigger-two-list  max-[600px]:text-[0.75rem] text-[#080808] text-xl font-medium leading-[180%] tracking-[-0.02rem] mb-[2rem] overflow-hidden">UIUX DESIGN</p>
-              <p className="trigger-two-list  max-[600px]:text-[0.75rem] text-[#080808] text-xl font-medium leading-[180%] tracking-[-0.02rem] mb-[2rem] overflow-hidden">WEV DEVELOPMENT</p>
+              <p className="trigger-two-list  max-[600px]:text-[0.75rem] text-[#080808] text-xl font-medium leading-[180%] tracking-[-0.02rem] mb-[2rem] overflow-hidden">WEB DEVELOPMENT</p>
               <p className="trigger-two-list  max-[600px]:text-[0.75rem] text-[#080808] text-xl font-medium leading-[180%] tracking-[-0.02rem] mb-[2rem] overflow-hidden">DIGITAL EXPERIENCE</p>
               <p className="trigger-two-list  max-[600px]:text-[0.75rem] text-[#080808] text-xl font-medium leading-[180%] tracking-[-0.02rem] mb-[2rem] overflow-hidden">FRONT END</p>
               <p className="trigger-two-list  max-[600px]:text-[0.75rem] text-[#080808] text-xl font-medium leading-[180%] tracking-[-0.02rem] mb-[2rem] overflow-hidden">BACK END</p>
@@ -176,6 +188,7 @@ const UiUxDesign = () => {
       </section>
 
       <PotentialCapabilities />
+      <Button />
     </>
   );
 };

@@ -95,7 +95,7 @@ const Hero = () => {
 
   useEffect(() => {
     if (!isMobile) {
-      videoRef.current?.load();
+      // videoRef.current?.load();
       videoRef.current.muted = !inView;
       setIsMuted(!inView);
     } else {
@@ -110,7 +110,7 @@ const Hero = () => {
       <section className="relative pb-10 bg-white justify-center overflow-hidden hidden lg:block">
         <div className="container flex">
           <div className="w-full h-[140vh]">
-            <div ref={heroContainerRef} className="hero__container items-end w-screen h-screen object-cover rotate-180" />
+            <div ref={heroContainerRef} className="hero__container items-end w-screen h-screen rotate-180" />
             <div className="flex justify-center w-screen h-auto">
               <video
                 ref={(element) => {

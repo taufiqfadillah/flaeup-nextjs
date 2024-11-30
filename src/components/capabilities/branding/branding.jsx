@@ -9,6 +9,8 @@ import HeroCapabilities from '@/components/capabilities/hero-capabilities';
 import ServicesListCapabilities from '@/components/capabilities/serviceslist-capabilities';
 import PotentialCapabilities from '@/components/capabilities/potential-capabilities';
 import useMediaQueries from '@/hooks/useMediaQueries';
+import { lazy } from 'react';
+const Button = lazy(() => import('@/components/button-whatsapp'));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -67,6 +69,16 @@ const Branding = () => {
         subheadingTextFour="pieces with a visual impact."
         descriptionTextOne="This is the essence of Flaeup."
         descriptionTextTwo={null}
+        images1="/images/capabilities/Branding.mp4"
+        images2="/images/video/Branding Video.mp4"
+        images3="/images/capabilities/Hare-01.jpg"
+        images4="/images/capabilities/Capabilities.mp4"
+        images5="/images/capabilities/Xetron-01.jpg"
+        images6="/images/capabilities/Rose and Flexi-02.jpg"
+        images7="/images/capabilities/Hello01.mp4"
+        images8="/images/capabilities/Next and csc-01.jpg"
+        images9="/images/capabilities/Next and csc-02.jpg"
+        images10="/images/capabilities/Rose and Flexi-01.jpg"
       />
 
       <section className="w-full h-full [background:#82CAAA] text-black rounded-t-lg px-6 lg:px-0" id="digital-experience-scroller">
@@ -175,6 +187,7 @@ const Branding = () => {
       </section>
 
       <PotentialCapabilities />
+      <Button />
     </>
   );
 };
