@@ -10,8 +10,7 @@ const Navbar = lazy(() => import('@/components/navbar'));
 const Hamburger = lazy(() => import('@/components/hamburger'));
 const Footer = lazy(() => import('@/components/footer'));
 const FooterMobile = lazy(() => import('@/components/footer-mobile'));
-import { GoogleTagManager } from '@/components/googleadsintegration';
-import GTMIntegration from '@/components/googletagmanager';
+import GTM from '@/components/gtm';
 
 export const metadata: Metadata = {
   title: 'Flaeup',
@@ -65,12 +64,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={Aeonik.className}>
       <head>
-        <GTMIntegration />
+        {/* <GTMIntegration /> */}
         <link id="favicon" rel="icon" type="image/svg+xml" href="../images/favicon_blue.ico" />
         <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9865466112569774" />
       </head>
       <body>
-        <GoogleTagManager gtmId="AW-16785539609" />
+        {/* <GoogleTagManager gtmId="AW-16785539609" /> */}
+        <GTM />
         <Suspense fallback={<div>Loading...</div>}>
           <Navbar />
           <Hamburger />

@@ -2,10 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react';
 import lottie from 'lottie-web';
+import { useGTMConversion } from '@/hooks/useGTMConversion';
 
 const Button = () => {
   const animationContainerRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
+
+  useGTMConversion();
 
   useEffect(() => {
     const animationContainer = animationContainerRef.current;
@@ -30,21 +33,19 @@ const Button = () => {
   }, []);
 
   const handleClick = () => {
-    // Trigger Google Ads Conversion
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'conversion', {
-        send_to: 'AW-16785539609/t_rgCKzUzPAZEJmE_MM-',
+        send_to: 'AW-16785539609/BSgICNe3rPcZEJmE_MM-',
       });
     }
 
-    // Open WhatsApp link
     window.open('https://wa.me/6289602505228', '_blank', 'noopener,noreferrer');
   };
 
   return (
     <div id="button-whatsapp" className="button-whatsapp z-50 fixed bottom-0 right-0 overflow-hidden">
       <button
-        type="button"
+        type="submit"
         id="button-whatsapp"
         onClick={handleClick}
         onMouseEnter={() => setIsHovered(true)}
