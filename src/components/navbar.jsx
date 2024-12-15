@@ -10,7 +10,7 @@ const Navbar = () => {
         <div className="lg:mx-16 py-4 md:py-2">
           <div className="flex w-full h-12 md:h-16 items-center justify-between">
             <a className="inline-block" href="/">
-              <Image className="h-10 md:h-12 mb-0 pl-[15px] md:pl-0" src="/images/logos/logo.png" alt="Logo" width={58} height={46} priority style={{ maxWidth: '58px', maxHeight: '46px' }} />
+              <Image className="h-10 md:h-12 mb-0 pl-[25px] md:pl-0 w-[68px] lg:w-[58px]" src="/images/logos/logo.png" alt="Logo" width={58} height={46} priority style={{ maxWidth: '68px', maxHeight: '46px' }} />
             </a>
             <button className="lg:hidden navbar-burger pr-[15px] md:pr-0" type="button">
               <svg width="32" height="16" viewBox="0 0 44 16" fill="none" xmlns="http://www.w3.org/2000/svg">

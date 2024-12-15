@@ -489,7 +489,6 @@ const Contact = () => {
             scale: 'none',
             inset: '0px auto auto 0px',
             margin: 0,
-            maxWidth: 1430,
             width: 'auto',
             maxHeight: 750,
             height: 750,
@@ -499,10 +498,10 @@ const Contact = () => {
         >
           {/* Dekstop */}
           <section className="px-0 lg:px-[32px]">
-            <div className="header__section max-[1024px]:hidden block desktop__heading ml-[5rem]">
+            <div className="header__section max-[1024px]:hidden block desktop__heading flex justify-center items-center h-screen">
               <div>
                 <h1
-                  className="work_design_title__IseCw max-[1024px]:text-[10rem] text-[9vw] leading-[80%] font-medium opacity-0 flex flex-col items-center translate-y-[60px]"
+                  className="work_design_title__IseCw max-[1024px]:text-[5rem] max-[1024px]:text-[10rem] max-[1750px]:text-[10vw] text-[10vw] leading-[110%] font-medium opacity-0 flex flex-wrap justify-center items-center translate-y-[60px]"
                   style={{
                     translate: 'none',
                     rotate: 'none',
@@ -511,10 +510,10 @@ const Contact = () => {
                     transform: 'translate(0px, 0px)',
                   }}
                 >
-                  <div className="flex items-center">
-                    <span className="text-center">Let&apos;s</span>
+                  <span>
+                    Let&apos;s
                     <span
-                      className="px-[0vw] mx-[1.5vw]"
+                      className="px-[0vw] w-[17vw] mr-[5vw]"
                       role="img"
                       aria-label="Animation"
                       style={{
@@ -526,8 +525,8 @@ const Contact = () => {
                       }}
                     >
                       <video
-                        id="vid-colaborate"
-                        className="w-[20vw] h-[10vw] pl-10 object-cover pointer-events-none"
+                        id="vid-contact"
+                        className="w-[0vw] h-[10vw] object-cover pointer-events-none"
                         src="/images/video/Homepage Videos.mp4"
                         autoPlay
                         playsInline
@@ -539,15 +538,28 @@ const Contact = () => {
                           scale: 'none',
                           transformOrigin: '50% 50%',
                           transform: 'translate(0px, 0px)',
-                          width: '20vw',
+                          width: '17vw',
                         }}
                       />
                     </span>
-                    <span className="pl-10">Team Up!</span>
-                  </div>
+                    <span
+                      className="translate-x-[-17vw]"
+                      style={{
+                        display: 'inline-block',
+                        whiteSpace: 'nowrap',
+                        translate: 'none',
+                        rotate: 'none',
+                        scale: 'none',
+                        transform: 'translate(0vw, 0px)',
+                      }}
+                    >
+                      Time Up!
+                    </span>
+                  </span>
                 </h1>
               </div>
             </div>
+
             <div className="max-[1024px]:flex items-center justify-center header__section hidden flex-wrap mobile__heading">
               <div className="w-[100%]">
                 <div className="max-[375px]:text-[4rem] max-[600px]:text-[5rem] max-[1024px]:text-[6rem] text-[5rem] leading-[1] font-[500]">

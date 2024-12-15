@@ -1,30 +1,32 @@
-import Script from 'next/script';
-import React from 'react';
+'use client';
 
-const GoogleTagComponent: React.FC = () => {
+import { useEffect } from 'react';
+
+export default function GTMIntegration() {
+  useEffect(() => {
+    const gtmId = 'GTM-NGSPT54T';
+    const script = document.createElement('script');
+    script.src = `https://www.googletagmanager.com/gtm.js?id=${gtmId}`;
+    script.async = true;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'gtm.start': new Date().getTime(),
+      event: 'gtm.js',
+    });
+
+    return () => {
+      const gtmScript = document.head.querySelector(`script[src="https://www.googletagmanager.com/gtm.js?id=${gtmId}"]`);
+      if (gtmScript) {
+        document.head.removeChild(gtmScript);
+      }
+    };
+  }, []);
+
   return (
-    <>
-      {/* GTM Script */}
-      <Script
-        id="google-tag-manager"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-WQ56FQ54');
-        `,
-        }}
-      />
-
-      {/* GTM NoScript */}
-      <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQ56FQ54" height="0" width="0" style={{ display: 'none', visibility: 'hidden' }} />
-      </noscript>
-    </>
+    <noscript>
+      <iframe src={`https://www.googletagmanager.com/ns.html?id=${'GTM-NGSPT54T'}`} height="0" width="0" style={{ display: 'none', visibility: 'hidden' }} title="Google Tag Manager" />
+    </noscript>
   );
-};
-
-export default GoogleTagComponent;
+}

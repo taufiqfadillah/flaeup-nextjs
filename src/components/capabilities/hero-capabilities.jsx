@@ -89,7 +89,7 @@ const HeroCapabilities = ({
   return (
     <>
       <section className="max-[600px]:h-full max-[600px]:pt-[7rem] max-[600px]:px-[1.5rem] max-[1024px]:h-[auto] px-[2rem] flex flex-wrap h-screen overflow-hidden" id="capabilities-wrapper">
-        <div className="flex w-full max-[600px]:h-full h-screen items-center justify-between px-0 lg:px-[2rem] max-[600px]:flex-col">
+        <div className="flex w-full max-[600px]:h-full h-screen w-full items-center justify-between px-0 lg:px-[2rem] max-[600px]:flex-col">
           <div className="w-4/10 max-[600px]:w-full">
             <h1 ref={headingRef} className="max-[600px]:text-[3.5rem] max-[600px]:opacity-100 text-[#212121] max-[1750px]:text-[4rem] text-[4.5vw] text-normal font-medium leading-[120%] tracking-[-0.1rem] overflow-hidden pt-0 md:pt-20">
               {headingTextOne} <br /> {headingTextTwo}
@@ -147,17 +147,17 @@ const HeroCapabilities = ({
                 ) : (
                   <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[50%]" src={images2} priority />
                 )}
-                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[50%]" src={images3} priority />
+                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[48%]" src={images3} priority />
               </div>
               <div className="image-holder overflow-hidden one-image w-[100%]  mt-[1rem]">
                 <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[100%]" src={images4} autoPlay loop muted />
               </div>
               <div className="image-holder overflow-hidden two-images w-[100%] flex gap-5 overflow-hidden mt-[1rem]">
-                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[50%]" src={images5} priority />
+                <Image alt="Project Image" title="Project Image" fetchPriority="high" width={600} height={800} className="max-[1024px]:opacity-100 object-cover w-[50%]" src={images5} priority />
                 {images6.endsWith('.mp4') ? (
                   <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[50%]" src={images6} autoPlay loop muted />
                 ) : (
-                  <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[50%]" src={images6} priority />
+                  <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[48%]" src={images6} priority />
                 )}
               </div>
               <div className="image-holder overflow-hidden one-image w-[100%] mt-[1rem]">
@@ -172,7 +172,7 @@ const HeroCapabilities = ({
                 {images9.endsWith('.mp4') ? (
                   <video preload="auto" className="max-[1024px]:opacity-100 object-cover w-[50%]" src={images9} autoPlay loop muted />
                 ) : (
-                  <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[50%]" src={images9} priority />
+                  <Image alt="Project Image" title="Project Image" fetchPriority="high" width={800} height={800} className="max-[1024px]:opacity-100 object-cover w-[48%]" src={images9} priority />
                 )}
               </div>
               <div className="image-holder overflow-hidden one-image w-[100%] mt-[1rem]">

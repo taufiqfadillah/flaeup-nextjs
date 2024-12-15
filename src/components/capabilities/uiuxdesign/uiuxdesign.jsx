@@ -70,15 +70,15 @@ const UiUxDesign = () => {
         descriptionTextOne="We align your brand with your audience to"
         descriptionTextTwo="achieve your desired positioning."
         images1="/images/capabilities/UIUX.mp4"
-        images2="/images/capabilities/flaeup_progress.jpg"
-        images3="/images/capabilities/flaeup_progress.jpg"
+        images2="/images/capabilities/iphone mockup.jpg"
+        images3="/images/capabilities/HNF.jpg"
         images4="/images/capabilities/Capabilities.mp4"
-        images5="/images/capabilities/flaeup_progress.jpg"
-        images6="/images/capabilities/flaeup_progress.jpg"
+        images5="/images/capabilities/Next Web.jpg"
+        images6="/images/capabilities/Flexibe.jpg"
         images7="/images/capabilities/Hello01.mp4"
         images8="/images/capabilities/Hanny.jpg"
-        images9="/images/capabilities/flaeup_progress.jpg"
-        images10="/images/capabilities/flaeup_progress.jpg"
+        images9="/images/capabilities/Peny pincher.jpg"
+        images10="/images/capabilities/Xetron UIUX.jpg"
       />
 
       <section className="w-full h-full [background:#82CAAA] text-black rounded-t-lg px-6 lg:px-0" id="digital-experience-scroller">
